@@ -28,8 +28,8 @@ Pinocchio 是基于刚体树模型的运动学与动力学计算库。它实现�
 对固定基座无外力的模型，可抽象写为：
 
 $$
-\tau=\operatorname{RNEA}(q,v,a),\qquad
-a=\operatorname{ABA}(q,v,\tau).
+\tau=\mathrm{RNEA}(q,v,a),\qquad
+a=\mathrm{ABA}(q,v,\tau).
 $$
 
 如果向 RNEA 传入零速度、零加速度，常用于计算所需的重力补偿向量；仍须确认 Pinocchio 重力向量、力矩轴和反馈坐标一致。带外部力时，附加力项的符号由“环境施加到机器人”或“机器人施加到环境”的约定决定。
@@ -62,3 +62,4 @@ $$
 ## 更新记录
 
 - 2026-11-09：建立 Pinocchio 职责与 RNEA、ABA、CRBA 对照章节。
+- 2026-11-09：将命名运算符改为网页预览兼容的正体写法，保持数学含义。

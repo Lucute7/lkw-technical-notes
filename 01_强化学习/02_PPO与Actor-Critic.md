@@ -48,7 +48,7 @@ $$
 $$
 L^{CLIP}(\theta)=
 \mathbb E_t\left[\min\left(r_t\hat A_t,
-\operatorname{clip}(r_t,1-\epsilon,1+\epsilon)\hat A_t\right)\right].
+\mathrm{clip}(r_t,1-\epsilon,1+\epsilon)\hat A_t\right)\right].
 $$
 
 正优势表示增加该动作概率通常有利；负优势表示减少它通常有利。剪切项防止目标鼓励概率比率沿有利方向无限增加，因此避免一次更新从代理目标中获得过大的收益。
@@ -90,3 +90,4 @@ Critic 输入包含 Actor 观测与真值特征，是一种训练信息设计，
 ## 更新记录
 
 - 2026-11-09：从现有会话学习整理与插接项目记录建立 PPO 及非对称 Actor–Critic 章节。
+- 2026-11-09：将命名运算符改为网页预览兼容的正体写法，保持数学含义。

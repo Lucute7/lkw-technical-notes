@@ -33,7 +33,7 @@ PPO 采用：
 
 $$
 L^{CLIP}(\theta)=\mathbb E_t\left[\min\left(
-r_t\hat A_t,\operatorname{clip}(r_t,1-\epsilon,1+\epsilon)\hat A_t
+r_t\hat A_t,\mathrm{clip}(r_t,1-\epsilon,1+\epsilon)\hat A_t
 \right)\right].
 $$
 
@@ -79,3 +79,4 @@ $\epsilon>0$ 控制概率比裁剪区间的宽度。以 $\hat A_t>0$ 为例，�
 ## 更新记录
 
 - 2026-11-09：建立 PPO 策略比率与 clipped surrogate 基础章节，补充训练结果验证边界。
+- 2026-11-09：将命名运算符改为网页预览兼容的正体写法，保持数学含义。

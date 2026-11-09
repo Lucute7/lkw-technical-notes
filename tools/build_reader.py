@@ -74,6 +74,9 @@ def prepare_math(text: str) -> tuple[str, dict[str, tuple[str, bool]]]:
             return match.group(0)
         display = match.group(1) is not None
         tex = (match.group(1) if display else match.group(2)).strip()
+        # The web preview rejects this macro even though the local converter accepts it.
+        if re.search(r"\\operatorname\b", tex):
+            raise ValueError(f"公式含网页预览不兼容的 operatorname，请改用正体名称：{tex}")
         markup = convert(tex, display="block" if display else "inline")
         # Reject untranslated commands instead of silently displaying formula source.
         plain = "".join(ET.fromstring(markup).itertext())
