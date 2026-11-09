@@ -1,0 +1,13 @@
+# 阅读版生成工具
+
+在工作区根目录运行：
+
+```sh
+python3 tools/build_reader.py
+```
+
+工具把根目录说明、复习清单、编号分类目录及其章节合并为 `阅读版.html`。公式在构建时转换为原生 MathML，阅读时不加载在线脚本、字体或公式服务。文件可直接用支持 MathML 的现代浏览器打开。
+
+Markdown 是内容源，阅读版是生成结果。新增主题分类使用编号目录，已有文件内的相对 Markdown 链接会转为阅读版内部导航。工具不收录工作区规则、模板和工具自身说明。
+
+需要 Python 3.10 或更新版本和 Node.js。系统 Python 版本较旧时，会自动切换到 Codex 已配置的 Python；Node.js 也优先使用 Codex 已配置的版本。已在 `vendor/` 保留离线依赖及许可证：`latex2mathml` 负责公式转换，`marked` 负责 Markdown 排版。后续更新笔记无需再次联网安装。
