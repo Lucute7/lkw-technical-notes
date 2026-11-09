@@ -121,8 +121,8 @@ process.stdout.write(JSON.stringify(results));
                 markup = markup.replace(token, mathml)
 
         def rewrite_link(match: re.Match) -> str:
-            target = html.unescape(match.group(1))
-            local = unquote(target.split("#", 1)[0])
+            target = unquote(html.unescape(match.group(1)))
+            local = target.split("#", 1)[0]
             if local.endswith(".md") and "://" not in local:
                 dest = (path.parent / local).resolve()
                 if dest not in known:

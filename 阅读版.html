@@ -19,7 +19,7 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 @media(max-width:1000px){aside{width:220px;padding:25px 18px}main{margin-left:220px;padding:24px}article{padding:28px}}
 @media(max-width:700px){aside{position:relative;width:100%;max-height:none;border-right:0;border-bottom:1px solid var(--line);padding:22px}nav{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}.tagline{margin-bottom:14px}main{margin-left:0;padding:16px}article{padding:23px 19px}h1{font-size:24px}.equation{padding:15px 8px}}
 @media print{aside,.reader-header,.back{display:none}main{max-width:none;margin:0;padding:0}body{background:white;font-size:11pt}article{border:0;padding:0;margin:0;break-before:page}article:first-of-type{break-before:auto}pre{white-space:pre-wrap}h1,h2,h3{break-after:avoid}.equation,tr{break-inside:avoid}}
-</style></head><body id="top"><aside><div class="brand">个人技术栈笔记</div><p class="tagline">持续整理 · 理解原理 · 随时复习</p><nav><a class="" href="#doc-8ec9a00bfd09">个人技术栈笔记</a><a class="" href="#doc-875f05997c53">复习清单</a><a class="category" href="#doc-a728352e5a15">强化学习</a><a class="category" href="#doc-7fca3733489e">电机与运动控制</a><a class="chapter" href="#doc-8f26ce775ad6">01 MIT 模式与电流模式</a><a class="chapter" href="#doc-790e3606b3b2">02 MIT 驱动器的仿真建模</a><a class="category" href="#doc-9617ca8b8170">知识库系统</a><a class="chapter" href="#doc-204f16197df5">跨设备知识库设计</a></nav></aside><main><div class="reader-header"><strong>笔记阅读版</strong>　公式已排版 · 离线可读</div><article id="doc-8ec9a00bfd09"><h1>个人技术栈笔记</h1>
+</style></head><body id="top"><aside><div class="brand">个人技术栈笔记</div><p class="tagline">持续整理 · 理解原理 · 随时复习</p><nav><a class="" href="#doc-8ec9a00bfd09">个人技术栈笔记</a><a class="" href="#doc-875f05997c53">复习清单</a><a class="category" href="#doc-a728352e5a15">强化学习</a><a class="chapter" href="#doc-e778c425d46b">01 PPO 基础原理</a><a class="chapter" href="#doc-c0e378884e79">02 PPO 与 Actor–Critic</a><a class="chapter" href="#doc-087301252aea">03 奖励设计与模仿学习</a><a class="category" href="#doc-7fca3733489e">电机与运动控制</a><a class="chapter" href="#doc-8f26ce775ad6">01 MIT 模式与电流模式</a><a class="chapter" href="#doc-790e3606b3b2">02 MIT 驱动器的仿真建模</a><a class="category" href="#doc-9617ca8b8170">知识库系统</a><a class="chapter" href="#doc-204f16197df5">跨设备知识库设计</a><a class="category" href="#doc-d0008fb7c36d">数学与运动学</a><a class="chapter" href="#doc-fa0d65bec46b">01 坐标变换与姿态表示</a><a class="chapter" href="#doc-f3eefb27199e">02 雅可比、Twist 与 Wrench</a><a class="chapter" href="#doc-d914d0fe7e11">03 SVD、伪逆与逆运动学</a><a class="category" href="#doc-21ceeb727ede">机器人动力学</a><a class="chapter" href="#doc-bf866bb4a3e8">01 拉格朗日建模与动力学方程</a><a class="chapter" href="#doc-f8b04e02b1d0">02 Pinocchio 与动力学算法</a><a class="category" href="#doc-a1e02a44cee3">系统辨识</a><a class="chapter" href="#doc-689c17950e02">01 动力学回归与最小二乘</a><a class="chapter" href="#doc-c906f403567d">02 重力与摩擦辨识</a><a class="category" href="#doc-ddd4d6a9c092">最优化</a><a class="chapter" href="#doc-e4e5e7dfe7e8">01 约束优化与问题分类</a><a class="category" href="#doc-b5ca26ac53b8">运动规划</a><a class="chapter" href="#doc-d95c684e3465">01 RRT、碰撞检测与轨迹优化</a><a class="chapter" href="#doc-0f1ef62807ae">02 轨迹时标与笛卡尔直线运动</a><a class="category" href="#doc-2dbc32b2c61f">电机与控制</a><a class="chapter" href="#doc-743bd2e45395">01 PMSM 与 FOC</a><a class="chapter" href="#doc-66a0a5899f87">02 PID、重力补偿与计算力矩</a><a class="chapter" href="#doc-122ed3fca99c">03 阻抗、导纳与力位混合控制</a></nav></aside><main><div class="reader-header"><strong>笔记阅读版</strong>　公式已排版 · 离线可读</div><article id="doc-8ec9a00bfd09"><h1>个人技术栈笔记</h1>
 <p>把技术讨论沉淀为可以反复阅读、自测和补充的章节。笔记使用中文，保留常用英文术语、公式和必要的图示。</p>
 <p><strong>日常复习请打开<a href="#top">笔记阅读版</a></strong>：包含完整目录、正文与复习清单，数学公式已排版，支持离线阅读。下列 Markdown 文件用于持续维护内容。</p>
 <h2>笔记目录</h2>
@@ -46,6 +46,36 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <td>跨设备访问、内容存储与维护流程</td>
 <td><a href="#doc-9617ca8b8170">知识库系统目录</a></td>
 </tr>
+<tr>
+<td>04 数学与运动学</td>
+<td>坐标变换、Jacobian、旋量、SVD 与逆运动学</td>
+<td><a href="#doc-d0008fb7c36d">数学与运动学目录</a></td>
+</tr>
+<tr>
+<td>05 机器人动力学</td>
+<td>拉格朗日建模与 Pinocchio 递归算法</td>
+<td><a href="#doc-21ceeb727ede">机器人动力学目录</a></td>
+</tr>
+<tr>
+<td>06 系统辨识</td>
+<td>线性参数估计、重力模型与摩擦辨识</td>
+<td><a href="#doc-a1e02a44cee3">系统辨识目录</a></td>
+</tr>
+<tr>
+<td>07 最优化</td>
+<td>优化变量、目标、约束及求解类型</td>
+<td><a href="#doc-ddd4d6a9c092">最优化目录</a></td>
+</tr>
+<tr>
+<td>08 运动规划</td>
+<td>RRT、碰撞检测、轨迹与笛卡尔直线规划</td>
+<td><a href="#doc-b5ca26ac53b8">运动规划目录</a></td>
+</tr>
+<tr>
+<td>09 电机与控制</td>
+<td>PMSM／FOC、反馈、阻抗导纳和力位混合</td>
+<td><a href="#doc-2dbc32b2c61f">电机与控制目录</a></td>
+</tr>
 </tbody></table></div>
 <p>后续根据实际讨论增加分类，例如机器人系统、数学基础等。</p>
 <h2>GitHub 跨设备维护</h2>
@@ -71,6 +101,24 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-875f05997c53"><h1>复习清单</h1>
 <p>这里只收录已经形成的技术章节，随讨论持续更新。</p>
 <h2>电机与运动控制</h2>
+<h3>PMSM 与 FOC</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-743bd2e45395">PMSM 与 FOC</a>。</li>
+<li><strong>核心自测</strong>：Clarke 与 Park 各改变什么坐标系？q 轴电流为什么和转矩有关？为什么电磁转矩不能直接等同关节轴端力矩？</li>
+<li><strong>待解决问题</strong>：实际设备的电流和力矩常数约定需查阅对应厂商资料。</li>
+</ul>
+<h3>反馈与模型控制</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-66a0a5899f87">PID、重力补偿与计算力矩</a>。</li>
+<li><strong>核心自测</strong>：反馈项与重力前馈分别补偿什么？计算力矩控制依赖什么模型假设？为何高增益不保证接触更好？</li>
+<li><strong>待解决问题</strong>：当前未针对特定设备验证或调参。</li>
+</ul>
+<h3>阻抗、导纳与力位混合</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-122ed3fca99c">阻抗、导纳与力位混合控制</a>。</li>
+<li><strong>核心自测</strong>：阻抗和导纳的输入输出分别是什么？为何需要真实接触方向和明确的力传感／估算边界？</li>
+<li><strong>待解决问题</strong>：特定控制器、传感器和接触任务的实现需结合实际硬件确认。</li>
+</ul>
 <h3>01 MIT 模式与电流模式</h3>
 <ul>
 <li><strong>章节链接</strong>：<a href="#doc-8f26ce775ad6">MIT 模式与电流模式</a>。</li>
@@ -90,6 +138,59 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li><strong>核心自测</strong>：GitHub 仓库与 Pages 有什么区别？为什么提交之后还要推送？如何在两台电脑同步最新章节？“程序已做好”和“网站已上线”有什么区别？多设备修改同一份内容时怎样避免覆盖？上传资料与整理笔记有什么区别？</li>
 <li><strong>待解决问题</strong>：在另一台电脑验证仓库访问和同步流程；网页编辑后阅读版暂不自动构建，资料自动解析尚未实现。独立网站方案已废弃并删除相关文件。</li>
 </ul>
+<h2>数学与运动学</h2>
+<h3>坐标变换与姿态表示</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-fa0d65bec46b">坐标变换与姿态表示</a>。</li>
+<li><strong>核心自测</strong>：<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow></math> 按什么方向转换？串联变换为何按矩阵乘法顺序组合？怎样绕末端位置原地改变姿态？</li>
+<li><strong>待解决问题</strong>：应用到具体机器人时需核对各库的坐标和四元数约定。</li>
+</ul>
+<h3>雅可比、Twist 与 Wrench</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-f3eefb27199e">雅可比与速度力映射</a>。</li>
+<li><strong>核心自测</strong>：怎样由功率守恒导出 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><msup><mi>J</mi><mi>T</mi></msup><mi>F</mi></mrow></math>？改变参考点和旋转表达轴分别影响哪些分量？</li>
+<li><strong>待解决问题</strong>：Pinocchio 各 reference frame 下的具体 API 约定可结合项目复核。</li>
+</ul>
+<h3>SVD 与逆运动学</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-d914d0fe7e11">SVD、伪逆与逆运动学</a>。</li>
+<li><strong>核心自测</strong>：奇异值接近零时会发生什么？DLS 如何缓解误差放大？阻尼伪逆下的零空间是否严格保持主任务？</li>
+<li><strong>待解决问题</strong>：具体机器人上的 IK 误差阈值与碰撞／限位约束尚需结合任务验证。</li>
+</ul>
+<h2>机器人动力学</h2>
+<h3>拉格朗日建模与动力学算法</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-bf866bb4a3e8">拉格朗日建模</a> · <a href="#doc-f8b04e02b1d0">Pinocchio 算法</a>。</li>
+<li><strong>核心自测</strong>：动力学方程各项描述什么？RNEA、ABA、CRBA 各解什么问题？为什么正动力学库算法本身不是完整接触仿真？</li>
+<li><strong>待解决问题</strong>：具体 SDK 关节力矩所在轴侧、外力符号和模型参数仍需针对设备确认。</li>
+</ul>
+<h2>系统辨识</h2>
+<h3>动力学参数、重力与摩擦</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-689c17950e02">动力学回归</a> · <a href="#doc-c906f403567d">重力与摩擦辨识</a>。</li>
+<li><strong>核心自测</strong>：满秩与良好条件数各表达什么？为什么需要独立速度／方向工况？重力与常量偏置何时不可分？</li>
+<li><strong>待解决问题</strong>：各设备的激励范围、转矩标定与验证数据均须单独确定。</li>
+</ul>
+<h2>最优化与运动规划</h2>
+<h3>约束优化</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-e4e5e7dfe7e8">约束优化与问题分类</a>。</li>
+<li><strong>核心自测</strong>：变量、目标和约束分别表达什么？互补条件如何表示单边接触？为什么软罚项不等于硬安全约束？</li>
+<li><strong>待解决问题</strong>：具体接触问题的可行求解器和实时预算未指定。</li>
+</ul>
+<h3>路径规划与轨迹</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-d95c684e3465">RRT 与碰撞检测</a> · <a href="#doc-0f1ef62807ae">轨迹时标与直线运动</a>。</li>
+<li><strong>核心自测</strong>：IK、路径和时间轨迹有什么区别？为什么离散点无碰撞不是连续安全证明？笛卡尔直线如何通过关节 IK 与限速校验？</li>
+<li><strong>待解决问题</strong>：具体机械臂的连续碰撞和时间参数化配置尚未统一。</li>
+</ul>
+<h2>强化学习与模仿学习</h2>
+<h3>PPO 与 Actor–Critic</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-c0e378884e79">PPO 与 Actor–Critic</a> · <a href="#doc-087301252aea">奖励设计与模仿学习</a>。</li>
+<li><strong>核心自测</strong>：优势估计和 PPO 剪切各帮助什么？非对称 Critic 可获取何种训练期信息？DAgger、RMA 与域随机化分别解决什么问题？</li>
+<li><strong>待解决问题</strong>：实际训练应检查裁剪、KL、奖励投机和任务真值，并用目标部署分布独立评估。</li>
+</ul>
 <h2>使用方式</h2>
 <p>先回答章节的自测题，再阅读正文。复习时重点检查：能否用自己的话解释原理、说明关键公式中各个量的含义，以及判断结论在什么条件下适用。</p>
 <p>后续每个主题记录：</p>
@@ -103,12 +204,183 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-a728352e5a15"><h1>强化学习</h1>
 <p>讨论算法为什么成立、优化的目标是什么，以及这些设计怎样影响训练。</p>
 <h2>已有章节</h2>
-<p>尚无正式章节。完成相关讨论后，在此添加章节链接和一句话说明。</p>
-<h2>待讨论主题</h2>
-<ul>
-<li>PPO 的原理：用户提到的示例主题，具体内容随实际讨论展开。</li>
-</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主要问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#doc-e778c425d46b">01 PPO 基础原理</a></td>
+<td>clipped surrogate、策略比率与策略更新范围的直觉。</td>
+</tr>
+<tr>
+<td><a href="#doc-c0e378884e79">02 PPO 与 Actor–Critic</a></td>
+<td>优势估计、Actor–Critic、非对称 Critic 与训练诊断。</td>
+</tr>
+<tr>
+<td><a href="#doc-087301252aea">03 奖励设计与模仿学习</a></td>
+<td>奖励投机、Teacher–Student、DAgger、RMA、课程学习。</td>
+</tr>
+</tbody></table></div>
 <p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-e778c425d46b"><h1>01 PPO 基础原理</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>为什么强化学习中的策略更新会过大？PPO 怎样利用固定一批旧策略轨迹，多轮优化新策略而降低更新过猛的风险？</p>
+<p>本章从优化直觉解释近端策略优化（Proximal Policy Optimization，PPO）。Actor–Critic、优势估计、非对称 Critic、实际损失与训练诊断见<a href="#doc-c0e378884e79">下一章</a>。</p>
+<h2>快速回顾</h2>
+<p>PPO 先用当前策略与环境交互，收集状态、动作、奖励和旧策略概率，再从这些样本优化新策略。其 clipped surrogate objective 限制新旧策略概率比对代理目标的贡献，但不严格保证 KL 距离、环境性能或真机安全。</p>
+<h2>1. 策略和概率比</h2>
+<p>随机策略写成 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C0;</mi><mi>&#x003B8;</mi></msub><mo stretchy="false">&#x00028;</mo><mi>a</mi><mo>&#x02223;</mo><mi>s</mi><mo stretchy="false">&#x00029;</mo></mrow></math>，其中 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>s</mi></mrow></math> 是状态、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>a</mi></mrow></math> 是动作、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B8;</mi></mrow></math> 是可训练参数。某动作的优势估计 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub></mrow></math> 表示它相对该状态基准好或差多少。</p>
+<p>对旧策略采样的动作，当前新策略的概率比为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>r</mi><mi>t</mi></msub><mo stretchy="false">&#x00028;</mo><mi>&#x003B8;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mfrac><mrow><msub><mi>&#x003C0;</mi><mi>&#x003B8;</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mi>a</mi><mi>t</mi></msub><mo>&#x02223;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo></mrow><mrow><msub><mi>&#x003C0;</mi><mrow><msub><mi>&#x003B8;</mi><mrow><mi>o</mi><mi>l</mi><mi>d</mi></mrow></msub></mrow></msub><mo stretchy="false">&#x00028;</mo><msub><mi>a</mi><mi>t</mi></msub><mo>&#x02223;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo></mrow></mfrac><mo>&#x0002E;</mo></mrow></math></div>
+<p>若 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>r</mi><mi>t</mi></msub><mo>&#x0003E;</mo><mn>1</mn></mrow></math>，样本动作在新策略下更可能；若 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>r</mi><mi>t</mi></msub><mo>&#x0003C;</mo><mn>1</mn></mrow></math>，更不可能。未裁剪的策略梯度代理项 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>r</mi><mi>t</mi></msub><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub></mrow></math> 会按优势调整概率：正优势倾向提高动作概率，负优势倾向降低。</p>
+<h2>2. 为什么限制一次更新</h2>
+<p>利用一批固定轨迹重复更新时，策略变化可能很快，采样状态和动作逐渐不再代表新策略访问的分布。过大的更新会让代理目标失去可靠性，甚至令策略性能突然下降。</p>
+<p>PPO 采用：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msup><mi>L</mi><mrow><mi>C</mi><mi>L</mi><mi>I</mi><mi>P</mi></mrow></msup><mo stretchy="false">&#x00028;</mo><mi>&#x003B8;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi mathvariant="double-struck">E</mi><mi>t</mi></msub><mrow><mo stretchy="true" fence="true" form="prefix">[</mo><mo>min</mo><mrow><mo stretchy="true" fence="true" form="prefix">&#x00028;</mo><msub><mi>r</mi><mi>t</mi></msub><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo>&#x0002C;</mo><mo>clip</mo><mo stretchy="false">&#x00028;</mo><msub><mi>r</mi><mi>t</mi></msub><mo>&#x0002C;</mo><mn>1</mn><mo>&#x02212;</mo><mi>&#x003F5;</mi><mo>&#x0002C;</mo><mn>1</mn><mo>&#x0002B;</mo><mi>&#x003F5;</mi><mo stretchy="false">&#x00029;</mo><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo stretchy="true" fence="true" form="postfix">&#x00029;</mo></mrow><mo stretchy="true" fence="true" form="postfix">]</mo></mrow><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003F5;</mi><mo>&#x0003E;</mo><mn>0</mn></mrow></math> 控制概率比裁剪区间的宽度。以 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo>&#x0003E;</mo><mn>0</mn></mrow></math> 为例，如果概率比高于 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002B;</mo><mi>&#x003F5;</mi></mrow></math>，目标不再鼓励它沿这个方向无限增加；负优势时对应地阻止目标通过极端降低概率比继续获取代理收益。</p>
+<h2>3. 一个数值例子</h2>
+<p>设 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003F5;</mi><mo>&#x0003D;</mo><mn>0.2</mn></mrow></math> 且 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mo>&#x0003D;</mo><mn>2</mn></mrow></math>：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>比率 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi></mrow></math></th>
+<th>裁剪比率</th>
+<th>未裁剪项 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover></mrow></math></th>
+<th>参与 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>min</mo></mrow></math> 的裁剪项</th>
+<th>有效目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.1</td>
+<td>1.1</td>
+<td>2.2</td>
+<td>2.2</td>
+<td>2.2</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>1.2</td>
+<td>3.0</td>
+<td>2.4</td>
+<td>2.4</td>
+</tr>
+</tbody></table></div>
+<p>在该正优势样本上，旧策略下动作已更受偏好，概率比继续上升不再提高代理目标。但这只是单个样本、一个方向的局部例子，实际优化由很多样本与网络参数共同决定。</p>
+<h2>4. PPO 实际包含哪些判断</h2>
+<p>策略更新还依赖优势如何估计、样本如何规范化、每批数据重复训练多少 epoch、value loss 和熵奖励如何设置。策略与价值网络是否共享参数也会改变梯度路径。PPO 并非只有一个裁剪公式。</p>
+<p>剪切目标既不是严格 trust region，也不保证每个样本比率都在裁剪范围内；当某一分支的裁剪结果更差时，反向梯度可能使参数离开区间。真实训练应观察近似 KL、clip fraction、优势分布、熵、value loss 和独立任务结果。</p>
+<h2>5. 策略奖励之外还要检查任务</h2>
+<p>算法提高的是定义好的期望回报。如果奖励遗漏了关键条件，PPO 可以稳定找到不符合预期却更高分的行为。机器人策略须检查实际轨迹、成功几何、接触和力信号，以及评估环境与部署观测的差异。</p>
+<p>固定初态下训练的策略未必能容忍定位误差；仿真真值 Critic 有助于训练，但 Actor 必须使用部署可获得的观测。要报告实验覆盖和失败类型，不能从曲线收敛直接推断已经学会真机技能。</p>
+<h2>自测题</h2>
+<ol>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>r</mi><mi>t</mi></msub></mrow></math> 在比较哪两个策略对同一状态—动作的概率？</li>
+<li>优势正负分别如何影响策略倾向？</li>
+<li>PPO 裁剪改变代理目标哪一部分？为什么不能称为严格 KL 保证？</li>
+<li>对机器人 PPO 训练而言，为什么独立几何真值和接触验证可能推翻看似收敛的奖励曲线？</li>
+<li>Actor 可部署的观测和训练期 Critic 特权量为什么应区分？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 11 章与机器人策略训练项目周报。原整理为主题归纳，非逐字聊天记录；本章标准化 PPO 公式按通用 clipped surrogate 目标整理。</p>
+<p><a href="#doc-c0e378884e79">PPO 与 Actor–Critic</a> · <a href="#doc-087301252aea">奖励设计与模仿学习</a> · <a href="#doc-a728352e5a15">强化学习目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立 PPO 策略比率与 clipped surrogate 基础章节，补充训练结果验证边界。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-c0e378884e79"><h1>02 PPO 与 Actor–Critic</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>策略梯度如何通过采样数据改进随机策略？Actor、Critic 和优势函数各自承担什么工作？PPO 的裁剪目标保护什么，又不保护什么？</p>
+<p>本章在<a href="#doc-790e3606b3b2">已有 MIT 驱动器仿真章节</a>之外单独整理策略优化原理。公式采用标准 on-policy PPO 约定；具体训练实现、动作和状态以项目配置为准。</p>
+<h2>快速回顾</h2>
+<ul>
+<li>Actor 表示策略 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C0;</mi><mi>&#x003B8;</mi></msub><mo stretchy="false">&#x00028;</mo><mi>a</mi><mo>&#x02223;</mo><mi>s</mi><mo stretchy="false">&#x00029;</mo></mrow></math>；Critic 估计状态价值 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>V</mi><mi>&#x003D5;</mi></msub><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo stretchy="false">&#x00029;</mo></mrow></math>，降低策略梯度估计的方差。</li>
+<li>优势 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>A</mi><mi>t</mi></msub></mrow></math> 衡量当前动作结果相对于状态基准值的好坏，影响策略更新方向。</li>
+<li>PPO 使用新旧策略的概率比率和剪切目标限制单批数据上的代理目标变化。</li>
+<li>裁剪不能保证真实策略 KL、环境回报或硬件安全一定受限；还需要观察实际训练和任务指标。</li>
+</ul>
+<h2>1. Actor–Critic 与策略梯度</h2>
+<p>随机 Actor 依据当前状态产生动作分布。环境按状态转移和奖励生成轨迹；Critic 学习期望折扣回报的基准值：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msup><mi>V</mi><mi>&#x003C0;</mi></msup><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi mathvariant="double-struck">E</mi><mi>&#x003C0;</mi></msub><mrow><mo stretchy="true" fence="true" form="prefix">[</mo><msubsup><mo>&#x02211;</mo><mrow><mi>k</mi><mo>&#x0003D;</mo><mn>0</mn></mrow><mrow><mo>&#x0221E;</mo></mrow></msubsup><msup><mi>&#x003B3;</mi><mi>k</mi></msup><msub><mi>r</mi><mrow><mi>t</mi><mo>&#x0002B;</mo><mi>k</mi></mrow></msub><mo>&#x02223;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="true" fence="true" form="postfix">]</mo></mrow><mo>&#x0002E;</mo></mrow></math></div>
+<p>原始轨迹回报波动很大。优势函数 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>A</mi><mi>&#x003C0;</mi></msup><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo>&#x0002C;</mo><mi>a</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msup><mi>Q</mi><mi>&#x003C0;</mi></msup><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo>&#x0002C;</mo><mi>a</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><msup><mi>V</mi><mi>&#x003C0;</mi></msup><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo stretchy="false">&#x00029;</mo></mrow></math> 减去状态基准，降低策略梯度估计方差，同时仍保留动作好坏的期望差异。</p>
+<p>Generalized Advantage Estimation（GAE）常将 TD 残差按时间衰减求和：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003B4;</mi><mi>t</mi></msub><mo>&#x0003D;</mo><msub><mi>r</mi><mi>t</mi></msub><mo>&#x0002B;</mo><mi>&#x003B3;</mi><mi>V</mi><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>&#x0002B;</mo><mn>1</mn></mrow></msub><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mi>V</mi><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo><mspace width="2em" /><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo>&#x0003D;</mo><munderover><mo>&#x02211;</mo><mrow><mi>l</mi><mo>&#x0003D;</mo><mn>0</mn></mrow><mrow><mo>&#x0221E;</mo></mrow></munderover><mo stretchy="false">&#x00028;</mo><mi>&#x003B3;</mi><mi>&#x003BB;</mi><msup><mo stretchy="false">&#x00029;</mo><mi>l</mi></msup><msub><mi>&#x003B4;</mi><mrow><mi>t</mi><mo>&#x0002B;</mo><mi>l</mi></mrow></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003BB;</mi></mrow></math> 控制偏差与方差权衡。截断 episode 时要按是否真实终止决定 bootstrap，时间限制截断不能无条件当成失败终止。</p>
+<h2>2. PPO 剪切目标</h2>
+<p>收集旧策略数据后，更新新策略。概率比率：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>r</mi><mi>t</mi></msub><mo stretchy="false">&#x00028;</mo><mi>&#x003B8;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mfrac><mrow><msub><mi>&#x003C0;</mi><mi>&#x003B8;</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mi>a</mi><mi>t</mi></msub><mo>&#x02223;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo></mrow><mrow><msub><mi>&#x003C0;</mi><mrow><msub><mi>&#x003B8;</mi><mrow><mi>o</mi><mi>l</mi><mi>d</mi></mrow></msub></mrow></msub><mo stretchy="false">&#x00028;</mo><msub><mi>a</mi><mi>t</mi></msub><mo>&#x02223;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo></mrow></mfrac><mo>&#x0002E;</mo></mrow></math></div>
+<p>常见 clipped surrogate 最大化：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msup><mi>L</mi><mrow><mi>C</mi><mi>L</mi><mi>I</mi><mi>P</mi></mrow></msup><mo stretchy="false">&#x00028;</mo><mi>&#x003B8;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi mathvariant="double-struck">E</mi><mi>t</mi></msub><mrow><mo stretchy="true" fence="true" form="prefix">[</mo><mo>min</mo><mrow><mo stretchy="true" fence="true" form="prefix">&#x00028;</mo><msub><mi>r</mi><mi>t</mi></msub><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo>&#x0002C;</mo><mo>clip</mo><mo stretchy="false">&#x00028;</mo><msub><mi>r</mi><mi>t</mi></msub><mo>&#x0002C;</mo><mn>1</mn><mo>&#x02212;</mo><mi>&#x003F5;</mi><mo>&#x0002C;</mo><mn>1</mn><mo>&#x0002B;</mo><mi>&#x003F5;</mi><mo stretchy="false">&#x00029;</mo><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo stretchy="true" fence="true" form="postfix">&#x00029;</mo></mrow><mo stretchy="true" fence="true" form="postfix">]</mo></mrow><mo>&#x0002E;</mo></mrow></math></div>
+<p>正优势表示增加该动作概率通常有利；负优势表示减少它通常有利。剪切项防止目标鼓励概率比率沿有利方向无限增加，因此避免一次更新从代理目标中获得过大的收益。</p>
+<p>剪切是训练目标的局部机制，不是严格的 KL 约束或信赖域保证。实践中常监控近似 KL、clip fraction、策略熵和总回报；某些训练器在 KL 太大时提前停止更新。</p>
+<h2>3. Critic 与训练目标</h2>
+<p>Critic 通过回归折扣回报目标来拟合 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>V</mi><mi>&#x003D5;</mi></msub><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo stretchy="false">&#x00029;</mo></mrow></math>，常见多项目标包括 Actor 策略项、value loss 和熵奖励。共享 Actor/Critic 编码器时，value loss 与策略损失共同更新共享特征；分开参数时，梯度只走各自支路。须了解具体优化器的共享结构与梯度路由。</p>
+<h2>4. 非对称 Actor–Critic</h2>
+<p>在仿真训练中，Critic 可使用部署时无法获得的真实物体状态或接触标签作为特权信息，以改善价值估计；部署 Actor 只能使用真机可测输入。若把真值泄漏进 Actor 观测，所得结果无法直接部署。</p>
+<p>Critic 输入包含 Actor 观测与真值特征，是一种训练信息设计，不代表奖励应由仿真自动变得正确，也不代表 Actor 已识别隐藏状态。应记录两侧输入、维度、归一化、历史拼接与部署对应关系。</p>
+<h2>5. 奖励设计与训练诊断</h2>
+<p>奖励引导行为，却不自动等同于任务成功定义。以末态误差做中间奖励时，策略可能卡在容易获分的临界状态；奖励权重需结合每项原始尺度、累计方式、成功判据、终止条件和独立验证。</p>
+<p>以孔插入为例，如果奖励只鼓励最低点越过孔沿，带倾角浅插也可能获益。评估应同时报告几何真值、深度、倾角、接触力和成功状态，而不是只看奖励曲线与训练内成功率。</p>
+<p>需检查 value loss、策略熵、动作分布、KL、裁剪比例、回合步数及随机种子。策略自动保存且回报稳定，并不代表任务达到预期；策略也可能钻成功判据的漏洞。无定位误差、理想力反馈下得到的仿真结果，不能宣称已经验证 Sim-to-Real。</p>
+<h2>自测题</h2>
+<ol>
+<li>Actor 与 Critic 分别学习什么？优势函数减去什么基准？</li>
+<li>PPO 的 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>r</mi><mi>t</mi></msub></mrow></math> 比较哪两个策略？<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003F5;</mi></mrow></math> 控制什么？</li>
+<li>clipped surrogate 为什么不等价于严格限制真实策略 KL？</li>
+<li>非对称 Critic 为什么可能使用训练期真值而 Actor 不行？</li>
+<li>怎样识别策略利用奖励或成功判据而未完成任务？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 11 章和《周报-2026-11-06.md》的 PPO 阶段记录。原文件声明其为近期主题归纳而非逐字对话；本章的通用公式按标准 PPO 形式整理，工程结果保留其项目边界。</p>
+<p><a href="#doc-a728352e5a15">强化学习目录</a> · <a href="#doc-a1e02a44cee3">系统辨识</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：从现有会话学习整理与插接项目记录建立 PPO 及非对称 Actor–Critic 章节。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-087301252aea"><h1>03 奖励设计与模仿学习</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>策略的真实任务目标与训练奖励如何对应？为什么额外惩罚有时会抑制所需行为？Teacher–Student、DAgger、RMA 和历史编码各解决哪种问题？</p>
+<h2>快速回顾</h2>
+<p>奖励应促进可验证的任务行为，不要让代理奖励取代真实成功定义。模仿学习用专家行为提供监督；DAgger 在 student 自己访问的状态上追加专家标签；历史编码和 RMA 则尝试从时间序列推断未显式观测的环境或动力学变化。</p>
+<h2>1. 奖励不是目标本身</h2>
+<p>奖励函数是优化对象的代理。设计时逐项明确原始量纲、正负方向、计算频率、门控条件、终止判据和每回合累计范围。奖励曲线提高只说明算法找到了高奖励行为，不自动说明任务成功。</p>
+<p>在灵巧手抓取后旋转物体的任务中，可分阶段考察接近、建立稳定接触、实现目标旋转和维持抓取。若要求物体从不短暂失去任何接触，奖励可能阻断必要的 finger gaiting（手指交替释放并重建接触）。是否惩罚脱离，要结合任务是否需要重新换指判断。</p>
+<p>排查奖励投机时，同时检查策略行为和独立物理事实：接触几何、穿透、位移、载荷、成功条件和异常终止。给奖励逐项作消融实验，通常比只看一个加权和更容易定位问题。</p>
+<h2>2. Teacher–Student 与 DAgger</h2>
+<p>Teacher–Student 训练让较强 teacher 基于仿真真值或特权状态产生动作，再教 student 从部署可得的传感输入学习。student 模仿得到的动作不一定满足安全限制，最终还须通过闭环评价。</p>
+<p>行为克隆（Behavior Cloning，BC）将既有专家轨迹作为监督样本。但 student 一旦偏离专家轨迹，未来状态分布也可能偏离训练集，错误会逐步累积。</p>
+<p>DAgger（Dataset Aggregation）迭代如下：</p>
+<pre><code class="language-text">student 执行 → 收集 student 访问状态 → 专家标注这些状态
+            → 追加数据集 → 重新训练 student
+</code></pre>
+<p>这样补充了 student 真正会遇到的分布，但依赖能够查询专家的标签、可靠安全采集和明确的数据混合规则。</p>
+<h2>3. RMA 与历史观测编码</h2>
+<p>Rapid Motor Adaptation（RMA）类架构使用一段短历史观测与动作，编码出当前任务状态没有直接提供的环境动力学特征，例如载荷、摩擦变化的代理表示。根据预测出的潜变量条件化控制策略，使其适应变化。</p>
+<p>历史编码并不能保证潜变量等于某个真实物理参数；输入需包含对变化有信息的动态响应、时间戳和足够探索。若场景里执行器未激发负载差异，模型无法仅凭历史推断未观测量。</p>
+<p>历史 encoder 可用重建或 teacher 特权量作为辅助监督，但要保持部署 Actor 的原始可观测边界。旧会话中的 RMA 配置示例属于讨论快照，不视为当前项目的实时实现。</p>
+<h2>4. 域随机化与课程学习</h2>
+<p>域随机化在仿真训练中对有现实依据的摩擦、质量、延迟、偏差和传感噪声等因素采样，扩大策略遇到的条件分布。随机化不是“越多越好”：范围过宽会增加与任务无关的难度，欠缺真实数据时任意范围也无法保证迁移。</p>
+<p>课程学习逐渐调整初态或任务难度，以改善学习过程。课程定义应规定阶段指标、推进阈值、回退条件和各阶段独立评估；不能因为固定初态成功就假定带定位误差后也能成功。</p>
+<h2>自测题</h2>
+<ol>
+<li>为什么回合回报增加不等于真实任务完成？</li>
+<li>某些手指短暂脱离为何可能是必要动作？</li>
+<li>DAgger 怎样处理 student 自身访问的状态分布？</li>
+<li>RMA 隐变量能否直接解释成物理参数？需要哪些信息？</li>
+<li>域随机化的现实范围从哪里获得？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 11 章、《周报-2026-11-06.md》的仿真训练记录及精密插接设计文档；文中仅概括通用学习机制，不把项目调参归为通用建议。</p>
+<p><a href="#doc-c0e378884e79">PPO 与 Actor–Critic</a> · <a href="#doc-a728352e5a15">分类目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立奖励诊断、Teacher–Student、DAgger、历史编码和域随机化章节。</li>
+</ul>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-7fca3733489e"><h1>电机与运动控制</h1>
 <p>讨论控制模式、控制环路与驱动接口，并联系具体设备和应用条件理解它们。</p>
 <h2>已有章节</h2>
@@ -128,6 +400,7 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <td>仿真需要的机械参数、力矩接口、增益、限幅和执行周期，以及提高真实性的方法。</td>
 </tr>
 </tbody></table></div>
+<p>FOC 原理、反馈与计算力矩控制、阻抗与导纳控制见<a href="#doc-2dbc32b2c61f">电机与控制专题</a>。</p>
 <h2>待讨论主题</h2>
 <ul>
 <li>具体驱动器的模式定义与参数约定：需要结合用户实际设备手册确认。</li>
@@ -659,4 +932,913 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li>2026-11-09：用户提供目标仓库地址，并明确废弃独立网站和手机界面方案。删除相关应用、截图、测试和部署文件，将正文改为 GitHub 维护流程；完成本地 Git 初始化和 GitHub 浏览器授权，并确认目标仓库为私有。</li>
 </ul>
 <p><a href="#doc-9617ca8b8170">返回分类目录</a> · <a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-d0008fb7c36d"><h1>数学与运动学</h1>
+<p>统一坐标、刚体姿态、雅可比和数值逆解的记号，支持运动学、优化和控制章节。</p>
+<h2>已有章节</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主要问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#doc-fa0d65bec46b">01 坐标变换与姿态表示</a></td>
+<td>SO(3)／SE(3)、矩阵、四元数、6D 姿态与旋转中心。</td>
+</tr>
+<tr>
+<td><a href="#doc-f3eefb27199e">02 雅可比、Twist 与 Wrench</a></td>
+<td>末端速度、任务力、功率一致性和参考点变换。</td>
+</tr>
+<tr>
+<td><a href="#doc-d914d0fe7e11">03 SVD、伪逆与逆运动学</a></td>
+<td>奇异性、阻尼、零空间以及迭代 IK 的条件。</td>
+</tr>
+</tbody></table></div>
+<p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-fa0d65bec46b"><h1>01 坐标变换与姿态表示</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>相机、机器人基座、工具和物体分别使用不同坐标系，如何把同一个点、方向或姿态转换到另一个坐标系？旋转矩阵、欧拉角、四元数和 6D Rotation 分别表达什么？</p>
+<h2>快速回顾</h2>
+<ul>
+<li>坐标变换改变同一几何对象的表示；主动运动改变几何对象本身，必须先区分语义。</li>
+<li>本章以 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow></math> 表示“把 B 系坐标转换到 A 系”，采用列向量。串联变换按相邻下标抵消。</li>
+<li>三维旋转只有三个自由度。旋转矩阵、四元数、6D 表示使用的数字数量不等于自由度数量。</li>
+<li>世界系旋转左乘、局部系旋转右乘，需要结合所操作的旋转或完整位姿解释；不能忽略旋转中心。</li>
+</ul>
+<h2>1. SO(3) 与 SE(3)</h2>
+<p>特殊正交群（Special Orthogonal Group）<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>S</mi><mi>O</mi><mo stretchy="false">&#x00028;</mo><mn>3</mn><mo stretchy="false">&#x00029;</mo></mrow></math> 中的旋转矩阵满足：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msup><mi>R</mi><mi>T</mi></msup><mi>R</mi><mo>&#x0003D;</mo><mi>I</mi><mo>&#x0002C;</mo><mspace width="2em" /><mo movablelimits="true">det</mo><mi>R</mi><mo>&#x0003D;</mo><mn>1</mn><mo>&#x0002E;</mo></mrow></math></div>
+<p>列向量表示旋转后坐标轴在参考系中的方向。正交条件保持长度和夹角，行列式为正排除镜像反射。</p>
+<p>特殊欧氏群（Special Euclidean Group）<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>S</mi><mi>E</mi><mo stretchy="false">&#x00028;</mo><mn>3</mn><mo stretchy="false">&#x00029;</mo></mrow></math> 将旋转和平移组合为刚体位姿：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>R</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mtd><mtd><msub><mi>p</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002C;</mo><mspace width="2em" /><msub><mi>x</mi><mi>A</mi></msub><mo>&#x0003D;</mo><msub><mi>R</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><msub><mi>x</mi><mi>B</mi></msub><mo>&#x0002B;</mo><msub><mi>p</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>p</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow></math> 是 B 系原点在 A 系的位置，位置单位通常为 m；<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow></math> 无量纲。方向向量不加平移：<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>d</mi><mi>A</mi></msub><mo>&#x0003D;</mo><msub><mi>R</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><msub><mi>d</mi><mi>B</mi></msub></mrow></math>。不能把点和方向混用。</p>
+<p>变换的复合与逆为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mo>&#x0003D;</mo><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><msub><mi>T</mi><mrow><mi>B</mi><mi>C</mi></mrow></msub><mo>&#x0002C;</mo><mspace width="2em" /><msub><mi>T</mi><mrow><mi>B</mi><mi>A</mi></mrow></msub><mo>&#x0003D;</mo><msubsup><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msubsup><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><msubsup><mi>R</mi><mrow><mi>A</mi><mi>B</mi></mrow><mi>T</mi></msubsup></mtd><mtd><mo>&#x02212;</mo><msubsup><mi>R</mi><mrow><mi>A</mi><mi>B</mi></mrow><mi>T</mi></msubsup><msub><mi>p</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>例如，相机观测物体的位姿为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mrow><mi>C</mi><mi>O</mi></mrow></msub></mrow></math>，相机到基座的外参为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mrow><mi>B</mi><mi>C</mi></mrow></msub></mrow></math>，则物体在基座下的位姿为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mrow><mi>B</mi><mi>O</mi></mrow></msub><mo>&#x0003D;</mo><msub><mi>T</mi><mrow><mi>B</mi><mi>C</mi></mrow></msub><msub><mi>T</mi><mrow><mi>C</mi><mi>O</mi></mrow></msub></mrow></math>。该例只说明坐标链，不意味着外参已经标定。</p>
+<h2>2. 姿态表示及其边界</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>表示</th>
+<th>数值形式</th>
+<th>关键边界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>欧拉角（Euler Angles）</td>
+<td>三个角</td>
+<td>必须声明旋转顺序、内禀／外禀约定；存在万向节锁</td>
+</tr>
+<tr>
+<td>旋转矩阵</td>
+<td>九个数</td>
+<td>需满足正交和行列式约束；矩阵逐元素插值通常不是旋转</td>
+</tr>
+<tr>
+<td>单位四元数（Quaternion）</td>
+<td>四个数</td>
+<td>需归一化；确认标量在前还是在后；正负四元数代表相同旋转</td>
+</tr>
+<tr>
+<td>轴角／旋转向量</td>
+<td>单位轴及角／三维向量</td>
+<td>在特殊角度附近需处理分支；适合构造局部旋转误差</td>
+</tr>
+<tr>
+<td>6D Rotation</td>
+<td>两个三维向量</td>
+<td>需正交化；通常用于网络回归，不是六个物理旋转自由度</td>
+</tr>
+</tbody></table></div>
+<p>四元数插值常使用球面线性插值（SLERP）。比较相邻四元数时需处理符号连续性，否则同一姿态可能被误判为大幅跳变。</p>
+<p>对 6D 表示，网络输出 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>&#x0002C;</mo><msub><mi>a</mi><mn>2</mn></msub></mrow></math>，通过 Gram–Schmidt 构造：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>&#x0003D;</mo><mfrac><mrow><msub><mi>a</mi><mn>1</mn></msub></mrow><mrow><mo fence="false" stretchy="false">&#x02016;</mo><msub><mi>a</mi><mn>1</mn></msub><mo fence="false" stretchy="false">&#x02016;</mo></mrow></mfrac><mo>&#x0002C;</mo><mspace width="1em" /><msub><mi>u</mi><mn>2</mn></msub><mo>&#x0003D;</mo><msub><mi>a</mi><mn>2</mn></msub><mo>&#x02212;</mo><mo stretchy="false">&#x00028;</mo><msubsup><mi>b</mi><mn>1</mn><mi>T</mi></msubsup><msub><mi>a</mi><mn>2</mn></msub><mo stretchy="false">&#x00029;</mo><msub><mi>b</mi><mn>1</mn></msub><mo>&#x0002C;</mo><mspace width="1em" /><msub><mi>b</mi><mn>2</mn></msub><mo>&#x0003D;</mo><mfrac><mrow><msub><mi>u</mi><mn>2</mn></msub></mrow><mrow><mo fence="false" stretchy="false">&#x02016;</mo><msub><mi>u</mi><mn>2</mn></msub><mo fence="false" stretchy="false">&#x02016;</mo></mrow></mfrac><mo>&#x0002C;</mo><mspace width="1em" /><msub><mi>b</mi><mn>3</mn></msub><mo>&#x0003D;</mo><msub><mi>b</mi><mn>1</mn></msub><mo>&#x000D7;</mo><msub><mi>b</mi><mn>2</mn></msub><mo>&#x0002C;</mo><mspace width="1em" /><mi>R</mi><mo>&#x0003D;</mo><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mtext>&#x000A0;</mtext><msub><mi>b</mi><mn>2</mn></msub><mtext>&#x000A0;</mtext><msub><mi>b</mi><mn>3</mn></msub><mo stretchy="false">]</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>若输入接近零或共线，归一化会退化，需要数值保护。它的主要意义是改善学习中的表示连续性，不是减少旋转的物理自由度。</p>
+<h2>3. 旋转中心与左乘、右乘</h2>
+<p>设 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>R</mi></mrow></math> 把工具系方向变到世界系。在世界系施加旋转 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>&#x00394;</mi></msub></mrow></math> 时，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>R</mi><mi>&#x02032;</mi></msup><mo>&#x0003D;</mo><msub><mi>R</mi><mi>&#x00394;</mi></msub><mi>R</mi></mrow></math>；绕工具当前局部轴旋转时，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>R</mi><mi>&#x02032;</mi></msup><mo>&#x0003D;</mo><mi>R</mi><msub><mi>R</mi><mi>&#x00394;</mi></msub></mrow></math>。</p>
+<p>但把完整位姿左乘一个无平移的旋转变换，会同时改变工具位置：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>R</mi><mi>&#x00394;</mi></msub></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><mi>R</mi></mtd><mtd><mi>p</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>R</mi><mi>&#x00394;</mi></msub><mi>R</mi></mtd><mtd><msub><mi>R</mi><mi>&#x00394;</mi></msub><mi>p</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>这对应绕世界原点转动。若需求是“工具位置不变，仅绕世界轴原地改变朝向”，应设置 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>R</mi><mi>&#x02032;</mi></msup><mo>&#x0003D;</mo><msub><mi>R</mi><mi>&#x00394;</mi></msub><mi>R</mi></mrow></math>、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>p</mi><mi>&#x02032;</mi></msup><mo>&#x0003D;</mo><mi>p</mi></mrow></math>。这是本地 SDK 位控审查中出现过的关键区别。</p>
+<p>例如工具位于 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x0002C;</mo><mn>0</mn><mo>&#x0002C;</mo><mn>0</mn><mo stretchy="false">&#x00029;</mo></mrow></math> m，世界 z 轴旋转 90°：完整左乘将位置变为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mn>0</mn><mo>&#x0002C;</mo><mn>1</mn><mo>&#x0002C;</mo><mn>0</mn><mo stretchy="false">&#x00029;</mo></mrow></math> m；原地改变朝向则位置仍为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x0002C;</mo><mn>0</mn><mo>&#x0002C;</mo><mn>0</mn><mo stretchy="false">&#x00029;</mo></mrow></math> m。</p>
+<h2>4. 角速度与局部姿态误差</h2>
+<p>定义叉乘矩阵 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><msub><mo stretchy="false">]</mo><mo>&#x000D7;</mo></msub><mi>b</mi><mo>&#x0003D;</mo><mi>a</mi><mo>&#x000D7;</mo><mi>b</mi></mrow></math>。当 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>R</mi></mrow></math> 为体到世界旋转且角速度在世界系表达时：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mover><mi>R</mi><mo>&#x002D9;</mo></mover><mo>&#x0003D;</mo><mo stretchy="false">[</mo><msub><mi>&#x003C9;</mi><mi>W</mi></msub><msub><mo stretchy="false">]</mo><mo>&#x000D7;</mo></msub><mi>R</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>若角速度在体坐标系表达，则 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover><mi>R</mi><mo>&#x002D9;</mo></mover><mo>&#x0003D;</mo><mi>R</mi><mo stretchy="false">[</mo><msub><mi>&#x003C9;</mi><mi>B</mi></msub><msub><mo stretchy="false">]</mo><mo>&#x000D7;</mo></msub></mrow></math>。固定在刚体上的点，相对所选参考点的向量为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi></mrow></math>，其相对线速度是 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C9;</mi><mo>&#x000D7;</mo><mi>r</mi></mrow></math>。</p>
+<p>姿态控制不应直接对旋转矩阵逐元素相减当作三维角误差。局部可使用：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>e</mi><mi>R</mi></msub><mo>&#x0003D;</mo><mo>Log</mo><mo stretchy="false">&#x00028;</mo><msub><mi>R</mi><mi>d</mi></msub><msup><mi>R</mi><mi>T</mi></msup><msup><mo stretchy="false">&#x00029;</mo><mo>&#x02228;</mo></msup><mo>&#x0002E;</mo></mrow></math></div>
+<p>这里 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>Log</mo></mrow></math> 是旋转的矩阵对数，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02228;</mo></mrow></math> 把反对称矩阵变为三维旋转向量；该误差在世界系表达，单位为 rad。接近 180° 时需注意分支与数值稳定性。</p>
+<h2>自测题</h2>
+<ol>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow></math> 的平移列是什么？为什么方向向量不加这一项？</li>
+<li>已知相机到基座和物体到相机的位姿，怎样得到物体到基座的位姿？</li>
+<li>为什么完整位姿左乘旋转可能使末端“公转”？如何原地转动？</li>
+<li>四元数正负等价、6D 输入共线分别会带来什么数值问题？</li>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover><mi>R</mi><mo>&#x002D9;</mo></mover></mrow></math> 中角速度在世界系和体坐标系表达时，乘法顺序有何不同？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》（2026-10-21 版，第 2 章）、《周报-2026-10-30.md》的相对旋转问题；本轮补足统一约定及示例。原整理并非逐字聊天记录。</p>
+<p><a href="#doc-f3eefb27199e">雅可比、Twist 与 Wrench</a> · <a href="#doc-d0008fb7c36d">分类目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：从已有学习整理中建立独立章节，统一坐标语义，补充旋转中心、姿态误差和自测。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-f3eefb27199e"><h1>02 雅可比、Twist 与 Wrench</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>关节速度如何变成末端速度？为什么末端力可用雅可比转置映射为关节力矩？改变力矩参考点与仅旋转坐标轴有什么不同？</p>
+<p>前置知识：<a href="#doc-fa0d65bec46b">坐标变换与姿态表示</a>。以下采用固定基座机械臂，广义速度等于关节角速度；浮动基座或四元数配置不能直接按同一方式处理。</p>
+<h2>快速回顾</h2>
+<ul>
+<li>正运动学（Forward Kinematics，FK）映射位置，雅可比矩阵（Jacobian）映射当前构型下的瞬时速度。</li>
+<li>本章六维量均按“线性在前、角量在后”排列；库的排列约定必须另行核对。</li>
+<li>线速度、力矩依赖参考点；角速度与合力不依赖参考点，但都依赖表达坐标轴。</li>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><msup><mi>J</mi><mi>T</mi></msup><mi>F</mi></mrow></math> 来自功率一致性，要求速度和力使用匹配的坐标、参考点及方向。</li>
+</ul>
+<h2>1. 几何雅可比</h2>
+<p>对末端指定点 P，定义几何速度：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003BE;</mi><mi>P</mi></msub><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>v</mi><mi>P</mi></msub></mtd></mtr><mtr><mtd><mi>&#x003C9;</mi></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0003D;</mo><msub><mi>J</mi><mi>P</mi></msub><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math> 是关节角（rad），<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>v</mi><mi>P</mi></msub></mrow></math> 单位为 m/s，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C9;</mi></mrow></math> 单位为 rad/s；雅可比不同的行具有不同物理尺度。</p>
+<p>当所有向量在同一参考系表达时，旋转关节 i 的列为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>J</mi><mrow><mi>P</mi><mo>&#x0002C;</mo><mi>i</mi></mrow></msub><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>z</mi><mi>i</mi></msub><mo>&#x000D7;</mo><mo stretchy="false">&#x00028;</mo><msub><mi>p</mi><mi>P</mi></msub><mo>&#x02212;</mo><msub><mi>o</mi><mi>i</mi></msub><mo stretchy="false">&#x00029;</mo></mtd></mtr><mtr><mtd><msub><mi>z</mi><mi>i</mi></msub></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>z</mi><mi>i</mi></msub></mrow></math> 为单位关节轴，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>o</mi><mi>i</mi></msub></mrow></math> 为轴上一点。移动关节的列为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><msubsup><mi>z</mi><mi>i</mi><mi>T</mi></msubsup><mo>&#x0002C;</mo><msup><mn>0</mn><mi>T</mi></msup><msup><mo stretchy="false">]</mo><mi>T</mi></msup></mrow></math>。旋转关节到末端的距离越远，单位关节角速度产生的线速度通常越大。</p>
+<p>几何雅可比与欧拉角的解析雅可比不同：欧拉角导数一般不等于角速度。</p>
+<h2>2. Twist 与参考点</h2>
+<p>刚体瞬时运动常用运动旋量（Twist）表示。不同书籍和库对六维排列及参考原点的定义不同；仅知道“六维速度”还不足以选择转换矩阵。</p>
+<p>令 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi><mo>&#x0003D;</mo><msub><mi>p</mi><mi>Q</mi></msub><mo>&#x02212;</mo><msub><mi>p</mi><mi>P</mi></msub></mrow></math>，所有量用同一坐标轴表达，则：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>v</mi><mi>Q</mi></msub><mo>&#x0003D;</mo><msub><mi>v</mi><mi>P</mi></msub><mo>&#x0002B;</mo><mi>&#x003C9;</mi><mo>&#x000D7;</mo><mi>r</mi><mo>&#x0003D;</mo><msub><mi>v</mi><mi>P</mi></msub><mo>&#x02212;</mo><mo stretchy="false">[</mo><mi>r</mi><msub><mo stretchy="false">]</mo><mo>&#x000D7;</mo></msub><mi>&#x003C9;</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>所以改变参考点时，线速度要加入平移相关项；仅改变表达轴时，线速度和角速度分别乘同一个旋转矩阵即可。</p>
+<p>若采用空间 Twist <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover><mi>T</mi><mo>&#x002D9;</mo></mover><msup><mi>T</mi><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup></mrow></math> 的线性在前表示，且 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow></math> 按上一章定义，则伴随变换（Adjoint）为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mo>Ad</mo><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow></msub><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>R</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mtd><mtd><mo stretchy="false">[</mo><msub><mi>p</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><msub><mo stretchy="false">]</mo><mo>&#x000D7;</mo></msub><msub><mi>R</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msub><mi>R</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>该空间 Twist 的线性分量不一定就是工具原点的几何线速度。不能把完整伴随变换无条件用到“同一点、仅换轴”的数据上。</p>
+<h2>3. Wrench、功率与雅可比转置</h2>
+<p>力旋量（Wrench）以某点为参考：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>F</mi><mi>P</mi></msub><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><mi>f</mi></mtd></mtr><mtr><mtd><msub><mi>m</mi><mi>P</mi></msub></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi></mrow></math> 是合力（N），<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>m</mi><mi>P</mi></msub></mrow></math> 是关于 P 的合力矩（N·m）。机械功率为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>P</mi><mo>&#x0003D;</mo><msup><mi>f</mi><mi>T</mi></msup><msub><mi>v</mi><mi>P</mi></msub><mo>&#x0002B;</mo><msubsup><mi>m</mi><mi>P</mi><mi>T</mi></msubsup><mi>&#x003C9;</mi><mo>&#x0003D;</mo><msubsup><mi>F</mi><mi>P</mi><mi>T</mi></msubsup><msub><mi>&#x003BE;</mi><mi>P</mi></msub><mo>&#x0003D;</mo><msubsup><mi>F</mi><mi>P</mi><mi>T</mi></msubsup><msub><mi>J</mi><mi>P</mi></msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002E;</mo></mrow></math></div>
+<p>与关节功率 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>&#x003C4;</mi><mi>T</mi></msup><mover><mi>q</mi><mo>&#x002D9;</mo></mover></mrow></math> 比较可得：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><msubsup><mi>J</mi><mi>P</mi><mi>T</mi></msubsup><msub><mi>F</mi><mi>P</mi></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p>若 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>F</mi><mi>P</mi></msub></mrow></math> 定义为环境作用在机器人上的力，右式是环境产生的广义力；若控制器要静态抵消它，所需执行器力矩还需取相应反号并叠加重力等项。</p>
+<p>若速度通过 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BE;</mi><mi>A</mi></msub><mo>&#x0003D;</mo><msub><mo>Ad</mo><mi>T</mi></msub><msub><mi>&#x003BE;</mi><mi>B</mi></msub></mrow></math> 变换，为保持功率，配对力旋量满足 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>F</mi><mi>A</mi></msub><mo>&#x0003D;</mo><msubsup><mo>Ad</mo><mi>T</mi><mrow><mo>&#x02212;</mo><mi>T</mi></mrow></msubsup><msub><mi>F</mi><mi>B</mi></msub></mrow></math>，不能照抄速度变换。</p>
+<h2>4. 力矩参考点变换与杠杆臂</h2>
+<p>令 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi><mo>&#x0003D;</mo><msub><mi>p</mi><mi>Q</mi></msub><mo>&#x02212;</mo><msub><mi>p</mi><mi>P</mi></msub></mrow></math>，把关于 P 的 Wrench 移到 Q：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>f</mi><mi>Q</mi></msub><mo>&#x0003D;</mo><msub><mi>f</mi><mi>P</mi></msub><mo>&#x0003D;</mo><mi>f</mi><mo>&#x0002C;</mo><mspace width="2em" /><msub><mi>m</mi><mi>Q</mi></msub><mo>&#x0003D;</mo><msub><mi>m</mi><mi>P</mi></msub><mo>&#x02212;</mo><mi>r</mi><mo>&#x000D7;</mo><mi>f</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>示例：<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi><mo>&#x0003D;</mo><mo stretchy="false">&#x00028;</mo><mn>0</mn><mo>&#x0002C;</mo><mn>0</mn><mo>&#x0002C;</mo><mn>0.2</mn><mo stretchy="false">&#x00029;</mo></mrow></math> m，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo>&#x0003D;</mo><mo stretchy="false">&#x00028;</mo><mn>10</mn><mo>&#x0002C;</mo><mn>0</mn><mo>&#x0002C;</mo><mn>0</mn><mo stretchy="false">&#x00029;</mo></mrow></math> N，关于 Q 的力矩为零，则关于 P 的力矩是 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mn>0</mn><mo>&#x0002C;</mo><mn>2</mn><mo>&#x0002C;</mo><mn>0</mn><mo stretchy="false">&#x00029;</mo></mrow></math> N·m。换参考点不会改变合力，却会改变合力矩。</p>
+<p>若用 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>m</mi><mi>Q</mi></msub><mo>&#x0003D;</mo><msub><mi>m</mi><mi>P</mi></msub><mo>&#x02212;</mo><mi>r</mi><mo>&#x000D7;</mo><mi>f</mi></mrow></math> 从远端参考点估算接触端力矩，力误差会被杠杆臂转换为力矩误差。这是精密插接中“传感器有力矩读数”仍不代表端面微弱力矩可靠的原因之一。</p>
+<h2>5. 数值检查与易错点</h2>
+<p>可用小关节扰动检查平移雅可比：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>J</mi><mrow><mi>v</mi><mo>&#x0002C;</mo><mi>i</mi></mrow></msub><mo>&#x02248;</mo><mfrac><mrow><mi>p</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002B;</mo><mi>&#x003F5;</mi><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mi>p</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><mi>&#x003F5;</mi><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="false">&#x00029;</mo></mrow><mrow><mn>2</mn><mi>&#x003F5;</mi></mrow></mfrac><mo>&#x0002E;</mo></mrow></math></div>
+<p>旋转部分应使用旋转对数构造小角变化，并统一表达轴，不能直接微分欧拉角冒充角速度。另可任选小速度和力，检查 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>F</mi><mi>T</mi></msup><mi>J</mi><mover><mi>q</mi><mo>&#x002D9;</mo></mover></mrow></math> 与 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><msup><mi>J</mi><mi>T</mi></msup><mi>F</mi><msup><mo stretchy="false">&#x00029;</mo><mi>T</mi></msup><mover><mi>q</mi><mo>&#x002D9;</mo></mover></mrow></math> 是否一致。</p>
+<p>Pinocchio 的 LOCAL、WORLD、LOCAL_WORLD_ALIGNED 涉及表达轴和参考原点的区别；WORLD 不是简单把末端几何雅可比的两组三维量旋转一下。具体使用见<a href="#doc-f8b04e02b1d0">动力学算法章节</a>。</p>
+<h2>自测题</h2>
+<ol>
+<li>FK 与雅可比分别回答位置还是瞬时速度问题？</li>
+<li>为何雅可比的旋转关节列包含叉乘？</li>
+<li>怎样从功率推出 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><msup><mi>J</mi><mi>T</mi></msup><mi>F</mi></mrow></math>？环境力与控制器补偿力的符号如何区分？</li>
+<li>同一合力从法兰移到工具端，哪一项改变？为什么长工具放大估算误差？</li>
+<li>同一点换坐标轴、改变参考点、空间 Twist 变换能否使用同一个简化公式？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 2 章、《周报-2026-10-30.md》以及 InsertionTask《02_观测动作与控制接口.md》；本轮补足功率推导与统一参考点约定。</p>
+<p><a href="#doc-d914d0fe7e11">SVD、伪逆与逆运动学</a> · <a href="#doc-d0008fb7c36d">分类目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立速度与力映射章节，区分表达轴、参考点、空间旋量及控制力方向。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-d914d0fe7e11"><h1>03 SVD、伪逆与逆运动学</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>给定末端目标，如何求关节姿态？为什么靠近奇异位形时反解会产生很大的速度？冗余自由度怎样用于避限位和调姿？</p>
+<h2>快速回顾</h2>
+<p>奇异值分解（Singular Value Decomposition，SVD）揭示矩阵可传递哪些方向；伪逆给出最小二乘意义的反解。小奇异值会放大误差，阻尼最小二乘用正则化降低放大。逆运动学（Inverse Kinematics，IK）可能无解、多解，也可能依赖初值；局部求解成功不等于全局路径可行。</p>
+<h2>1. 从局部运动到线性方程</h2>
+<p>对固定基座机械臂，位置和局部姿态误差组成 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>e</mi></mrow></math>，小步近似为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>J</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mi>&#x00394;</mi><mi>q</mi><mo>&#x02248;</mo><mi>e</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>平移误差以 m 计，姿态误差以 rad 计，必须使用任务权重或尺度进行平衡。姿态误差和雅可比应在一致坐标轴下表达；大角误差下还应考虑所选误差映射的微分，不能把局部近似当作任意步长下的精确关系。</p>
+<h2>2. SVD 与伪逆</h2>
+<p>对实矩阵：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>J</mi><mo>&#x0003D;</mo><mi>U</mi><mi>&#x003A3;</mi><msup><mi>V</mi><mi>T</mi></msup><mo>&#x0002C;</mo><mspace width="2em" /><msup><mi>J</mi><mo>&#x0002B;</mo></msup><mo>&#x0003D;</mo><mi>V</mi><msup><mi>&#x003A3;</mi><mo>&#x0002B;</mo></msup><msup><mi>U</mi><mi>T</mi></msup><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>U</mi><mo>&#x0002C;</mo><mi>V</mi></mrow></math> 给出输入输出空间的正交方向，非负奇异值 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C3;</mi><mi>i</mi></msub></mrow></math> 给出对应伸缩比例。伪逆对非零奇异值取倒数；数值计算需给出截断容差。</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x00394;</mi><mi>q</mi><mo>&#x0003D;</mo><msup><mi>J</mi><mo>&#x0002B;</mo></msup><mi>e</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>该式给出最小范数最小二乘解：先尽量减小残差，再在同样最优的解中取最小范数。它不意味着所有目标都可精确达到。</p>
+<p>示例：某方向的奇异值为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>0.001</mn></mrow></math>，对应误差投影为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>0.01</mn></mrow></math>，直接反解会得到该关节组合方向上大小为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>10</mn></mrow></math> 的步长。数值虽满足局部方程，大步运动却可能远离局部近似、违反限位。</p>
+<h2>3. 阻尼最小二乘</h2>
+<p>阻尼最小二乘（Damped Least Squares，DLS）求解：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mo>min</mo><mrow><mi>&#x00394;</mi><mi>q</mi></mrow></msub><mtext>&#x000A0;</mtext><mo fence="false" stretchy="false">&#x02016;</mo><mi>J</mi><mi>&#x00394;</mi><mi>q</mi><mo>&#x02212;</mo><mi>e</mi><msubsup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn><mn>2</mn></msubsup><mo>&#x0002B;</mo><msup><mi>&#x003BB;</mi><mn>2</mn></msup><mo fence="false" stretchy="false">&#x02016;</mo><mi>&#x00394;</mi><mi>q</mi><msubsup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn><mn>2</mn></msubsup><mo>&#x0002C;</mo><mspace width="2em" /><mi>&#x003BB;</mi><mo>&#x0003E;</mo><mn>0</mn><mo>&#x0002E;</mo></mrow></math></div>
+<p>其解可写为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x00394;</mi><mi>q</mi><mo>&#x0003D;</mo><msup><mi>J</mi><mi>T</mi></msup><mo stretchy="false">&#x00028;</mo><mi>J</mi><msup><mi>J</mi><mi>T</mi></msup><mo>&#x0002B;</mo><msup><mi>&#x003BB;</mi><mn>2</mn></msup><mi>I</mi><msup><mo stretchy="false">&#x00029;</mo><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup><mi>e</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>每个奇异方向的增益从 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002F;</mo><msub><mi>&#x003C3;</mi><mi>i</mi></msub></mrow></math> 变为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C3;</mi><mi>i</mi></msub><mo>&#x0002F;</mo><mo stretchy="false">&#x00028;</mo><msubsup><mi>&#x003C3;</mi><mi>i</mi><mn>2</mn></msubsup><mo>&#x0002B;</mo><msup><mi>&#x003BB;</mi><mn>2</mn></msup><mo stretchy="false">&#x00029;</mo></mrow></math>。因此小奇异值不再造成无界放大，代价是增加任务误差。实现时解线性方程，不必显式计算矩阵逆。</p>
+<p>实际迭代还需要步长限制、限位检查、停止阈值和失败返回。提高阻尼不能解决被障碍物隔开的目标或不可达目标。</p>
+<h2>4. 冗余与零空间</h2>
+<p>对速度任务，在使用精确伪逆时：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0003D;</mo><msup><mi>J</mi><mo>&#x0002B;</mo></msup><msub><mover><mi>x</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x0002B;</mo><mo stretchy="false">&#x00028;</mo><mi>I</mi><mo>&#x02212;</mo><msup><mi>J</mi><mo>&#x0002B;</mo></msup><mi>J</mi><mo stretchy="false">&#x00029;</mo><mi>z</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>第二项位于雅可比零空间，不改变当前瞬时任务速度，可用来远离限位或接近参考姿态。例如选 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>z</mi><mo>&#x0003D;</mo><mo>&#x02212;</mo><mi>k</mi><mo>&#x02207;</mo><mi>H</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo></mrow></math>，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> 为姿态或限位代价。</p>
+<p>零空间性质是局部、瞬时的；有限步执行仍要重算 FK 和约束。若用阻尼伪逆代替精确伪逆，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>I</mi><mo>&#x02212;</mo><msup><mi>J</mi><mi>&#x00023;</mi></msup><mi>J</mi></mrow></math> 通常不再是严格零空间投影，次任务可能扰动主任务。后续还需区分运动学投影与动力学一致投影。</p>
+<h2>5. 解析 IK、迭代 IK 与优化 IK</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>适合情形</th>
+<th>主要限制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>解析 IK</td>
+<td>机构允许闭式推导</td>
+<td>依赖结构，仍要选解和检查限位</td>
+</tr>
+<tr>
+<td>雅可比／DLS／LM 迭代</td>
+<td>一般机构、局部位姿修正</td>
+<td>依赖初值，可能局部收敛或失败</td>
+</tr>
+<tr>
+<td>带约束优化 IK</td>
+<td>冗余、多任务、限位、碰撞</td>
+<td>需建模目标约束并处理求解时限</td>
+</tr>
+</tbody></table></div>
+<p>小步 IK 可写成带关节步长约束的二次规划（QP）；完整非线性位姿、复杂碰撞或接触联合求解通常是非线性规划（NLP），见<a href="#doc-e4e5e7dfe7e8">约束优化</a>。</p>
+<h2>自测题</h2>
+<ol>
+<li>奇异值接近零意味着机器人在该方向上发生了什么？</li>
+<li>伪逆能否让不可达目标变得可达？最小范数指什么？</li>
+<li>DLS 如何改变小奇异值方向的增益？增大阻尼牺牲什么？</li>
+<li>精确零空间项与阻尼近似有什么区别？</li>
+<li>IK 成功为何不能保证起点到终点之间没有碰撞？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 2、7、8 章；本轮补足正则化解释与反解边界。</p>
+<p><a href="#doc-f3eefb27199e">雅可比与速度力映射</a> · <a href="#doc-d95c684e3465">运动规划</a> · <a href="#doc-d0008fb7c36d">分类目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立 SVD、DLS、零空间与 IK 章节，明确局部近似和求解失败边界。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-21ceeb727ede"><h1>机器人动力学</h1>
+<p>从机构与质量描述建立运动方程，再使用数值算法计算逆动力学、正动力学和控制所需的模型项。</p>
+<h2>已有章节</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主要问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#doc-bf866bb4a3e8">01 拉格朗日建模与动力学方程</a></td>
+<td>动力学方程各项的物理意义，怎样从能量和广义力推导。</td>
+</tr>
+<tr>
+<td><a href="#doc-f8b04e02b1d0">02 Pinocchio 与动力学算法</a></td>
+<td>FK、RNEA、ABA、CRBA 分别计算什么，模型边界是什么。</td>
+</tr>
+</tbody></table></div>
+<h2>待讨论主题</h2>
+<ul>
+<li>接触下的受约束正动力学与互补条件。</li>
+<li>实际电机与传动模型如何映射到刚体动力学参数。</li>
+</ul>
+<p><a href="#doc-66a0a5899f87">力矩反馈与模型控制</a> · <a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-bf866bb4a3e8"><h1>01 拉格朗日建模与动力学方程</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>给定机器人关节状态与质量惯量，驱动机器人运动需要什么广义力？接触力、重力、摩擦和执行器力矩怎样进入方程？</p>
+<h2>快速回顾</h2>
+<p>采用独立最小坐标 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math> 时，刚体多关节系统常写成</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><mi>C</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>&#x003C4;</mi><mi>f</mi></msub><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>&#x003C4;</mi><mo>&#x0002B;</mo><msub><mi>J</mi><mi>c</mi></msub><mo stretchy="false">&#x00028;</mo><mi>q</mi><msup><mo stretchy="false">&#x00029;</mo><mi>T</mi></msup><mi>&#x003BB;</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>左侧是惯性、速度耦合、重力及摩擦项，右侧是执行器广义力与接触广义力。质量矩阵 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi></mrow></math>、重力项 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>g</mi></mrow></math> 取决于质量、质心、惯量及坐标约定；写下方程不等于这些参数已经准确。</p>
+<h2>1. 广义坐标和能量</h2>
+<p>对单自由度旋转关节，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math> 的单位是 rad，广义力单位是 N·m；对移动关节，广义坐标为 m、广义力为 N。选坐标时须包含独立运动自由度。</p>
+<p>拉格朗日函数为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>L</mi><mo>&#x0003D;</mo><mi>T</mi><mo>&#x02212;</mo><mi>V</mi></mrow></math>，其中 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>T</mi></mrow></math> 是动能，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>V</mi></mrow></math> 是势能。每个广义坐标 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>q</mi><mi>i</mi></msub></mrow></math> 对应欧拉－拉格朗日方程：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mfrac><mrow><mi>d</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mfrac><mrow><mo>&#x02202;</mo><mi>L</mi></mrow><mrow><mo>&#x02202;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>i</mi></msub></mrow></mfrac><mo>&#x02212;</mo><mfrac><mrow><mo>&#x02202;</mo><mi>L</mi></mrow><mrow><mo>&#x02202;</mo><msub><mi>q</mi><mi>i</mi></msub></mrow></mfrac><mo>&#x0003D;</mo><msub><mi>Q</mi><mi>i</mi></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p>右侧 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>Q</mi><mi>i</mi></msub></mrow></math> 包括该坐标上的非保守广义力，如电机输入和外力的虚功映射。该方法从能量得到方程结构，不提供未知实物参数的数值。</p>
+<h2>2. 动力学各项</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项</th>
+<th>物理意义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x000A8;</mo></mover></mrow></math></td>
+<td>加速各连杆所需的惯性力矩／力</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi></mrow></math> 对称；非退化机械坐标下一般正定</td>
+</tr>
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>C</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover></mrow></math></td>
+<td>科里奥利与离心效应</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>C</mi></mrow></math> 的具体表示不唯一，乘积是动力学项</td>
+</tr>
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo></mrow></math></td>
+<td>抵消重力所需的广义力</td>
+<td>符号依方程约定；静止支撑重力时输入通常为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x0002B;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo></mrow></math></td>
+</tr>
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C4;</mi><mi>f</mi></msub></mrow></math></td>
+<td>传动、电机、关节摩擦等</td>
+<td>简化项不一定足以描述低速迟滞</td>
+</tr>
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C4;</mi></mrow></math></td>
+<td>执行器广义力</td>
+<td>必须与关节坐标、传动映射一致</td>
+</tr>
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msubsup><mi>J</mi><mi>c</mi><mi>T</mi></msubsup><mi>&#x003BB;</mi></mrow></math></td>
+<td>接触广义力</td>
+<td>外界对机器人施力时，按本式采用正向加载约定</td>
+</tr>
+</tbody></table></div>
+<p>摩擦项可能包括黏性、库仑、Stribeck、预滑移或齿槽力矩；要按速度范围和测量条件选模型。接触力符号及接触雅可比的定义必须匹配，不能只看方程的正负号判断作用方向。</p>
+<h2>3. 单关节例子</h2>
+<p>近似水平转轴的摆臂模型可写作：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>J</mi><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><mi>b</mi><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>m</mi><mi>g</mi><mi>l</mi><mi>sin</mi><mi>q</mi><mo>&#x0002B;</mo><msub><mi>&#x003C4;</mi><mi>c</mi></msub><mo>sgn</mo><mo stretchy="false">&#x00028;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>&#x003C4;</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>这里 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>J</mi></mrow></math> 为等效转动惯量（kg·m<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi /><mn>2</mn></msup></mrow></math>），<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>b</mi></mrow></math> 为黏性摩擦系数（N·m·s/rad），<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>m</mi><mi>g</mi><mi>l</mi></mrow></math> 为重力力矩幅值（N·m）。符号取决于零位和重力方向；它是示例模型，不是所有关节的方程。</p>
+<p>若慢速静止且无外部接触，要保持该姿态，执行器需抵消对应的重力项及静摩擦影响。实际驱动器的电流与关节力矩换算还需确认力矩常数、减速比和效率。</p>
+<h2>4. 模型用途与边界</h2>
+<p>动力学可用于前馈补偿、预测加速度、MPC、逆动力学和接触求解。参数估计与验证需另行完成，见<a href="#doc-a1e02a44cee3">系统辨识</a>。几何模型正确不保证质量、摩擦或接触准确；带腱绳、弹性件或欠驱动结构时，还需加入张力、弹性形变、约束及驱动坐标映射。</p>
+<h2>自测题</h2>
+<ol>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi><mover><mi>q</mi><mo>&#x000A8;</mo></mover></mrow></math>、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>C</mi><mover><mi>q</mi><mo>&#x002D9;</mo></mover></mrow></math> 与 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo></mrow></math> 分别描述什么？</li>
+<li>拉格朗日法确定模型结构后，质量与摩擦数值从哪里获得？</li>
+<li>为什么接触广义力要通过 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msubsup><mi>J</mi><mi>c</mi><mi>T</mi></msubsup></mrow></math> 映射？外力符号怎样确定？</li>
+<li>直驱电机是否意味着可忽略所有摩擦？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 3 章及本轮系统辨识资料；方程为通用刚体模型，具体模型须由机构和坐标定义确定。</p>
+<p><a href="#doc-f8b04e02b1d0">Pinocchio 与动力学算法</a> · <a href="#doc-a1e02a44cee3">系统辨识</a> · <a href="#doc-21ceeb727ede">分类目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立拉格朗日建模与刚体动力学方程章节。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-f8b04e02b1d0"><h1>02 Pinocchio 与动力学算法</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>如何高效从关节状态计算机器人运动学、质量矩阵、逆动力学力矩或预测加速度？Pinocchio 是动力学模型、仿真器还是控制器？</p>
+<h2>快速回顾</h2>
+<p>Pinocchio 是基于刚体树模型的运动学与动力学计算库。它实现多体算法，但不会因为读入 URDF 就自动获得准确的实物参数，也不自动成为带接触积分的仿真引擎或电机 SDK。</p>
+<h2>1. 输入状态与算法边界</h2>
+<p>模型描述连杆质量、质心、惯性张量、关节、固定变换和限制等。调用前要确认 URDF 坐标系、关节顺序、连续关节表示、单位与根节点类型。固定基座 1-DoF 转轴的 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math> 常用 rad、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover><mi>q</mi><mo>&#x002D9;</mo></mover></mrow></math> 用 rad/s、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover><mi>q</mi><mo>&#x000A8;</mo></mover></mrow></math> 用 rad/s<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi /><mn>2</mn></msup></mrow></math>；一般化速度空间 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>v</mi></mrow></math> 不一定和配置空间 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math> 同维。</p>
+<p>广义力矩计算还依赖重力向量及外力的表达轴、施力方向和作用帧。缓存的中间计算数据必须与本次状态匹配，避免复用旧 Jacobian 或惯量结果。</p>
+<h2>2. 三个动力学递归算法</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>算法</th>
+<th>已知量</th>
+<th>求解量</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RNEA（Recursive Newton–Euler Algorithm）</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi><mo>&#x0002C;</mo><mi>v</mi><mo>&#x0002C;</mo><mi>a</mi></mrow></math> 和模型</td>
+<td>所需广义力 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C4;</mi></mrow></math></td>
+<td>逆动力学、重力及运动前馈</td>
+</tr>
+<tr>
+<td>ABA（Articulated Body Algorithm）</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi><mo>&#x0002C;</mo><mi>v</mi><mo>&#x0002C;</mo><mi>&#x003C4;</mi></mrow></math> 和模型</td>
+<td>广义加速度 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>a</mi></mrow></math></td>
+<td>前向动力学</td>
+</tr>
+<tr>
+<td>CRBA（Composite Rigid Body Algorithm）</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math> 和模型</td>
+<td>关节空间质量矩阵 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo></mrow></math></td>
+<td>控制分析、优化及方程组求解</td>
+</tr>
+</tbody></table></div>
+<p>对固定基座无外力的模型，可抽象写为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mo>RNEA</mo><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002C;</mo><mi>v</mi><mo>&#x0002C;</mo><mi>a</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo><mspace width="2em" /><mi>a</mi><mo>&#x0003D;</mo><mo>ABA</mo><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002C;</mo><mi>v</mi><mo>&#x0002C;</mo><mi>&#x003C4;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>如果向 RNEA 传入零速度、零加速度，常用于计算所需的重力补偿向量；仍须确认 Pinocchio 重力向量、力矩轴和反馈坐标一致。带外部力时，附加力项的符号由“环境施加到机器人”或“机器人施加到环境”的约定决定。</p>
+<h2>3. 为什么使用算法库</h2>
+<p>经典递归算法利用树结构重复使用子树的惯性和力递推，避免符号展开整台多体系统方程。代价通常随关节数近似线性或二次变化，具体取决于算法、模型及是否显式形成质量矩阵。</p>
+<p>框架便于复用，也不会替用户决定 URDF 是否正确、驱动器输出是在电机轴还是关节轴、摩擦应放在哪一层，或接触约束如何求解。这些接口约定必须先验证。</p>
+<h2>4. 逆动力学、正动力学与仿真</h2>
+<p>逆动力学求执行目标或前馈补偿；正动力学预测当前力矩下的加速度。完整仿真还需要数值积分状态、碰撞几何、接触检测与求解、约束处理和执行器模型。Pinocchio 的 ABA 本身不等于含复杂接触的完整仿真环境。</p>
+<p>工程检查可以把 RNEA 和模型预测做闭环代回，将 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo></mrow></math> 用于比较，也可对 Jacobian 做有限差分核对。不过同一个模型内部互相一致，仍不代表它与硬件标定数据一致。</p>
+<h2>自测题</h2>
+<ol>
+<li>已知轨迹、需要计算前馈力矩，选 RNEA、ABA 还是 CRBA？</li>
+<li>给定当前关节状态和执行器力矩，若要预测加速度，用哪个算法？</li>
+<li>为什么 Pinocchio 正动力学不自动解决真实接触仿真？</li>
+<li>零加速度下计算重力补偿时，最需要核对哪几个坐标和符号约定？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 3 章。具体 API 和版本未在本轮查阅，因此只记录算法层语义，不声称验证了项目调用。</p>
+<p><a href="#doc-bf866bb4a3e8">拉格朗日建模</a> · <a href="#doc-21ceeb727ede">分类目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立 Pinocchio 职责与 RNEA、ABA、CRBA 对照章节。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-a1e02a44cee3"><h1>系统辨识</h1>
+<p>从已定义的动力学结构、可观测数据和安全激励中估计参数，并在独立工况下检查模型的预测能力。</p>
+<h2>已有章节</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主要问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#doc-689c17950e02">01 动力学回归与最小二乘</a></td>
+<td>回归矩阵、最小二乘、激励设计与可辨识性。</td>
+</tr>
+<tr>
+<td><a href="#doc-c906f403567d">02 重力与摩擦辨识</a></td>
+<td>多连杆重力模型与单关节速度摩擦模型怎样分开估计和验证。</td>
+</tr>
+</tbody></table></div>
+<h2>待讨论主题</h2>
+<ul>
+<li>实际关节数据的时间同步、滤波与差分误差分析。</li>
+<li>约束参数辨识和物理一致性检验。</li>
+</ul>
+<p><a href="#doc-087301252aea">PPO 自适应背景</a> · <a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-689c17950e02"><h1>01 动力学回归与最小二乘</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>物理动力学模型含未知参数时，怎样把数据整理成可估计的问题？为什么采很多样本仍可能无法区分两个参数？</p>
+<h2>快速回顾</h2>
+<p>先决定模型结构，再由关节状态和力矩构造回归矩阵，最后估计有限参数。线性最小二乘可高效求解，但有效结论取决于模型假设、测量和独立验证；大样本不能修复不充分的激励或系统偏差。</p>
+<h2>1. 线性参数回归</h2>
+<p>假设给定轨迹后动力学对未知参数 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B8;</mi></mrow></math> 线性：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>y</mi><mo>&#x0003D;</mo><mi>Y</mi><mi>&#x003B8;</mi><mo>&#x0002B;</mo><mi>&#x003F5;</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>Y</mi></mrow></math> 是由输入数据构成的回归矩阵，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>y</mi></mrow></math> 是测得的广义力或力矩，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003F5;</mi></mrow></math> 汇集噪声和模型未描述部分。用 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>N</mi></mrow></math> 个时间样本堆叠后：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mover accent="true"><mi>&#x003B8;</mi><mo>&#x0005E;</mo></mover><mo>&#x0003D;</mo><msub><mo movablelimits="true">argmin</mo><mrow><mi>&#x003B8;</mi></mrow></msub><mo fence="false" stretchy="false">&#x02016;</mo><mi>Y</mi><mi>&#x003B8;</mi><mo>&#x02212;</mo><mi>y</mi><msubsup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn><mn>2</mn></msubsup><mo>&#x0002E;</mo></mrow></math></div>
+<p>满列秩时解唯一。实际数值计算使用 QR、SVD 或成熟最小二乘库，不直接显式构造 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><msup><mi>Y</mi><mi>T</mi></msup><mi>Y</mi><msup><mo stretchy="false">&#x00029;</mo><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup></mrow></math>；后者会放大条件数带来的误差。</p>
+<h2>2. 最小二乘例子</h2>
+<p>对单关节简化模型：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mi>J</mi><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><mi>b</mi><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>&#x003B3;</mi><mi>sin</mi><mi>q</mi><mo>&#x0002B;</mo><msub><mi>f</mi><mi>c</mi></msub><mo>sgn</mo><mo stretchy="false">&#x00028;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mi>&#x003F5;</mi><mo>&#x0002C;</mo><mspace width="2em" /><mi>&#x003B8;</mi><mo>&#x0003D;</mo><msup><mo>&#x0005B;</mo><mtable><mtr><mtd><mi>J</mi></mtd><mtd><mi>b</mi></mtd><mtd><mi>&#x003B3;</mi></mtd><mtd><msub><mi>f</mi><mi>c</mi></msub></mtd></mtr></mtable><mo>&#x0005D;</mo><mi>T</mi></msup><mo>&#x0002E;</mo></mrow></math></div>
+<p>每个时刻提供一行 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002C;</mo><mi>sin</mi><mi>q</mi><mo>&#x0002C;</mo><mo>sgn</mo><mo stretchy="false">&#x00028;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo stretchy="false">]</mo></mrow></math>。这里 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi></mrow></math> 可能是质量、重力加速度和质心长度的乘积，单凭该数据不一定能分开辨识每个物理量。</p>
+<p>若使用权重 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>W</mi></mrow></math>，加权最小二乘为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mo>min</mo><mi>&#x003B8;</mi></msub><mo fence="false" stretchy="false">&#x02016;</mo><msup><mi>W</mi><mrow><mn>1</mn><mo>&#x0002F;</mo><mn>2</mn></mrow></msup><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mi>&#x003B8;</mi><mo>&#x02212;</mo><mi>y</mi><mo stretchy="false">&#x00029;</mo><msup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn></msup></mrow></math>。权重须对应已知噪声或明确的工程权衡，不应只用来“把结果调好看”。若数据存在连续采样相关性，普通独立同分布噪声的置信解释也需修正。</p>
+<h2>3. 激励与可辨识性</h2>
+<p>采样轨迹要使不同参数对应的列能被区分：</p>
+<ul>
+<li>只有匀速运动时，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo>&#x02248;</mo><mn>0</mn></mrow></math>，惯量列缺乏激励。</li>
+<li>只在单一速度和方向运动，黏性摩擦与库仑摩擦可能高度相关。</li>
+<li>只在很小角度范围运动，重力项的变化可能与常量偏置混淆。</li>
+</ul>
+<p>常用多正弦、chirp、分段速度／加速度轨迹。设计必须满足设备限位、电流／力矩、温升、速度、碰撞和人员安全边界。</p>
+<p>SVD 可检查数据是否独立激发模型列：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>Y</mi><mo>&#x0003D;</mo><mi>U</mi><mi>&#x003A3;</mi><msup><mi>V</mi><mi>T</mi></msup><mo>&#x0002C;</mo><mspace width="2em" /><mi>&#x003BA;</mi><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mfrac><mrow><msub><mi>&#x003C3;</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><mrow><msub><mi>&#x003C3;</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></mrow></mfrac><mo>&#x0002E;</mo></mrow></math></div>
+<p>秩亏说明至少存在不可区分的参数组合；较大条件数表示在当前数据和尺度下对噪声敏感。不同物理单位会影响数值尺度，应先合理缩放列，再解读条件数。SVD 是可诊断性工具，不会自动为数据增加缺失信息。</p>
+<h2>4. 误差来源和验证</h2>
+<ul>
+<li>对位置直接差分求速度、加速度会放大测量噪声，应考虑合适滤波或积分形式；滤波与求导也会带来延迟。</li>
+<li>电流换算力矩需要校准力矩常数和轴侧定义，电流不自动等于实测关节力矩。</li>
+<li>外部接触、温度、负载、摩擦迟滞和时间戳错位都会改变观测。</li>
+<li>训练数据拟合小，不代表新速度、反向、载荷和温度下预测仍可靠。</li>
+</ul>
+<p>留出独立数据，分工况报告力矩误差、残差趋势和控制效果。若误差与速度、方向或姿态明显相关，可能是模型结构不足，而非样本太少。</p>
+<h2>自测题</h2>
+<ol>
+<li>动力学结构推导与参数拟合分别解决什么问题？</li>
+<li>为什么回归矩阵满列秩是线性参数唯一解的条件？</li>
+<li>数据量很多，回归矩阵为何仍可能秩亏？</li>
+<li>为什么应使用 QR／SVD 求解，而不是直接求逆正规方程？</li>
+<li>如何设计不泄漏训练信息的独立验证？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 5 章和本地七轴臂周报中的辨识结果记录。周报数字属于指定项目的阶段数据，不可直接推广为其他设备参数。</p>
+<p><a href="#doc-c906f403567d">重力与摩擦辨识</a> · <a href="#doc-bf866bb4a3e8">拉格朗日模型</a> · <a href="#doc-a1e02a44cee3">分类目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立回归、数值求解、激励设计和独立验证章节。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-c906f403567d"><h1>02 重力与摩擦辨识</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>如何估计关节保持静态所需的重力力矩？重力补偿和运动中的摩擦补偿分别对应什么数据？为何拟合一个模型不等于精确控制？</p>
+<h2>快速回顾</h2>
+<p>重力模型描述随构型变化的保守力矩；摩擦随速度、运动方向、温度和停滞状态变化。它们的辨识应匹配数据条件，并保留模型误差和偏置项。执行器命令不是传感器测得的输出，必须核对尺度并做独立测试。</p>
+<h2>1. 重力模型</h2>
+<p>忽略加速度、速度摩擦及外部接触时，静态支撑模型可写为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mi>g</mi></msub><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02248;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>具体正负号取决于动力学方程把 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo></mrow></math> 放在哪一侧。串联机械臂单轴贡献常含 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>sin</mi><mi>q</mi></mrow></math>、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>cos</mi><mi>q</mi></mrow></math> 项；多连杆效应让多个连杆的重力矩共同映射到近端关节。利用正弦余弦线性参数化，或用已知几何模型作为基线，拟合共享的物理参数。</p>
+<p>仅在一个姿态的测量无法验证构型变化趋势。应覆盖安全范围内具有信息量的多个姿态，并为拟合和验证留出不同姿态；也需记录末端工具、负载和安装方向。</p>
+<h2>2. 运动摩擦模型</h2>
+<p>低速近似的黏性加库仑模型：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mi>f</mi></msub><mo>&#x0003D;</mo><mi>b</mi><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><msub><mi>f</mi><mi>c</mi></msub><mo>sgn</mo><mo stretchy="false">&#x00028;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>接近零速时，库仑符号函数不适合描述真实静摩擦；现实还可能有 Stribeck 效应、预滑移、迟滞和方向相关项。</p>
+<p>要分离速度摩擦与重力，可在选定构型附近做双向、多速度安全扫描，比较同姿态不同方向／速度的读数，并检查数据随温度变化。若零速读数夹杂人手接触或传动静摩擦，就不能直接当成纯重力真值。</p>
+<h2>3. 常量偏置与重力补偿</h2>
+<p>模型可含偏置：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mrow><mi>m</mi><mi>o</mi><mi>d</mi><mi>e</mi><mi>l</mi></mrow></msub><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mover accent="true"><mi>g</mi><mo>&#x0005E;</mo></mover><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>b</mi><mn>0</mn></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p>在某些数据或参数化中，重力常量项与电流偏置等常值偏置无法独立区分；预测用 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover accent="true"><mi>g</mi><mo>&#x0005E;</mo></mover><mo>&#x0002B;</mo><msub><mi>b</mi><mn>0</mn></msub></mrow></math> 可能可复现数据，但不能无根据分别宣称两者物理来源已确定。要进一步解释各项，需要额外校准信息或独立测量。</p>
+<p>前馈重力补偿力矩为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C4;</mi><mrow><mi>f</mi><mi>f</mi></mrow></msub><mo>&#x0003D;</mo><mover accent="true"><mi>g</mi><mo>&#x0005E;</mo></mover><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo></mrow></math>（若已辨识的偏置代表同一负载来源，再按约定纳入）；它不自动构成关节位置闭环。负载改变、温度漂移、摩擦和单位尺度误差仍会造成偏差。</p>
+<h2>4. 激励、安全与验收</h2>
+<p>逐轴扫描可降低交叉运动，适用于特定受控辨识方案，但仍要限制运行范围、设置独立急停和合理的软硬限位，并确认负载支撑。不同机构和实验不应直接复制某次扫描次数或速度档位。</p>
+<p>验收至少包括独立姿态预测误差、各轴误差分布、方向差异、重复性及负载边界。只有经过适当标定的电流才能作为力矩代理；协议中的力矩系数是否含减速比、定义在哪个轴端，需查阅厂家资料或用已知负载独立核验。</p>
+<h2>5. 典型工程数据的阅读边界</h2>
+<p>本地周报记录了一套七轴臂的正反向速度扫描、重力拟合、参数共享和真机悬停计划。这是特定机械臂、原安装及当时参数状态下的阶段记录。其数字可用于理解“独立验证、轴间差异和未完成的实机验证为何重要”，不可视为其他机器人的重力、摩擦或控制参数。尚未确认的力矩参考轴和试验结果不写成已证实结论。</p>
+<h2>自测题</h2>
+<ol>
+<li>为何静态多姿态数据适合重力项，却不足以覆盖所有运动摩擦？</li>
+<li>对同一关节位置正向、反向运动，有助于区分哪类分量？</li>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover accent="true"><mi>g</mi><mo>&#x0005E;</mo></mover><mo>&#x0002B;</mo><msub><mi>b</mi><mn>0</mn></msub></mrow></math> 拟合有效时，能否据此断定 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>b</mi><mn>0</mn></msub></mrow></math> 的来源？</li>
+<li>电流曲线拟合得好，为什么仍不代表轴端力矩已标定？</li>
+<li>独立验证至少需要变化哪些条件？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 5、6 章；《周报-2026-10-30.md》《周报-2026-11-06.md》中的项目阶段记录；相关项目文档为本轮可访问资料。通用公式与项目参数已作区分。</p>
+<p><a href="#doc-689c17950e02">动力学回归</a> · <a href="#doc-66a0a5899f87">重力补偿与计算力矩控制</a> · <a href="#doc-a1e02a44cee3">分类目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立重力与摩擦分离、常量偏置和标定边界章节。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-ddd4d6a9c092"><h1>最优化</h1>
+<p>把动作设计明确为变量、目标函数和约束，再按问题结构选择求解器。</p>
+<h2>已有章节</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主要问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#doc-e4e5e7dfe7e8">01 约束优化与问题分类</a></td>
+<td>LS、QP、SOCP、NLP、SQP、自动微分与接触互补建模分别适合什么结构。</td>
+</tr>
+</tbody></table></div>
+<h2>待讨论主题</h2>
+<ul>
+<li>带动力学和接触模式切换的数值最优控制。</li>
+<li>机器人任务优先级与不同任务权重的量纲设计。</li>
+</ul>
+<p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-e4e5e7dfe7e8"><h1>01 约束优化与问题分类</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>如何把机器人任务写成优化问题？QP、SOCP、NLP、SQP 分别表达什么数学结构？何时使用自动微分？</p>
+<h2>快速回顾</h2>
+<p>先确定变量 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>z</mi></mrow></math>，再说明目标 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo></mrow></math>、等式约束 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>h</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mn>0</mn></mrow></math> 和不等式约束 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02264;</mo><mn>0</mn></mrow></math>。算法类别由问题结构决定；“用了高级求解器”不能弥补目标量纲、坐标或硬约束建模错误。</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mo>min</mo><mi>z</mi></msub><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mspace width="1em" /><mtext>s.t.</mtext><mspace width="1em" /><mi>h</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mn>0</mn><mo>&#x0002C;</mo><mspace width="2em" /><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02264;</mo><mn>0</mn><mo>&#x0002E;</mo></mrow></math></div>
+<h2>1. 变量、目标与约束</h2>
+<p>规划机械臂动作时，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>z</mi></mrow></math> 可以是关节位置、轨迹结点、接触点或力。目标表示在可行解之间更偏好的选择，例如路径短、动作平滑、能耗代理小或接近期望姿态。约束表示不能违反的条件，例如关节限制、动力学、力矩范围和无碰撞间隙。</p>
+<p>软目标可用代价权重表达，硬安全限制应使用真正的约束或保护层。若软约束违约会导致硬件损坏，只用小权重惩罚无法保证安全。</p>
+<p>不同单位的量直接相加会造成尺度偏置。应定义归一化或物理上有意义的权重，并查看单项值和梯度量级，而非仅报告一个总 cost。</p>
+<h2>2. 常见问题类型</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>数学特征</th>
+<th>典型任务</th>
+<th>需要检查</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LS／WLS</td>
+<td>最小化线性残差的平方</td>
+<td>系统辨识、局部位姿求解</td>
+<td>秩、权重、测量噪声</td>
+</tr>
+<tr>
+<td>QP</td>
+<td>二次目标、线性等式与不等式约束</td>
+<td>速度 IK、WBC 子问题</td>
+<td>凸性、可行性和实时预算</td>
+</tr>
+<tr>
+<td>SOCP</td>
+<td>凸二次／线性项与二阶锥</td>
+<td>具凸摩擦锥的力分配</td>
+<td>摩擦锥近似与变量标定</td>
+</tr>
+<tr>
+<td>NLP</td>
+<td>一般非线性目标或约束</td>
+<td>轨迹、接触点联合优化</td>
+<td>局部解、初值、梯度和尺度</td>
+</tr>
+<tr>
+<td>SQP</td>
+<td>迭代线性化约束、二次近似代价</td>
+<td>平滑 NLP、受限轨迹优化</td>
+<td>收敛区域、子问题耗时、线搜索</td>
+</tr>
+</tbody></table></div>
+<p>SLSQP 是一种带约束的序列二次规划求解实现。求解器返回成功标志仍要检查原始约束残差、时间预算和独立的执行安全。</p>
+<h2>3. 接触与互补约束</h2>
+<p>法向接触可用间隙 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003D5;</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02265;</mo><mn>0</mn></mrow></math> 和法向力 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BB;</mi><mi>n</mi></msub><mo>&#x02265;</mo><mn>0</mn></mrow></math> 表示不穿透与不能拉住的单边接触。刚体接触的理想互补关系：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mn>0</mn><mo>&#x02264;</mo><mi>&#x003D5;</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mi>&#x027C2;</mi><msub><mi>&#x003BB;</mi><mi>n</mi></msub><mo>&#x02265;</mo><mn>0</mn><mo>&#x0002C;</mo><mspace width="2em" /><mi>&#x003D5;</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><msub><mi>&#x003BB;</mi><mi>n</mi></msub><mo>&#x0003D;</mo><mn>0</mn><mo>&#x0002E;</mo></mrow></math></div>
+<p>物体分离时允许有间隙而没有接触力；接触时可有法向力而间隙为零。互补约束非线性且非凸，对接触建立／分离切换不光滑。用罚函数软化可能引入穿透或数值刚度；使用接触隐式优化则需评估求解器与任务规模。</p>
+<p>库仑摩擦锥约束涉及切向力范数。精确二阶锥建模有时可转为 SOCP；多接触模式切换和与关节动力学联合优化仍可能为非凸问题。</p>
+<h2>4. 梯度与自动微分</h2>
+<p>梯度来源包括解析推导、自动微分和有限差分：</p>
+<ul>
+<li>解析梯度快且精确，但推导和代码维护成本高。</li>
+<li>自动微分可沿可微计算图求导，精度通常好于有限差分；硬碰撞、离散接触或外部不可微算子仍有限制。</li>
+<li>有限差分适合校验小问题，但步长敏感、容易受噪声影响，高维函数调用代价大。</li>
+</ul>
+<p>若使用数值梯度，至少用方向有限差分在代表状态核对梯度实现。无论方法为何，都要验证导数所对应的计算路径与真实执行模型一致。</p>
+<h2>5. 求解质量与诊断</h2>
+<p>解慢时依次记录变量维数、每次目标／约束耗时、碰撞对数量、导数耗时和迭代数。可改善初值、使用结构稀疏性、减小不必要自由度、对距离查询加空间筛选，并独立验证路径结点之间的安全性。</p>
+<p>连续碰撞不等于“所有离散结点无碰撞”。结点间仍可能穿过障碍，应加密验证、保守间距或连续碰撞检测。</p>
+<h2>自测题</h2>
+<ol>
+<li>变量、目标与硬约束分别回答什么问题？</li>
+<li>QP 与 NLP 的定义差异是什么？</li>
+<li>单边接触的互补式表达了哪两种接触状态？</li>
+<li>自动微分为何仍可能无法穿过仿真的碰撞离散边界？</li>
+<li>离散路径结点全无碰撞为什么不是连续轨迹安全证明？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 7 章，及本地机械臂轨迹优化与插接设计文档；未验证特定第三方优化器 API。</p>
+<p><a href="#doc-d914d0fe7e11">SVD、伪逆与 IK</a> · <a href="#doc-d95c684e3465">运动规划</a> · <a href="#doc-ddd4d6a9c092">分类目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立优化建模和求解器选择章节，补充接触互补及验证边界。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-b5ca26ac53b8"><h1>运动规划</h1>
+<p>从一个或多个可行姿态开始，规划避碰路径并按运动学与执行器限制转成轨迹。</p>
+<h2>已有章节</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主要问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#doc-d95c684e3465">01 RRT、碰撞检测与轨迹优化</a></td>
+<td>采样路径与局部轨迹优化怎样组合，离散碰撞检查有哪些边界。</td>
+</tr>
+<tr>
+<td><a href="#doc-0f1ef62807ae">02 轨迹时标与笛卡尔直线运动</a></td>
+<td>梯形速度、加速度约束和关节限速怎样影响笛卡尔路径。</td>
+</tr>
+</tbody></table></div>
+<h2>待讨论主题</h2>
+<ul>
+<li>时间最优的时间参数化与 jerk 连续轨迹生成。</li>
+<li>连续碰撞检测及自碰撞代价的加速策略。</li>
+</ul>
+<p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-d95c684e3465"><h1>01 RRT、碰撞检测与轨迹优化</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>复杂障碍场景中怎样找到避障路径？随机采样的 RRT 和数值轨迹优化怎样互相补充？离散无碰撞检查意味着什么？</p>
+<h2>快速回顾</h2>
+<p>逆运动学找一个构型；路径规划在配置空间找几何路线；轨迹规划再为运动分配时间、速度与加速度。RRT 有助于探索复杂非凸可行空间，局部优化能平滑或降低代价，但依赖初值，最终必须独立碰撞验证。</p>
+<h2>1. 三个不同层次</h2>
+<ul>
+<li>逆运动学（IK）：由末端目标找一个满足运动学方程的关节状态。</li>
+<li>路径（Path）：描述从起始配置到目标配置的几何曲线，尚不一定有时间参数。</li>
+<li>轨迹（Trajectory）：给路径附加时间，确定 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi><mo stretchy="false">&#x00028;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00028;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo stretchy="false">&#x00028;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo></mrow></math>，以便检查执行约束。</li>
+</ul>
+<p>找到终点 IK 不等于中间有可行路线；几何路径可行也不等于驱动器能按指定时间执行。</p>
+<h2>2. RRT 与局部优化</h2>
+<p>快速探索随机树（Rapidly-exploring Random Tree，RRT）在配置空间采样，并将样点接入已建立的树。它可探索障碍导致的非凸区域，但基础 RRT 给出的路径可能折线冗余、靠近障碍且不平滑；RRT* 的渐近最优性需要相应假设和充分计算，有限运行不保证全局最优。</p>
+<p>实用组合示意：</p>
+<pre><code class="language-text">起点、目标和场景 -&gt; RRT 或多初值采样 -&gt; 可行路径
+                  -&gt; 插值与时间离散 -&gt; 轨迹局部优化
+                  -&gt; 加密碰撞验证 -&gt; 时间参数化与执行器检查
+</code></pre>
+<p>优化代价可以包含路程、平滑、关节姿态或障碍间隙，受关节限位、碰撞、起终端和动力学限制约束。选定每一项要定义单位、权重和硬／软边界。</p>
+<h2>3. 碰撞距离和连续验证</h2>
+<p>场景可使用几何体、网格或距离场（例如 ESDF，Euclidean Signed Distance Field）。若 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>d</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo></mrow></math> 是机器人到障碍物的距离，一个软代价可惩罚 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>max</mo><mo stretchy="false">&#x00028;</mo><mn>0</mn><mo>&#x0002C;</mo><msub><mi>d</mi><mrow><mi>s</mi><mi>a</mi><mi>f</mi><mi>e</mi></mrow></msub><mo>&#x02212;</mo><mi>d</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><msup><mo stretchy="false">&#x00029;</mo><mn>2</mn></msup></mrow></math>；硬约束可规定 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>d</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02265;</mo><msub><mi>d</mi><mrow><mi>s</mi><mi>a</mi><mi>f</mi><mi>e</mi></mrow></msub></mrow></math>。软罚项并不能保证安全阈值不被违反。</p>
+<p>用有限采样点检查机器人几何，只能保证采样时刻不碰撞。结点之间仍可能发生碰撞，细长机械结构、快速动作和柔性机构尤其需要更密或连续检测。距离场精度、网格近似和安全余量也要核验。</p>
+<h2>4. 从规划到真实执行</h2>
+<p>轨迹最终需满足电机可用速度、加速度、力矩、周期和 SDK 限速；路径末端线段插值还要先通过逆运动学，关节空间的限速可能使实际笛卡尔路径弯曲。仅对理想位姿插值计算路径偏差，会漏掉关节插值后 FK 得到的真实末端偏差。</p>
+<p>本地 SDK 位控审查曾记录实际设备限速回读与轨迹证据校核。这类结果说明路径算法与驱动器接口校验属于完整执行链的一部分，而不是 RRT 的属性。</p>
+<h2>自测题</h2>
+<ol>
+<li>为什么目标末端位姿可达，不代表存在无碰撞路径？</li>
+<li>RRT 产生的路线为什么通常还要平滑和优化？</li>
+<li>路径、时间轨迹各自增加了什么信息？</li>
+<li>离散碰撞无误为何仍可能有中间穿越？</li>
+<li>笛卡尔直线的端点都正确，为何关节插值结果仍可能弯曲？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 8 章、《周报-2026-10-30.md》及本地机械臂与连续体轨迹资料；项目示例不代表通用性能保证。</p>
+<p><a href="#doc-e4e5e7dfe7e8">约束优化</a> · <a href="#doc-0f1ef62807ae">轨迹时标与直线运动</a> · <a href="#doc-b5ca26ac53b8">分类目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立 RRT 与轨迹优化章节，强调连续验证和执行器约束。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-0f1ef62807ae"><h1>02 轨迹时标与笛卡尔直线运动</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>路径如何转换为可执行速度曲线？梯形速度规划有何假设？怎样让末端沿直线运动，同时尊重关节限速和加速度？</p>
+<h2>快速回顾</h2>
+<p>路径决定去哪里，时标决定何时到哪里。单轴梯形规划把速度分为加速、匀速和减速段；多轴同步要协调各轴时间。关节限速下的笛卡尔目标不能只在线性插值后直接假定真实机械臂仍走直线。</p>
+<h2>1. 梯形速度规划</h2>
+<p>规划输入包括当前位置、目标位置、初始／目标速度、速度上限和加速度上限。采用常加速度时：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>q</mi><mo stretchy="false">&#x00028;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi>q</mi><mn>0</mn></msub><mo>&#x0002B;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mn>0</mn></msub><mi>t</mi><mo>&#x0002B;</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>a</mi><msup><mi>t</mi><mn>2</mn></msup><mo>&#x0002C;</mo><mspace width="2em" /><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00028;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mn>0</mn></msub><mo>&#x0002B;</mo><mi>a</mi><mi>t</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>若行程足够，速度曲线呈“加速—匀速—减速”；短行程可能达不到速度上限，退化为三角速度曲线。初始速度已经超过新设限速时，先按正时间规划减速，不应生成负时长加速段。</p>
+<p>若允许加速度不连续，有限加速度曲线仍会产生加加速度（jerk）突变。对脆弱物体或高端执行器，需另用 jerk 限制的 S 曲线或适当平滑。</p>
+<h2>2. 多关节同步</h2>
+<p>为使多轴同时完成同一个动作，可先分别规划各轴最短合法时间，再以最长时间作为同步时长，重新分配各轴峰值速度／加速度。任何缩放后方案都要重新检查驱动器的实际限速和加速度上限。</p>
+<p>连续段拼接还需要检查段间位置、速度、加速度连续性。只验证最终位置窗口不代表整段轨迹速度合规。</p>
+<h2>3. 笛卡尔直线及逆运动学</h2>
+<p>平移路径可按路径进度 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>s</mi><mo stretchy="false">&#x00028;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo></mrow></math> 插值：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>p</mi><mo stretchy="false">&#x00028;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi>p</mi><mn>0</mn></msub><mo>&#x0002B;</mo><mi>s</mi><mo stretchy="false">&#x00028;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo><mo stretchy="false">&#x00028;</mo><msub><mi>p</mi><mn>1</mn></msub><mo>&#x02212;</mo><msub><mi>p</mi><mn>0</mn></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo><mspace width="2em" /><mn>0</mn><mo>&#x02264;</mo><mi>s</mi><mo stretchy="false">&#x00028;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02264;</mo><mn>1</mn><mo>&#x0002E;</mo></mrow></math></div>
+<p>姿态另用声明明确的旋转插值，例如四元数 SLERP。沿路点求逆运动学后，还需连续选择解支路、满足关节速度／加速度限制，并用真实关节路点 FK 复算误差和碰撞。</p>
+<p>逆运动学失败、靠近奇异位形或单轴限速时，可能无法维持要求的路径和时长；算法应明确报告失败或重新定时，不能静默超速。</p>
+<h2>4. 反馈接口与停止</h2>
+<p>规划依赖执行器实际限速和当前状态，不能只相信缓存配置；超时后旧目标仍可能有效，因此停止策略还需撤销命令并确认设备状态。通信轮询、控制周期和物理时标也要分别说明。</p>
+<h2>自测题</h2>
+<ol>
+<li>短行程时，为什么速度可能达不到设定峰值？</li>
+<li>初速超过速度上限时应如何规划？</li>
+<li>多关节同起同停为何需要重新设定各轴时标？</li>
+<li>关节轨迹经过逆解后如何检验实际 TCP 是否仍沿直线？</li>
+<li>超时停止后为什么还需确认设备目标与状态？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：《周报-2026-10-30.md》中梯形规划、限速回读和 TCP 路径核验；一般时标关系为本轮整理。</p>
+<p><a href="#doc-d95c684e3465">RRT 与碰撞检测</a> · <a href="#doc-b5ca26ac53b8">分类目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立轨迹时标和笛卡尔直线章节，结合本地项目记录说明执行验证。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-2dbc32b2c61f"><h1>电机与控制</h1>
+<p>区分电机电气内环、关节控制接口和运动控制器，明确各层使用的信号和轴侧单位。</p>
+<h2>已有章节</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主要问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#doc-743bd2e45395">01 PMSM、FOC 与电流力矩关系</a></td>
+<td>三相电机电流如何转到转子坐标系，电流如何与电磁转矩相关。</td>
+</tr>
+<tr>
+<td><a href="#doc-66a0a5899f87">02 PID、重力补偿与计算力矩</a></td>
+<td>误差反馈、模型前馈和动力学补偿各有什么作用。</td>
+</tr>
+<tr>
+<td><a href="#doc-122ed3fca99c">03 阻抗、导纳与力位混合控制</a></td>
+<td>期望柔顺动态、控制接口要求和任务空间力位划分。</td>
+</tr>
+</tbody></table></div>
+<p>MIT 模式和电流模式详见<a href="#doc-7fca3733489e">02 电机与运动控制目录</a>。</p>
+<h2>待讨论主题</h2>
+<ul>
+<li>矢量控制的完整电压方程、解耦补偿与弱磁运行。</li>
+<li>硬件力传感器的坐标系、偏置、重力载荷补偿和频域噪声。</li>
+</ul>
+<p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-743bd2e45395"><h1>01 PMSM 与 FOC</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>永磁同步电机（PMSM）的三相电流如何参与产生转矩？磁场定向控制（Field-Oriented Control，FOC）为什么需要 Clarke 与 Park 变换？</p>
+<h2>快速回顾</h2>
+<p>FOC 根据转子电角度把三相电流映射到旋转的 d/q 坐标系，以近似独立调节磁链相关分量和转矩相关分量。q 轴电流和电机电磁力矩相关；它不是关节输出力矩传感器，也不说明驱动器的电流定义或轴侧换算。</p>
+<h2>1. 主要控制链</h2>
+<p>典型电流 FOC 闭环如下：</p>
+<pre><code class="language-text">采样相电流 ia、ib、ic 与电角度 theta_e
+    -&gt; Clarke：静止坐标系 i_alpha、i_beta
+    -&gt; Park：旋转坐标系 i_d、i_q
+    -&gt; d/q 电流 PI 与电压／电流限制
+    -&gt; 逆 Park 与 SVPWM 生成逆变器开关信号
+    -&gt; PMSM 与电流采样反馈
+</code></pre>
+<p>实际实现可能使用两电流采样、不同 PWM 调制、采样补偿、反电势前馈或电流解耦；上图只是基本概念链。</p>
+<h2>2. 坐标变换的意义</h2>
+<p>Clarke 变换把三相量映射到静止两轴平面；平衡三相且无零序分量时，两维足以表示平面磁场。Park 变换再绕转子磁链同步旋转，使随电角度变化的交流分量在稳态时近似为直流量，PI 控制器更易处理。</p>
+<p>工程公式需明确 Clarke 的幅值不变还是功率不变归一化，d/q 轴方向，电角与机械角的关系，以及电流峰值还是 RMS。不同约定会改变换算系数，不能只复制一种符号表。</p>
+<h2>3. 电流与电磁转矩</h2>
+<p>表贴式永磁同步电机、采用常见峰值相电流与相应 Park 约定时，电磁转矩简化为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mi>e</mi></msub><mo>&#x02248;</mo><mfrac><mrow><mn>3</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mi>p</mi><msub><mi>&#x003C8;</mi><mi>f</mi></msub><msub><mi>i</mi><mi>q</mi></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>p</mi></mrow></math> 是极对数，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C8;</mi><mi>f</mi></msub></mrow></math> 是永磁磁链，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>i</mi><mi>q</mi></msub></mrow></math> 是 q 轴电流。符号和常数因坐标与电流归一化而异。凸极内嵌式 PMSM 还含 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>i</mi><mi>d</mi></msub></mrow></math> 和 d/q 电感差产生的磁阻转矩项。</p>
+<p>因此常见 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C4;</mi><mi>e</mi></msub><mo>&#x02248;</mo><msub><mi>K</mi><mi>t</mi></msub><msub><mi>i</mi><mi>q</mi></msub></mrow></math> 是已吸收到所选约定中的工程写法。电机电磁转矩经过转子惯量、轴承、减速器、效率和摩擦后，才与关节输出转矩相关。</p>
+<h2>4. PI 与 SVPWM</h2>
+<p>d/q 轴电流控制器比较实测电流和目标电流，PI 产生电压命令。电机绕组电感和电阻决定电流响应；电压受直流母线和调制饱和限制，目标电流可能无法达到。SVPWM（Space Vector Pulse Width Modulation）依据所需电压矢量选择逆变器开关占空比，受母线电压与扇区线性范围约束。</p>
+<p>电流模式仍是反馈控制，只是闭环主要控制 q 轴／电流。上层若需要位置或速度跟踪，还需另加外环或使用驱动器提供的更高层模式。</p>
+<h2>自测题</h2>
+<ol>
+<li>Clarke 与 Park 分别把量变换到什么坐标系？</li>
+<li>FOC 的电流 PI 控制的是什么量？q 轴电流为何常被用作转矩命令？</li>
+<li>为什么电流达到目标不等于关节轴端力矩已精确测得？</li>
+<li>使用厂商力矩常数时，还要确认哪些电流、角度和传动约定？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 4 章与已存在的 MIT／电流模式章节；未查阅特定电机或驱动器手册，公式条件按常见 PMSM 约定说明。</p>
+<p><a href="#doc-8f26ce775ad6">MIT 模式与电流模式</a> · <a href="#doc-2dbc32b2c61f">分类目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立 PMSM、FOC、Clarke／Park 与电流力矩边界章节。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-66a0a5899f87"><h1>02 PID、重力补偿与计算力矩</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>位置误差反馈、重力前馈和完整动力学前馈分别补偿什么？为什么提高位置增益不总能改善接触或跟踪？</p>
+<h2>快速回顾</h2>
+<p>PID／PD 根据测得的误差修正输出；重力补偿依据构型提供前馈；计算力矩进一步使用惯性和速度耦合模型。三者都受传感、模型、延迟和执行器限幅影响，不能用一个名词概括“闭环精度”。</p>
+<h2>1. PD 与 PID</h2>
+<p>以关节位置误差 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>e</mi><mo>&#x0003D;</mo><msub><mi>q</mi><mi>d</mi></msub><mo>&#x02212;</mo><mi>q</mi></mrow></math> 表示，一种常用形式是：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mrow><mi>f</mi><mi>b</mi></mrow></msub><mo>&#x0003D;</mo><msub><mi>K</mi><mi>p</mi></msub><mi>e</mi><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x02212;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>K</mi><mi>i</mi></msub><mo>&#x0222B;</mo><mi>e</mi><mspace width="0.167em" /><mi>d</mi><mi>t</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow></math> 提供位置恢复作用，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>d</mi></msub></mrow></math> 提供速度误差阻尼，积分项处理持续偏差。若采用误差导数形式 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover><mi>e</mi><mo>&#x002D9;</mo></mover></mrow></math>，其符号、目标速度定义必须保持一致。离散实现中需考虑微分噪声、积分饱和、采样周期和抗饱和策略。</p>
+<p>增大 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow></math> 可能提高局部刚度，也会放大观测误差和接触冲击、促使输出饱和；<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>d</mi></msub></mrow></math> 使用噪声很大的速度反馈可能诱发力矩抖动。增益稳定范围需结合闭环周期和机构验证。</p>
+<h2>2. 重力前馈</h2>
+<p>常见关节 PD 加重力补偿：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>K</mi><mi>p</mi></msub><mi>e</mi><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x02212;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>模型方向和求解器约定一致时，前馈补偿机器人的静态重力项，反馈负责剩余误差。前馈不是额外的位置闭环，也不会自动消除摩擦、外部接触和传动误差。</p>
+<p>如果重力模型含未分离的偏置项，应如实标识，不要把拟合偏置说成已经独立确认的物理重力来源。详细边界见<a href="#doc-c906f403567d">重力与摩擦辨识</a>。</p>
+<h2>3. 计算力矩控制</h2>
+<p>以动力学 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><mi>C</mi><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>g</mi><mo>&#x0003D;</mo><mi>&#x003C4;</mi></mrow></math> 为例，定义期望加速度：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>a</mi><mi>d</mi></msub><mo>&#x0003D;</mo><msub><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mi>d</mi></msub><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x02212;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>K</mi><mi>p</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mi>q</mi><mi>d</mi></msub><mo>&#x02212;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>理想逆动力学命令：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><msub><mi>a</mi><mi>d</mi></msub><mo>&#x0002B;</mo><mi>C</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>代入精确模型且忽略摩擦、饱和和接触时，得到近似线性误差响应。实际模型误差、时延、外力和设备保护会造成偏差，所以此公式是控制结构，不是稳定性或实机性能保证。</p>
+<h2>4. 控制层级</h2>
+<p>更快的内层电流闭环通常调节电磁转矩相关电流，关节伺服／计算力矩在其上产生需求。命令通过减速器时要确认每一层是否已经包含传动比、方向、效率和限幅，不能将同一补偿叠加两次。</p>
+<p>如果需要控制接触时的柔顺响应，应先明确正在使用的电流、位置或力矩接口，及力传感器／估算器的带宽。阻抗与导纳详见<a href="#doc-122ed3fca99c">下一章</a>。</p>
+<h2>自测题</h2>
+<ol>
+<li>前馈重力项与 PD 误差项各解决什么问题？</li>
+<li>积分项能缓解什么误差，又为什么可能累积饱和？</li>
+<li>计算力矩公式的哪些前提在真实设备上容易失效？</li>
+<li>为什么更高 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow></math> 可能带来冲击和饱和？</li>
+<li>电流环、关节控制器和高层轨迹各处于哪一层？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 6 章及 MIT 模式笔记；采用标准刚体动力学反馈形式，未针对具体设备调参。</p>
+<p><a href="#doc-122ed3fca99c">阻抗与导纳</a> · <a href="#doc-bf866bb4a3e8">动力学方程</a> · <a href="#doc-2dbc32b2c61f">目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立反馈、重力前馈和计算力矩的关系与适用边界。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-122ed3fca99c"><h1>03 阻抗、导纳与力位混合控制</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>机器人接触环境时，如何定义柔顺响应？阻抗与导纳控制需要什么硬件接口？在不同任务空间方向，怎样同时执行位置和力任务？</p>
+<h2>快速回顾</h2>
+<p>阻抗塑造“运动偏差—作用力”的动态关系，导纳根据测得的外力生成运动参考。它们不是仅靠改一个增益即可互换的算法，所需的执行器能力和力反馈通路不同。力位混合须由任务几何与接触约束定义方向。</p>
+<h2>1. 阻抗控制</h2>
+<p>设末端误差 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>e</mi><mo>&#x0003D;</mo><mi>x</mi><mo>&#x02212;</mo><msub><mi>x</mi><mi>d</mi></msub></mrow></math>，一种期望阻抗关系为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>F</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mo>&#x0003D;</mo><msub><mi>M</mi><mi>d</mi></msub><mover><mi>e</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><msub><mi>B</mi><mi>d</mi></msub><mover><mi>e</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mi>e</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>M</mi><mi>d</mi></msub><mo>&#x0002C;</mo><msub><mi>B</mi><mi>d</mi></msub><mo>&#x0002C;</mo><msub><mi>K</mi><mi>d</mi></msub></mrow></math> 分别表示期望惯性、阻尼、刚度矩阵。此处 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>F</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub></mrow></math> 是与误差约定相配的外力；若定义方向相反，公式整体符号相应改变。机器人依据位姿误差生成期望 Wrench，再经任务 Jacobian 映射为关节广义力矩，并由力矩接口执行。</p>
+<p>直接力矩阻抗需要可信反馈和足够快的力矩控制。位置伺服机器人也可通过外层算法产生等效柔顺行为，但需考虑位置内环延迟与带宽，不能无条件等同。</p>
+<h2>2. 导纳控制</h2>
+<p>导纳控制的典型思路是：测量外力后，求解虚拟质量—阻尼—弹簧方程，更新期望位置或速度；再由内层位置伺服跟踪该参考。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>阻抗</th>
+<th>导纳</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要输入</td>
+<td>运动状态及目标</td>
+<td>外力／力矩测量与目标</td>
+</tr>
+<tr>
+<td>主要输出</td>
+<td>期望力／力矩</td>
+<td>期望运动</td>
+</tr>
+<tr>
+<td>常见适用条件</td>
+<td>可控力矩或低阻抗执行器</td>
+<td>稳定位置伺服并有可信力测量</td>
+</tr>
+<tr>
+<td>核心问题</td>
+<td>力矩执行、动力学耦合及接触稳定</td>
+<td>传感偏置、离散积分、位置内环延迟</td>
+</tr>
+</tbody></table></div>
+<p>两类方法都须防止噪声被放大、输出超限和能量注入。给它们同名的刚度、阻尼数值，并不保证响应相同。</p>
+<h2>3. 混合力位控制</h2>
+<p>例如插入任务，孔轴方向需要限制推进力或控制法向力，横向需要调整位置，姿态方向还可能需要顺应。方向划分要依据工件几何、当前接触法向和任务语义；混合控制矩阵与坐标轴变换须保持一致。</p>
+<p>未知表面法向、摩擦及装配误差会改变实际受限方向。在不同方向同时硬约束位置和法向力可能过约束；“力控方向”和“位置控方向”不是任意独立的按钮。</p>
+<h2>4. 易错点</h2>
+<ul>
+<li>位置跟踪加力惩罚，不自动产生稳定的接触力闭环。</li>
+<li>由电机电流或动力学残差估算出的力，必须标明其模型假设、参考点、补偿项和延迟；估算不等同于直接测量。</li>
+<li>反馈控制器与仿真内置驱动器可能重复执行 PD，造成实际刚度偏高。</li>
+<li>同一时刻的刚度与稳定性还受惯量、采样、目标插值、接触刚度和力矩限幅影响。</li>
+</ul>
+<h2>自测题</h2>
+<ol>
+<li>阻抗把什么量映射成什么响应？导纳的输入输出是什么？</li>
+<li>为什么导纳通常依赖力测量和内层位置伺服？</li>
+<li>刚性接触时为何要根据接触几何重新判断任务空间方向？</li>
+<li>怎样排查关节仿真中重复 PD 的问题？</li>
+<li>估算力反馈还应说明哪几项信息？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 6 章及本地精密插接设计文档；不同工程控制器的具体实现需查对应 SDK 和传感器资料。</p>
+<p><a href="#doc-66a0a5899f87">反馈与模型控制</a> · <a href="#doc-8f26ce775ad6">MIT 模式与电流模式</a> · <a href="#doc-2dbc32b2c61f">目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：建立阻抗、导纳与力位混合控制章节，区分接口、输出和验证条件。</li>
+</ul>
 <a class="back" href="#top">返回目录 ↑</a></article></main></body></html>
