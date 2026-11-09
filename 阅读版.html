@@ -19,10 +19,10 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 @media(max-width:1000px){aside{width:220px;padding:25px 18px}main{margin-left:220px;padding:24px}article{padding:28px}}
 @media(max-width:700px){aside{position:relative;width:100%;max-height:none;border-right:0;border-bottom:1px solid var(--line);padding:22px}nav{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}.tagline{margin-bottom:14px}main{margin-left:0;padding:16px}article{padding:23px 19px}h1{font-size:24px}.equation{padding:15px 8px}}
 @media print{aside,.reader-header,.back{display:none}main{max-width:none;margin:0;padding:0}body{background:white;font-size:11pt}article{border:0;padding:0;margin:0;break-before:page}article:first-of-type{break-before:auto}pre{white-space:pre-wrap}h1,h2,h3{break-after:avoid}.equation,tr{break-inside:avoid}}
-</style></head><body id="top"><aside><div class="brand">个人技术栈笔记</div><p class="tagline">持续整理 · 理解原理 · 随时复习</p><nav><a class="" href="#doc-8ec9a00bfd09">个人技术栈笔记</a><a class="" href="#doc-875f05997c53">复习清单</a><a class="category" href="#doc-a728352e5a15">强化学习</a><a class="chapter" href="#doc-e778c425d46b">01 PPO 基础原理</a><a class="chapter" href="#doc-c0e378884e79">02 PPO 与 Actor–Critic</a><a class="chapter" href="#doc-087301252aea">03 奖励设计与模仿学习</a><a class="category" href="#doc-7fca3733489e">电机与运动控制</a><a class="chapter" href="#doc-8f26ce775ad6">01 MIT 模式与电流模式</a><a class="chapter" href="#doc-790e3606b3b2">02 MIT 驱动器的仿真建模</a><a class="category" href="#doc-9617ca8b8170">知识库系统</a><a class="chapter" href="#doc-204f16197df5">跨设备知识库设计</a><a class="category" href="#doc-d0008fb7c36d">数学与运动学</a><a class="chapter" href="#doc-fa0d65bec46b">01 坐标变换与姿态表示</a><a class="chapter" href="#doc-f3eefb27199e">02 雅可比、Twist 与 Wrench</a><a class="chapter" href="#doc-d914d0fe7e11">03 SVD、伪逆与逆运动学</a><a class="category" href="#doc-21ceeb727ede">机器人动力学</a><a class="chapter" href="#doc-bf866bb4a3e8">01 拉格朗日建模与动力学方程</a><a class="chapter" href="#doc-f8b04e02b1d0">02 Pinocchio 与动力学算法</a><a class="category" href="#doc-a1e02a44cee3">系统辨识</a><a class="chapter" href="#doc-689c17950e02">01 动力学回归与最小二乘</a><a class="chapter" href="#doc-c906f403567d">02 重力与摩擦辨识</a><a class="category" href="#doc-ddd4d6a9c092">最优化</a><a class="chapter" href="#doc-e4e5e7dfe7e8">01 约束优化与问题分类</a><a class="category" href="#doc-b5ca26ac53b8">运动规划</a><a class="chapter" href="#doc-d95c684e3465">01 RRT、碰撞检测与轨迹优化</a><a class="chapter" href="#doc-0f1ef62807ae">02 轨迹时标与笛卡尔直线运动</a><a class="category" href="#doc-2dbc32b2c61f">电机与控制</a><a class="chapter" href="#doc-743bd2e45395">01 PMSM 与 FOC</a><a class="chapter" href="#doc-66a0a5899f87">02 PID、重力补偿与计算力矩</a><a class="chapter" href="#doc-122ed3fca99c">03 阻抗、导纳与力位混合控制</a></nav></aside><main><div class="reader-header"><strong>笔记阅读版</strong>　公式已排版 · 离线可读</div><article id="doc-8ec9a00bfd09"><h1>个人技术栈笔记</h1>
-<p>把技术讨论沉淀为可以反复阅读、自测和补充的章节。笔记使用中文，保留常用英文术语、公式和必要的图示。</p>
-<p><strong>日常复习请打开<a href="#top">笔记阅读版</a></strong>：包含完整目录、正文与复习清单，数学公式已排版，支持离线阅读。下列 Markdown 文件用于持续维护内容。</p>
-<h2>笔记目录</h2>
+</style></head><body id="top"><aside><div class="brand">个人技术栈笔记</div><p class="tagline">持续整理 · 理解原理 · 随时复习</p><nav><a class="" href="#doc-8ec9a00bfd09">个人技术栈笔记</a><a class="" href="#doc-875f05997c53">复习清单</a><a class="category" href="#doc-a728352e5a15">强化学习</a><a class="chapter" href="#doc-e778c425d46b">01 PPO 基础原理</a><a class="chapter" href="#doc-c0e378884e79">02 PPO 与 Actor–Critic</a><a class="chapter" href="#doc-087301252aea">03 奖励设计与模仿学习</a><a class="chapter" href="#doc-249592145061">04 Rollout、时间尺度与优势估计</a><a class="chapter" href="#doc-8ea37ea78777">05 观测噪声、域随机化与训练效率</a><a class="chapter" href="#doc-7e91e3cbb2f1">06 强化学习与在线优化的选择</a><a class="category" href="#doc-7fca3733489e">电机与运动控制</a><a class="chapter" href="#doc-8f26ce775ad6">01 MIT 模式与电流模式</a><a class="chapter" href="#doc-790e3606b3b2">02 MIT 驱动器的仿真建模</a><a class="chapter" href="#doc-78a98916c104">03 PMSM 与 FOC</a><a class="chapter" href="#doc-488a261f943c">04 PID、重力补偿与计算力矩</a><a class="chapter" href="#doc-ceb501256685">05 阻抗、导纳与力位混合控制</a><a class="chapter" href="#doc-f7cd928554c5">06 EMA 滤波与反馈延迟</a><a class="category" href="#doc-d0008fb7c36d">数学与运动学</a><a class="chapter" href="#doc-fa0d65bec46b">01 坐标变换与姿态表示</a><a class="chapter" href="#doc-f3eefb27199e">02 雅可比、Twist 与 Wrench</a><a class="chapter" href="#doc-d914d0fe7e11">03 SVD、伪逆与逆运动学</a><a class="category" href="#doc-21ceeb727ede">机器人动力学</a><a class="chapter" href="#doc-bf866bb4a3e8">01 拉格朗日建模与动力学方程</a><a class="chapter" href="#doc-f8b04e02b1d0">02 Pinocchio 与动力学算法</a><a class="category" href="#doc-a1e02a44cee3">系统辨识</a><a class="chapter" href="#doc-689c17950e02">01 动力学回归与最小二乘</a><a class="chapter" href="#doc-c906f403567d">02 重力与摩擦辨识</a><a class="chapter" href="#doc-081ee610c15a">03 电流—力矩映射与联合辨识</a><a class="category" href="#doc-ddd4d6a9c092">最优化</a><a class="chapter" href="#doc-e4e5e7dfe7e8">01 约束优化与问题分类</a><a class="category" href="#doc-b5ca26ac53b8">运动规划</a><a class="chapter" href="#doc-d95c684e3465">01 RRT、碰撞检测与轨迹优化</a><a class="chapter" href="#doc-0f1ef62807ae">02 轨迹时标与笛卡尔直线运动</a><a class="category" href="#doc-20a8b68c0e7c">机器人视觉</a><a class="chapter" href="#doc-fefa32f97ce0">01 相机标定与仿真坐标对齐</a><a class="category" href="#doc-cac6164bec5f">使用与维护说明</a><a class="chapter" href="#doc-4f313b0455bf">跨设备维护与阅读说明</a></nav></aside><main><div class="reader-header"><strong>笔记阅读版</strong>　公式已排版 · 离线可读</div><article id="doc-8ec9a00bfd09"><h1>个人技术栈笔记</h1>
+<p>把技术讨论整理成能独立阅读、反复复习和持续修订的主题笔记。以原理为基础，在有明确项目背景的重点处连接方法选择、工程应用与验证边界。</p>
+<p><strong>日常复习请打开<a href="#top">笔记阅读版</a></strong>：包含技术目录、正文、复习清单与使用说明，公式已排版，支持离线阅读。Markdown 是维护源稿。</p>
+<h2>技术笔记目录</h2>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -33,89 +33,88 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 </thead>
 <tbody><tr>
 <td>01 强化学习</td>
-<td>算法原理、目标函数、训练机制与工程实践</td>
-<td><a href="#doc-a728352e5a15">强化学习目录</a></td>
+<td>PPO、采样与优势估计、模仿学习、噪声、训练效率与方法选择</td>
+<td><a href="#doc-a728352e5a15">强化学习</a></td>
 </tr>
 <tr>
 <td>02 电机与运动控制</td>
-<td>控制模式、控制环路、驱动器与实际应用</td>
-<td><a href="#doc-7fca3733489e">电机与运动控制目录</a></td>
-</tr>
-<tr>
-<td>03 知识库系统</td>
-<td>跨设备访问、内容存储与维护流程</td>
-<td><a href="#doc-9617ca8b8170">知识库系统目录</a></td>
+<td>MIT／电流模式、FOC、反馈与模型控制、柔顺控制、滤波</td>
+<td><a href="#doc-7fca3733489e">电机与运动控制</a></td>
 </tr>
 <tr>
 <td>04 数学与运动学</td>
-<td>坐标变换、Jacobian、旋量、SVD 与逆运动学</td>
-<td><a href="#doc-d0008fb7c36d">数学与运动学目录</a></td>
+<td>坐标、姿态、Jacobian、旋量、SVD 与数值 IK</td>
+<td><a href="#doc-d0008fb7c36d">数学与运动学</a></td>
 </tr>
 <tr>
 <td>05 机器人动力学</td>
 <td>拉格朗日建模与 Pinocchio 递归算法</td>
-<td><a href="#doc-21ceeb727ede">机器人动力学目录</a></td>
+<td><a href="#doc-21ceeb727ede">机器人动力学</a></td>
 </tr>
 <tr>
 <td>06 系统辨识</td>
-<td>线性参数估计、重力模型与摩擦辨识</td>
-<td><a href="#doc-a1e02a44cee3">系统辨识目录</a></td>
+<td>最小二乘、重力与摩擦、电流—力矩标度与验证</td>
+<td><a href="#doc-a1e02a44cee3">系统辨识</a></td>
 </tr>
 <tr>
 <td>07 最优化</td>
-<td>优化变量、目标、约束及求解类型</td>
-<td><a href="#doc-ddd4d6a9c092">最优化目录</a></td>
+<td>目标与约束、求解类型、接触、导数与正则化</td>
+<td><a href="#doc-ddd4d6a9c092">最优化</a></td>
 </tr>
 <tr>
 <td>08 运动规划</td>
-<td>RRT、碰撞检测、轨迹与笛卡尔直线规划</td>
-<td><a href="#doc-b5ca26ac53b8">运动规划目录</a></td>
+<td>RRT、碰撞检测、轨迹时标与笛卡尔直线运动</td>
+<td><a href="#doc-b5ca26ac53b8">运动规划</a></td>
 </tr>
 <tr>
-<td>09 电机与控制</td>
-<td>PMSM／FOC、反馈、阻抗导纳和力位混合</td>
-<td><a href="#doc-2dbc32b2c61f">电机与控制目录</a></td>
+<td>10 机器人视觉</td>
+<td>相机标定、手眼关系与仿真坐标对齐</td>
+<td><a href="#doc-20a8b68c0e7c">机器人视觉</a></td>
 </tr>
 </tbody></table></div>
-<p>后续根据实际讨论增加分类，例如机器人系统、数学基础等。</p>
-<h2>GitHub 跨设备维护</h2>
-<p>本笔记库采用 Markdown 与 GitHub 维护，仓库为 <a href="https://github.com/Lucute7/lkw-technical-notes">Lucute7/lkw-technical-notes</a>，已确认是私有仓库。本地已初始化 Git、关联仓库并完成 GitHub 授权。不同电脑先拉取最新笔记，再修改、生成阅读版、提交并推送；也可以登录 GitHub 网页阅读或修改 Markdown。创建仓库、维护流程和手机阅读方式见<a href="#doc-204f16197df5">跨设备知识库设计</a>。</p>
-<p>独立网站方案已按用户要求废弃，相关应用、界面、测试和部署文件已删除。当前内容源为 Markdown，<code>阅读版.html</code> 是本地生成的离线阅读入口。</p>
+<p>同一技术主题集中维护，原“电机与控制”内容已并入“电机与运动控制”。保留其余已有分类编号，减少跨设备引用变化。</p>
+<h2>说明文档与维护入口</h2>
+<p><a href="#doc-cac6164bec5f">说明文档</a>介绍仓库使用与维护，不作为技术章节或复习主题。</p>
+<ul>
+<li><a href="#doc-4f313b0455bf">跨设备维护与阅读说明</a>：GitHub 同步、手机阅读、资料上传与冲突处理。</li>
+<li><a href="tools/README.md">阅读版生成工具</a>：修改 Markdown 后如何生成离线阅读版。</li>
+<li><a href="AGENTS.md">工作区维护规则</a>：后续助手继续讨论和整理内容时遵循的规则。</li>
+</ul>
+<p>仓库为 <a href="https://github.com/Lucute7/lkw-technical-notes">Lucute7/lkw-technical-notes</a>。不同电脑开始维护前先同步最新内容，完成修改后生成阅读版、检查、提交并推送。完整聊天记录不会随笔记自动同步。</p>
 <h2>如何积累</h2>
 <ul>
-<li>在这个工作区中讨论技术问题时，默认把有实质内容的讨论整理进相应章节，并在回复中简要说明更新位置。</li>
-<li>同一主题持续补充同一章节；内容较多、主题可以独立复习时，再拆成新章节并添加关联链接。</li>
-<li>讨论可以跳跃，也可以回到旧主题。笔记按知识结构持续修订：新内容放回对应位置，必要时重组章节，并同步修正受影响的旧解释、公式、例子和自测题。</li>
-<li>章节围绕“问题是什么 → 为什么这样做 → 原理与推导 → 例子与应用 → 易错点 → 自测题”展开，按实际内容取舍。</li>
-<li>区分已有结论、依赖条件、个人经验和待验证问题；讨论尚未明确的地方保留疑问，不写成定论。</li>
-<li>发现旧结论有误时修正正文；影响理解的重要修正，在章节更新记录中说明。</li>
-<li>公式默认以排版后的数学表达式呈现；程序代码仅用于实际实现示例。章节更新后同步生成阅读版。</li>
+<li>有实质内容的讨论按主题整理，优先修改现有章节；讨论可以跳跃，结构不按聊天顺序堆积。</li>
+<li>原理解释应回答问题背景、符号与前提。重点主题可进一步说明为什么这样选、替代方法、项目应用与验证方式，不要求每个知识点都机械扩写。</li>
+<li>工程或学术实践以具体资料、公开实现和任务条件为依据；不把一个开源示例说成全行业统一方案。</li>
+<li>历史项目记录保留时间和状态，已经作废的方案可用于解释误区，不能重新当作当前实现。新增分析与历史已讨论结论分别说明。</li>
+<li>修改结论时回查相关公式、例子、自测和链接；读者不应看到相互矛盾的有效结论。</li>
+<li>Markdown 是内容源；章节和导航更新后运行 <code>python3 tools/build_reader.py</code>，同步生成阅读版。</li>
 </ul>
 <h2>如何复习</h2>
 <ol>
-<li>从<a href="#doc-875f05997c53">复习清单</a>选一个主题，先不看正文回答自测题。</li>
-<li>阅读章节中的“快速回顾”，再针对薄弱处重看推导和例子。</li>
-<li>把仍不理解的问题带回讨论，继续补充原章节。</li>
+<li>从<a href="#doc-875f05997c53">复习清单</a>选择主题，先尝试回答自测题。</li>
+<li>阅读“快速回顾”，再针对薄弱处重看原理、推导和项目应用。</li>
+<li>区分“能解释原理”“能选择方法”和“已在实机验证”，把仍不清楚的问题带回对应章节。</li>
 </ol>
-<p>章节使用<a href="模板/技术章节模板.md">技术章节模板</a>作为参考，不要求每一章机械填满所有栏目。</p>
+<p><a href="模板/技术章节模板.md">技术章节模板</a>仅供参考，不要求每章填满全部栏目。</p>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-875f05997c53"><h1>复习清单</h1>
 <p>这里只收录已经形成的技术章节，随讨论持续更新。</p>
 <h2>电机与运动控制</h2>
 <h3>PMSM 与 FOC</h3>
 <ul>
-<li><strong>章节链接</strong>：<a href="#doc-743bd2e45395">PMSM 与 FOC</a>。</li>
+<li><strong>章节链接</strong>：<a href="#doc-78a98916c104">PMSM 与 FOC</a>。</li>
 <li><strong>核心自测</strong>：Clarke 与 Park 各改变什么坐标系？q 轴电流为什么和转矩有关？为什么电磁转矩不能直接等同关节轴端力矩？</li>
 <li><strong>待解决问题</strong>：实际设备的电流和力矩常数约定需查阅对应厂商资料。</li>
 </ul>
 <h3>反馈与模型控制</h3>
 <ul>
-<li><strong>章节链接</strong>：<a href="#doc-66a0a5899f87">PID、重力补偿与计算力矩</a>。</li>
-<li><strong>核心自测</strong>：反馈项与重力前馈分别补偿什么？计算力矩控制依赖什么模型假设？为何高增益不保证接触更好？</li>
-<li><strong>待解决问题</strong>：当前未针对特定设备验证或调参。</li>
+<li><strong>章节链接</strong>：<a href="#doc-488a261f943c">PID、重力补偿与计算力矩</a>。</li>
+<li><strong>核心自测</strong>：反馈项与重力前馈分别补偿什么？计算力矩控制依赖什么模型假设？为何高增益不保证接触更好？没有位置参考的重力补偿为何不能恢复给定姿态？如何避免 SDK 内部与调用方重复加重力？</li>
+<li><strong>待解决问题</strong>：本章已结合七轴 SDK 解释接口，但未在本轮修改实机控制律或完成新一轮设备调参。</li>
 </ul>
 <h3>阻抗、导纳与力位混合</h3>
 <ul>
-<li><strong>章节链接</strong>：<a href="#doc-122ed3fca99c">阻抗、导纳与力位混合控制</a>。</li>
+<li><strong>章节链接</strong>：<a href="#doc-ceb501256685">阻抗、导纳与力位混合控制</a>。</li>
 <li><strong>核心自测</strong>：阻抗和导纳的输入输出分别是什么？为何需要真实接触方向和明确的力传感／估算边界？</li>
 <li><strong>待解决问题</strong>：特定控制器、传感器和接触任务的实现需结合实际硬件确认。</li>
 </ul>
@@ -131,12 +130,11 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li><strong>核心自测</strong>：第一版需要设置哪些东西？为什么目标保持不变时仍要更新反馈力矩？怎样避免重复 PD 控制？单关节阻尼估计中的惯量指什么？</li>
 <li><strong>待解决问题</strong>：尚未指定仿真器、机械模型和真实驱动器参数，需要据此确定具体 API、坐标映射和执行周期。</li>
 </ul>
-<h2>知识库系统</h2>
-<h3>01 跨设备知识库设计</h3>
+<h3>EMA 与闭环延迟</h3>
 <ul>
-<li><strong>章节链接</strong>：<a href="#doc-204f16197df5">跨设备知识库设计</a>。</li>
-<li><strong>核心自测</strong>：GitHub 仓库与 Pages 有什么区别？为什么提交之后还要推送？如何在两台电脑同步最新章节？“程序已做好”和“网站已上线”有什么区别？多设备修改同一份内容时怎样避免覆盖？上传资料与整理笔记有什么区别？</li>
-<li><strong>待解决问题</strong>：在另一台电脑验证仓库访问和同步流程；网页编辑后阅读版暂不自动构建，资料自动解析尚未实现。独立网站方案已废弃并删除相关文件。</li>
+<li><strong>章节链接</strong>：<a href="#doc-f7cd928554c5">EMA 滤波</a>。</li>
+<li><strong>核心自测</strong>：平滑系数与采样周期、时间常数怎样联系？滤波为什么可能削弱阻尼效果？部署时新加动作滤波为什么要回到仿真验证？</li>
+<li><strong>待解决问题</strong>：具体通道的噪声谱、采样间隔与允许延迟尚需项目测量。</li>
 </ul>
 <h2>数学与运动学</h2>
 <h3>坐标变换与姿态表示</h3>
@@ -154,7 +152,7 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <h3>SVD 与逆运动学</h3>
 <ul>
 <li><strong>章节链接</strong>：<a href="#doc-d914d0fe7e11">SVD、伪逆与逆运动学</a>。</li>
-<li><strong>核心自测</strong>：奇异值接近零时会发生什么？DLS 如何缓解误差放大？阻尼伪逆下的零空间是否严格保持主任务？</li>
+<li><strong>核心自测</strong>：奇异值接近零时会发生什么？DLS 如何缓解误差放大？阻尼伪逆下的零空间是否严格保持主任务？几何雅可比和残差雅可比为何不同？数值差分是否要让实机试动？</li>
 <li><strong>待解决问题</strong>：具体机器人上的 IK 误差阈值与碰撞／限位约束尚需结合任务验证。</li>
 </ul>
 <h2>机器人动力学</h2>
@@ -171,11 +169,17 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li><strong>核心自测</strong>：满秩与良好条件数各表达什么？为什么需要独立速度／方向工况？重力与常量偏置何时不可分？</li>
 <li><strong>待解决问题</strong>：各设备的激励范围、转矩标定与验证数据均须单独确定。</li>
 </ul>
+<h3>电流—力矩标度与验证</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-081ee610c15a">电流—力矩联合辨识</a>。</li>
+<li><strong>核心自测</strong>：为什么联合估计可能缺少绝对尺度？CAD 锚点与独立标定基准有何区别？协议回读为何不一定是真实力矩测量？</li>
+<li><strong>待解决问题</strong>：独立轴端力矩参考和固件系数语义仍需针对设备确认；旧联合方案不恢复为有效参数。</li>
+</ul>
 <h2>最优化与运动规划</h2>
 <h3>约束优化</h3>
 <ul>
 <li><strong>章节链接</strong>：<a href="#doc-e4e5e7dfe7e8">约束优化与问题分类</a>。</li>
-<li><strong>核心自测</strong>：变量、目标和约束分别表达什么？互补条件如何表示单边接触？为什么软罚项不等于硬安全约束？</li>
+<li><strong>核心自测</strong>：变量、目标和约束分别表达什么？互补条件如何表示单边接触？为什么软罚项不等于硬安全约束？增量正则、姿态正则与部署时 EMA 有何区别？</li>
 <li><strong>待解决问题</strong>：具体接触问题的可行求解器和实时预算未指定。</li>
 </ul>
 <h3>路径规划与轨迹</h3>
@@ -191,6 +195,31 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li><strong>核心自测</strong>：优势估计和 PPO 剪切各帮助什么？非对称 Critic 可获取何种训练期信息？DAgger、RMA 与域随机化分别解决什么问题？</li>
 <li><strong>待解决问题</strong>：实际训练应检查裁剪、KL、奖励投机和任务真值，并用目标部署分布独立评估。</li>
 </ul>
+<h3>PPO 采样与优势计算</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-249592145061">Rollout、时间尺度与优势估计</a>。</li>
+<li><strong>核心自测</strong>：物理步和策略步如何换算？短 rollout 为何能学习长任务？终止、超时截断和 rollout 采满分别怎样补值？为何 Critic 目标不能由标准化优势直接生成？</li>
+<li><strong>待解决问题</strong>：比较 rollout 长度时，需要固定评价条件并报告批量和更新预算的变化。</li>
+</ul>
+<h3>噪声、域随机化与训练效率</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-8ea37ea78777">噪声与训练效率</a>。</li>
+<li><strong>核心自测</strong>：原始角度噪声与归一化噪声有何区别？多帧观测对零偏是否有效？环境数增加怎样影响墙钟吞吐与回合末段覆盖？变化中的 DR 分布为何不能直接用于判断固定任务收敛？</li>
+<li><strong>待解决问题</strong>：当前部署的真实噪声／延迟和所需 DR 范围仍需测量。</li>
+</ul>
+<h3>RL 与在线优化的选择</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-7e91e3cbb2f1">强化学习与在线优化</a>。</li>
+<li><strong>核心自测</strong>：有限模型问题的全局最优与真实任务最优差在哪里？为何拧盖可学习接触行为，同时保留传统驱动与约束层？插接的反馈控制基线有什么价值？</li>
+<li><strong>待解决问题</strong>：尚未完成项目中 RL、MPC 与其他控制器的统一实机性能对比。</li>
+</ul>
+<h2>机器人视觉</h2>
+<h3>相机标定与仿真坐标对齐</h3>
+<ul>
+<li><strong>章节链接</strong>：<a href="#doc-fefa32f97ce0">相机标定</a>。</li>
+<li><strong>核心自测</strong>：内参、PnP、配准与手眼各需要什么输入？论文把 marker 放进仿真能省掉什么，又不能自动解决什么？为何要在任务空间独立验证瓶身／瓶盖定位与延迟？</li>
+<li><strong>待解决问题</strong>：实际相机、安装方式和定位链的精度／遮挡测试尚需落实。</li>
+</ul>
 <h2>使用方式</h2>
 <p>先回答章节的自测题，再阅读正文。复习时重点检查：能否用自己的话解释原理、说明关键公式中各个量的含义，以及判断结论在什么条件下适用。</p>
 <p>后续每个主题记录：</p>
@@ -202,8 +231,7 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <p>个人掌握情况和实际复习日期，仅在用户明确反馈时记录。</p>
 <p><a href="#doc-8ec9a00bfd09">返回总目录</a></p>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-a728352e5a15"><h1>强化学习</h1>
-<p>讨论算法为什么成立、优化的目标是什么，以及这些设计怎样影响训练。</p>
-<h2>已有章节</h2>
+<p>从优化目标到采样更新，再联系双手拧盖项目的观测、训练效率与方法选择。</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -213,18 +241,30 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 </thead>
 <tbody><tr>
 <td><a href="#doc-e778c425d46b">01 PPO 基础原理</a></td>
-<td>clipped surrogate、策略比率与策略更新范围的直觉。</td>
+<td>策略比率、剪切目标与更新范围</td>
 </tr>
 <tr>
 <td><a href="#doc-c0e378884e79">02 PPO 与 Actor–Critic</a></td>
-<td>优势估计、Actor–Critic、非对称 Critic 与训练诊断。</td>
+<td>优势、价值目标、非对称 Critic 与训练诊断</td>
 </tr>
 <tr>
 <td><a href="#doc-087301252aea">03 奖励设计与模仿学习</a></td>
-<td>奖励投机、Teacher–Student、DAgger、RMA、课程学习。</td>
+<td>奖励投机、Teacher–Student、DAgger、RMA、课程学习</td>
+</tr>
+<tr>
+<td><a href="#doc-249592145061">04 Rollout、时间尺度与优势估计</a></td>
+<td>物理步／策略步、TD、GAE、bootstrap、终止与截断</td>
+</tr>
+<tr>
+<td><a href="#doc-8ea37ea78777">05 观测噪声、域随机化与训练效率</a></td>
+<td>噪声建模、历史观测、样本效率、并行规模与收敛判断</td>
+</tr>
+<tr>
+<td><a href="#doc-7e91e3cbb2f1">06 强化学习与在线优化的选择</a></td>
+<td>最优性的前提，拧盖、七轴臂与插接的方法取舍</td>
 </tr>
 </tbody></table></div>
-<p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<p><a href="#doc-8ec9a00bfd09">总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-e778c425d46b"><h1>01 PPO 基础原理</h1>
 <p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
 <h2>本章解决什么问题</h2>
@@ -296,7 +336,7 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
 <h2>本章解决什么问题</h2>
 <p>策略梯度如何通过采样数据改进随机策略？Actor、Critic 和优势函数各自承担什么工作？PPO 的裁剪目标保护什么，又不保护什么？</p>
-<p>本章在<a href="#doc-790e3606b3b2">已有 MIT 驱动器仿真章节</a>之外单独整理策略优化原理。公式采用标准 on-policy PPO 约定；具体训练实现、动作和状态以项目配置为准。</p>
+<p>本章整理策略优化原理；驱动器时间尺度与策略采样的关系分别见<a href="#doc-790e3606b3b2">MIT 仿真</a>和<a href="#doc-249592145061">Rollout 专章</a>。公式采用标准 on-policy PPO 约定；具体训练实现、动作和状态以项目配置为准。</p>
 <h2>快速回顾</h2>
 <ul>
 <li>Actor 表示策略 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C0;</mi><mi>&#x003B8;</mi></msub><mo stretchy="false">&#x00028;</mo><mi>a</mi><mo>&#x02223;</mo><mi>s</mi><mo stretchy="false">&#x00029;</mo></mrow></math>；Critic 估计状态价值 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>V</mi><mi>&#x003D5;</mi></msub><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo stretchy="false">&#x00029;</mo></mrow></math>，降低策略梯度估计的方差。</li>
@@ -310,7 +350,7 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <p>原始轨迹回报波动很大。优势函数 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>A</mi><mi>&#x003C0;</mi></msup><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo>&#x0002C;</mo><mi>a</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msup><mi>Q</mi><mi>&#x003C0;</mi></msup><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo>&#x0002C;</mo><mi>a</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><msup><mi>V</mi><mi>&#x003C0;</mi></msup><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo stretchy="false">&#x00029;</mo></mrow></math> 减去状态基准，降低策略梯度估计方差，同时仍保留动作好坏的期望差异。</p>
 <p>Generalized Advantage Estimation（GAE）常将 TD 残差按时间衰减求和：</p>
 <div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003B4;</mi><mi>t</mi></msub><mo>&#x0003D;</mo><msub><mi>r</mi><mi>t</mi></msub><mo>&#x0002B;</mo><mi>&#x003B3;</mi><mi>V</mi><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>&#x0002B;</mo><mn>1</mn></mrow></msub><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mi>V</mi><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo><mspace width="2em" /><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo>&#x0003D;</mo><munderover><mo>&#x02211;</mo><mrow><mi>l</mi><mo>&#x0003D;</mo><mn>0</mn></mrow><mrow><mo>&#x0221E;</mo></mrow></munderover><mo stretchy="false">&#x00028;</mo><mi>&#x003B3;</mi><mi>&#x003BB;</mi><msup><mo stretchy="false">&#x00029;</mo><mi>l</mi></msup><msub><mi>&#x003B4;</mi><mrow><mi>t</mi><mo>&#x0002B;</mo><mi>l</mi></mrow></msub><mo>&#x0002E;</mo></mrow></math></div>
-<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003BB;</mi></mrow></math> 控制偏差与方差权衡。截断 episode 时要按是否真实终止决定 bootstrap，时间限制截断不能无条件当成失败终止。</p>
+<p>上述表达用于同一段未终止轨迹；实际有限 rollout 还需要终止／截断掩码，见 Rollout 专章。<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003BB;</mi></mrow></math> 控制偏差与方差权衡。截断 episode 时要按是否真实终止决定 bootstrap，时间限制截断不能无条件当成失败终止。</p>
 <h2>2. PPO 剪切目标</h2>
 <p>收集旧策略数据后，更新新策略。概率比率：</p>
 <div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>r</mi><mi>t</mi></msub><mo stretchy="false">&#x00028;</mo><mi>&#x003B8;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mfrac><mrow><msub><mi>&#x003C0;</mi><mi>&#x003B8;</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mi>a</mi><mi>t</mi></msub><mo>&#x02223;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo></mrow><mrow><msub><mi>&#x003C0;</mi><mrow><msub><mi>&#x003B8;</mi><mrow><mi>o</mi><mi>l</mi><mi>d</mi></mrow></msub></mrow></msub><mo stretchy="false">&#x00028;</mo><msub><mi>a</mi><mi>t</mi></msub><mo>&#x02223;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo></mrow></mfrac><mo>&#x0002E;</mo></mrow></math></div>
@@ -336,12 +376,17 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li>怎样识别策略利用奖励或成功判据而未完成任务？</li>
 </ol>
 <h2>参考资料与关联章节</h2>
+<p>采样、TD／GAE 与截断处理详见<a href="#doc-249592145061">Rollout 专章</a>；并行规模与噪声选择见<a href="#doc-8ea37ea78777">训练效率</a>。</p>
 <p>整理依据：本地《学习资料/gpt会话整理.md》第 11 章和《周报-2026-11-06.md》的 PPO 阶段记录。原文件声明其为近期主题归纳而非逐字对话；本章的通用公式按标准 PPO 形式整理，工程结果保留其项目边界。</p>
 <p><a href="#doc-a728352e5a15">强化学习目录</a> · <a href="#doc-a1e02a44cee3">系统辨识</a> · <a href="#doc-875f05997c53">复习清单</a></p>
 <h2>更新记录</h2>
 <ul>
-<li>2026-11-09：从现有会话学习整理与插接项目记录建立 PPO 及非对称 Actor–Critic 章节。</li>
-<li>2026-11-09：将命名运算符改为网页预览兼容的正体写法，保持数学含义。</li>
+<li><p>2026-11-09：补充历史会话深化章节的关联入口。</p>
+</li>
+<li><p>2026-11-09：从现有会话学习整理与插接项目记录建立 PPO 及非对称 Actor–Critic 章节。</p>
+</li>
+<li><p>2026-11-09：将命名运算符改为网页预览兼容的正体写法，保持数学含义。</p>
+</li>
 </ul>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-087301252aea"><h1>03 奖励设计与模仿学习</h1>
 <p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
@@ -377,15 +422,302 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li>域随机化的现实范围从哪里获得？</li>
 </ol>
 <h2>参考资料与关联章节</h2>
+<p>历史观测、噪声时间结构与 DR 评价的应用分析见<a href="#doc-8ea37ea78777">噪声与训练效率</a>。</p>
 <p>整理依据：本地《学习资料/gpt会话整理.md》第 11 章、《周报-2026-11-06.md》的仿真训练记录及精密插接设计文档；文中仅概括通用学习机制，不把项目调参归为通用建议。</p>
 <p><a href="#doc-c0e378884e79">PPO 与 Actor–Critic</a> · <a href="#doc-a728352e5a15">分类目录</a></p>
 <h2>更新记录</h2>
 <ul>
-<li>2026-11-09：建立奖励诊断、Teacher–Student、DAgger、历史编码和域随机化章节。</li>
+<li><p>2026-11-09：补充历史会话深化章节的关联入口。</p>
+</li>
+<li><p>2026-11-09：建立奖励诊断、Teacher–Student、DAgger、历史编码和域随机化章节。</p>
+</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-249592145061"><h1>04 Rollout、时间尺度与优势估计</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>PPO 为什么采一小段就能更新？rollout、完整回合、物理步和“帧”是什么关系？TD、GAE 与训练 Critic 的 return 怎样连接？</p>
+<h2>快速回顾</h2>
+<p>Rollout 是当前策略采集的一段交互；不要求完整回合结束。Critic 为没有采到的后续收益提供价值估计。真正终止与人为截断必须区别处理；自动重置后的新状态不能冒充旧回合的末状态。</p>
+<h2>1. 从仿真子步到一批训练数据</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>层次</th>
+<th>含义</th>
+<th>拧盖项目历史讨论中的例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内部子步</td>
+<td>求解器在一个物理步内进一步积分</td>
+<td>一个物理步可再细分，不能再次乘到配置的总物理时长上</td>
+</tr>
+<tr>
+<td>物理步</td>
+<td>仿真推进一次配置的时间间隔</td>
+<td>曾使用 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x00394;</mi><msub><mi>t</mi><mi>p</mi></msub><mo>&#x0003D;</mo><mn>1</mn><mo>&#x0002F;</mo><mn>240</mn><mspace width="0.167em" /><mi>&#x00073;</mi></mrow></math></td>
+</tr>
+<tr>
+<td>策略步</td>
+<td>策略得到观测、给动作并与环境交互一次</td>
+<td>当每步保持动作 24 个物理步时，为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>0.1</mn><mspace width="0.167em" /><mi>&#x00073;</mi></mrow></math></td>
+</tr>
+<tr>
+<td>观测帧</td>
+<td>某采样时刻的一份状态／图像</td>
+<td>两帧历史关节观测不等于两张视频图像</td>
+</tr>
+<tr>
+<td>渲染帧</td>
+<td>显示或录像的一张画面</td>
+<td>可以独立于策略频率和物理频率</td>
+</tr>
+<tr>
+<td>Rollout</td>
+<td>每个并行环境连续采集 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> 个策略步</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi><mo>&#x0003D;</mo><mn>8</mn></mrow></math> 时，每个环境本批贡献 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>0.8</mn><mspace width="0.167em" /><mi>&#x00073;</mi></mrow></math> 交互</td>
+</tr>
+<tr>
+<td>Episode</td>
+<td>从任务开始到终止或回合截断</td>
+<td>可能跨越很多批 rollout</td>
+</tr>
+</tbody></table></div>
+<p>这些数字是历史配置的说明，不代表当前全部训练设置。若每个策略步含 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>d</mi></mrow></math> 个物理步，策略周期为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x00394;</mi><msub><mi>t</mi><mi>c</mi></msub><mo>&#x0003D;</mo><mi>d</mi><mi>&#x00394;</mi><msub><mi>t</mi><mi>p</mi></msub></mrow></math>。多环境共享一个联合动作策略时，一批 transition 数为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>B</mi><mo>&#x0003D;</mo><mi>N</mi><mi>H</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>N</mi></mrow></math> 为并行环境数，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> 为 rollout 长度。双手联合动作不自动使样本数乘二；是否有独立 agent 维度，要看训练器的数据定义。历史例子中 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>8192</mn><mo>&#x000D7;</mo><mn>8</mn><mo>&#x0003D;</mo><mn>65536</mn></mrow></math> 条 transition；多轮更新复用的是这些数据，不是又采了同样多的新交互。</p>
+<h2>2. TD 误差：一次交互修正了多少价值判断</h2>
+<p>价值函数 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>V</mi><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo></mrow></math> 估计从当前状态开始的未来折扣回报。一步时序差分（Temporal Difference，TD）误差是：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003B4;</mi><mi>t</mi></msub><mo>&#x0003D;</mo><msub><mi>r</mi><mi>t</mi></msub><mo>&#x0002B;</mo><mi>&#x003B3;</mi><msub><mi>b</mi><mi>t</mi></msub><mi>V</mi><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>&#x0002B;</mo><mn>1</mn></mrow></msub><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mi>V</mi><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>r</mi><mi>t</mi></msub></mrow></math> 为本步奖励，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi></mrow></math> 为折扣因子；<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>b</mi><mi>t</mi></msub></mrow></math> 决定下一状态能否提供 bootstrap，即用价值估计补上未来。真正终止时通常 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>b</mi><mi>t</mi></msub><mo>&#x0003D;</mo><mn>0</mn></mrow></math>；任务仍可继续但采样停止时通常 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>b</mi><mi>t</mi></msub><mo>&#x0003D;</mo><mn>1</mn></mrow></math>。有限时域任务若把期限本身定义为终止，则应按该任务定义处理，不能机械地给所有超时补值。</p>
+<p>示例：<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>V</mi><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mn>5</mn></mrow></math>、本步奖励为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn></mrow></math>、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>V</mi><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>&#x0002B;</mo><mn>1</mn></mrow></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mn>6</mn></mrow></math>、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi><mo>&#x0003D;</mo><mn>0.9</mn></mrow></math>，非终止时 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003B4;</mi><mi>t</mi></msub><mo>&#x0003D;</mo><mn>1.4</mn></mrow></math>。这表示新的一步目标比原价值预测高，不是“动作的真实长期收益已经精确知道”。</p>
+<h2>3. GAE：把多步 TD 证据组合起来</h2>
+<p>广义优势估计（Generalized Advantage Estimation，GAE）可倒序计算：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo>&#x0003D;</mo><msub><mi>&#x003B4;</mi><mi>t</mi></msub><mo>&#x0002B;</mo><mi>&#x003B3;</mi><mi>&#x003BB;</mi><msub><mi>c</mi><mi>t</mi></msub><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mrow><mi>t</mi><mo>&#x0002B;</mo><mn>1</mn></mrow></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003BB;</mi><mo>&#x02208;</mo><mo stretchy="false">[</mo><mn>0</mn><mo>&#x0002C;</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> 调节多步信息的权重。<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>c</mi><mi>t</mi></msub></mrow></math> 表示优势递推是否继续连接同一回合；跨 episode 边界时为零，rollout 末端也结束本批递推。它与 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>b</mi><mi>t</mi></msub></mrow></math> 的作用不同：超时截断可以补上终态价值，同时切断与重置后新回合的优势连接。</p>
+<p>较小 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003BB;</mi></mrow></math> 更依赖局部价值预测；较大 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003BB;</mi></mrow></math> 使用更长的奖励证据，通常降低对一步价值误差的依赖，但可能增加方差。不能把 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003BB;</mi></mrow></math> 大解释成必然训练更好。</p>
+<p>一种常见 Critic 目标为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mover accent="true"><mi>R</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo>&#x0003D;</mo><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub><mo>&#x0002B;</mo><msub><mi>V</mi><mrow><mi>o</mi><mi>l</mi><mi>d</mi></mrow></msub><mo stretchy="false">&#x00028;</mo><msub><mi>s</mi><mi>t</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>这里必须用未经优势标准化的 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mover accent="true"><mi>A</mi><mo>&#x0005E;</mo></mover><mi>t</mi></msub></mrow></math>。训练 Actor 时可以另外标准化优势；把标准化后的优势加回价值会改变 Critic 目标。</p>
+<h2>4. 三种“结束”怎样区别</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>情形</th>
+<th>下一价值</th>
+<th>优势递推</th>
+<th>易错点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>任务真正终止，如失败吸收态</td>
+<td>通常不补值</td>
+<td>切断</td>
+<td>不能跨到重置后的新任务</td>
+</tr>
+<tr>
+<td>回合因外部时间上限截断，底层任务可继续</td>
+<td>用截断前最终观测补值</td>
+<td>切断</td>
+<td>自动重置返回的观测可能已经属于新回合</td>
+</tr>
+<tr>
+<td>只是 rollout 采满，环境未重置</td>
+<td>用当前末状态补值</td>
+<td>本批到此结束</td>
+<td>不能把它当成任务失败</td>
+</tr>
+</tbody></table></div>
+<p>实现可能把超时补值提前加进奖励，再用统一的 done 掩码计算 GAE；也可能显式使用两个掩码。先读实现，避免同一次超时补值两次。本地 PPO 代码确有 terminal observation／超时补值路径；本章描述其需要满足的语义，不把所有库的字段名称当成相同约定。</p>
+<h2>5. 为什么短 rollout 能学长任务，又为什么仍要比较长度</h2>
+<p>Critic 把 rollout 之后的收益压缩成末端价值，因此采样窗口不必覆盖整个拧盖回合。代价是：若末端价值估计很差，较短窗口会更依赖它。换指、重新抓握和末段停转等延迟后果，可以成为比较更长 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> 的理由。</p>
+<p>增加 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> 也增大批量、内存和采样等待时间，不能只改一个数就把收益归因于“看得更远”。比较时应记录总新交互量、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>B</mi></mrow></math>、更新次数、KL 和独立任务指标。工程中常见的 PPO 实现如 Spinning Up、rl_games 都采用“采样一批—优势／回报计算—若干轮小批更新”；参数最佳值由环境和执行预算决定。</p>
+<h2>自测题</h2>
+<ol>
+<li>八步 rollout 为什么可以训练持续数十秒的任务？</li>
+<li>物理子步、物理步、策略步和渲染帧各改变什么？</li>
+<li>超时截断时，为什么可能既补终态价值，又切断优势递推？</li>
+<li>标准化优势为何不能直接拿去生成 Critic 的 return？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<ul>
+<li>本机历史会话：2026-09-23“PPO rollout 的逻辑”、2026-09-28“正则项／TD 误差与时间步”。</li>
+<li>本地项目：<code>twisting-lids/minimal_stable_PPO/ppo/ppo.py</code> 的 <code>play_steps</code>、超时与末状态价值路径；配置会变化，此处不固化为当前参数。</li>
+<li><a href="https://spinningup.openai.com/en/latest/algorithms/ppo.html">Spinning Up：PPO</a>：采样和更新结构。</li>
+<li><a href="https://arxiv.org/abs/1506.02438">GAE 原论文</a>：优势估计与偏差／方差取舍。</li>
+<li><a href="https://github.com/Denys88/rl_games">rl_games 配置说明</a>：环境数、horizon 与 minibatch 的定义。</li>
+</ul>
+<p><a href="#doc-c0e378884e79">PPO 与 Actor–Critic</a> · <a href="#doc-8ea37ea78777">噪声与训练效率</a> · <a href="#doc-a728352e5a15">目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：从历史会话补齐采样时间尺度、TD、GAE、bootstrap 与终止／截断边界，并联系拧盖项目。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-8ea37ea78777"><h1>05 观测噪声、域随机化与训练效率</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>加噪声到底改变了什么？并行环境越多为什么不一定越快学会？持续增加域随机化后还有收益，是否说明没有收敛？</p>
+<h2>快速回顾</h2>
+<p>先区分“每秒采多少交互”和“学到目标性能需要多少交互”。观测噪声的单位、注入位置、重采样频率和相关性都是任务定义的一部分。训练分布一直变化时，不宜用一条总奖励曲线判断固定问题的收敛。</p>
+<h2>1. 噪声必须说明位置、单位和时间结构</h2>
+<p>若原始关节角观测为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mover><mi>q</mi><mo stretchy="false">&#x0007E;</mo></mover><mi>t</mi></msub><mo>&#x0003D;</mo><msub><mi>q</mi><mi>t</mi></msub><mo>&#x0002B;</mo><msub><mi>&#x003F5;</mi><mi>t</mi></msub><mo>&#x0002C;</mo><mspace width="2em" /><msub><mi>&#x003F5;</mi><mi>t</mi></msub><mi>&#x0007E;</mi><mi mathvariant="script">N</mi><mo stretchy="false">&#x00028;</mo><mn>0</mn><mo>&#x0002C;</mo><msubsup><mi>&#x003C3;</mi><mi>q</mi><mn>2</mn></msubsup><mi>I</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo></mrow></math></div>
+<p>则 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C3;</mi><mi>q</mi></msub></mrow></math> 以 rad 为单位。先归一化再加相同数字的噪声，含义不同。例如归一化 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>z</mi><mo>&#x0003D;</mo><mn>2</mn><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><msub><mi>q</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002F;</mo><mo stretchy="false">&#x00028;</mo><msub><mi>q</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>&#x02212;</mo><msub><mi>q</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mn>1</mn></mrow></math> 后，原始角度噪声对应：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C3;</mi><mi>z</mi></msub><mo>&#x0003D;</mo><mfrac><mrow><mn>2</mn><msub><mi>&#x003C3;</mi><mi>q</mi></msub></mrow><mrow><msub><mi>q</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>&#x02212;</mo><msub><mi>q</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></mrow></mfrac><mo>&#x0002E;</mo></mrow></math></div>
+<p>历史会话核对过某配置的 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C3;</mi><mi>q</mi></msub><mo>&#x0003D;</mo><mn>0.4</mn><mspace width="0.167em" /><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">d</mi></mrow></mrow></math>，约为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>22.9</mn><mo>&#x02218;</mo></msup></mrow></math>，属于很大的角度噪声；不能误读为归一化空间中的小扰动。该历史实现按策略步给独立手关节位置采样，不等于给所有机器人关节、每个物理子步都加噪声。本章不把它当成当前配置或实机测量精度。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>随机因素</th>
+<th>典型时间结构</th>
+<th>对策略的影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>白噪声式测量扰动</td>
+<td>每次观测重采样</td>
+<td>历史滤波可减少部分独立噪声</td>
+</tr>
+<tr>
+<td>编码器零偏／相机外参误差</td>
+<td>一个回合或较长时段固定</td>
+<td>不能靠多帧简单平均消除</td>
+</tr>
+<tr>
+<td>通信延迟</td>
+<td>固定或随时间变化</td>
+<td>观测来自过去，需要处理动作与观测时间对齐</td>
+</tr>
+<tr>
+<td>质量、摩擦、执行器参数</td>
+<td>常在回合重置时采样并保持</td>
+<td>改变动力学，历史交互有助于推断隐含参数</td>
+</tr>
+</tbody></table></div>
+<p>独立重采样是建模选择，不是“高斯分布”自动包含的性质。把真实慢变偏置全写成独立白噪声，可能训练出能平均噪声却应对不了系统偏差的策略。</p>
+<h2>2. 为什么用历史观测，什么时候需要 RMA</h2>
+<p>单帧相同的关节位置，可能对应不同速度、接触或负载状态。历史观测／动作能提供变化趋势，从而缓解部分可观测性。两帧历史不是所有隐藏状态的充分统计量，也不能恢复从未测到的信息。</p>
+<p>历史堆叠实现简单；循环网络可学习更长时序表示，但要正确管理隐藏状态与回合重置。RMA 则显式学习从近期状态—动作历史预测影响控制的潜变量，并与基策略配合。RMA 原论文验证的是四足机器人适应，不能据此断言在双手拧盖上一定优于简单历史堆叠。见<a href="#doc-087301252aea">奖励设计与模仿学习</a>。</p>
+<p>项目上优先比较“测得的噪声／延迟范围内，当前历史是否已满足稳定操作”，再决定是否增加网络复杂度。增加历史长度本身也会改变输入维数、内存和训练难度。</p>
+<h2>3. “跑得慢”与“学得慢”怎样拆开</h2>
+<p>总耗时可按实际计时拆为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>T</mi><mo>&#x0003D;</mo><msub><mi>T</mi><mrow><mi>p</mi><mi>h</mi><mi>y</mi><mi>s</mi><mi>i</mi><mi>c</mi><mi>s</mi></mrow></msub><mo>&#x0002B;</mo><msub><mi>T</mi><mrow><mi>i</mi><mi>n</mi><mi>f</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>e</mi></mrow></msub><mo>&#x0002B;</mo><msub><mi>T</mi><mrow><mi>t</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>s</mi><mi>f</mi><mi>e</mi><mi>r</mi></mrow></msub><mo>&#x0002B;</mo><msub><mi>T</mi><mrow><mi>u</mi><mi>p</mi><mi>d</mi><mi>a</mi><mi>t</mi><mi>e</mi></mrow></msub><mo>&#x0002B;</mo><msub><mi>T</mi><mrow><mi>e</mi><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p>仿真与 GPU 操作可能异步重叠，不能直接把未经同步的计时器数字相加。先使用一致的计时口径，再区分吞吐瓶颈与学习瓶颈。</p>
+<ul>
+<li>若仿真／采样占主要时间，优先查接触复杂度、物理步数、CPU—GPU 同步和不必要的数据回传；换更大的网络通常没有针对性。</li>
+<li>若任务指标随交互增长很慢，优先查奖励、探索、可观测性、课程跨度和更新质量；更高 GPU 利用率不等于更有效学习。</li>
+<li>若评价成本很高，区分训练采样和独立评价的时间；不能把频繁评价开销误判成 PPO 更新慢。</li>
+</ul>
+<p>历史拧盖会话曾观察到采样显著比网络更新耗时，应作为“先测量再优化”的案例，不能把当时比例推广到所有训练。</p>
+<h2>4. 并行环境数与长回合覆盖的关系</h2>
+<p>在总交互预算 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>S</mi></mrow></math> 下，若分配均匀，每个环境平均推进：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>L</mi><mo>&#x0003D;</mo><mfrac><mrow><mi>S</mi></mrow><mrow><mi>N</mi></mrow></mfrac><mo>&#x0002C;</mo><mspace width="2em" /><msub><mi>t</mi><mrow><mi>p</mi><mi>e</mi><mi>r</mi><mtext>&#x000A0;</mtext><mi>e</mi><mi>n</mi><mi>v</mi></mrow></msub><mo>&#x0003D;</mo><mfrac><mrow><mi>S</mi></mrow><mrow><mi>N</mi></mrow></mfrac><mi>&#x00394;</mi><msub><mi>t</mi><mi>c</mi></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p>示例：<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>S</mi><mo>&#x0003D;</mo><msup><mn>10</mn><mn>7</mn></msup></mrow></math>、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>N</mi><mo>&#x0003D;</mo><mn>8192</mn></mrow></math>、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x00394;</mi><msub><mi>t</mi><mi>c</mi></msub><mo>&#x0003D;</mo><mn>0.1</mn><mspace width="0.167em" /><mi>&#x00073;</mi></mrow></math> 时，每个环境约推进 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>122</mn><mspace width="0.167em" /><mi>&#x00073;</mi></mrow></math>；翻倍 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>N</mi></mrow></math> 而不增加总预算，则约为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>61</mn><mspace width="0.167em" /><mi>&#x00073;</mi></mrow></math>。这是无提前重置时的量级估算；真实回合覆盖还受随机重置和起始状态分布影响。</p>
+<p>如果每次课程换档都重置环境，且任务关键失败在回合末段，固定小预算加大量并行环境可能缺少末段覆盖。但若同档训练持续、状态跨更新保留，就不能说每次短 rollout 都只能见到开头。</p>
+<p>多瓶型共享策略时，不是每个瓶型都独立训练一套网络。每类环境数量影响覆盖和梯度分布，但共享结构也能迁移经验。可以用逐瓶评价和困难样本重采样改善短板，同时保留其他样本覆盖以防遗忘。</p>
+<h2>5. 怎样做有信息量的对比</h2>
+<p>固定目标域随机化（Domain Randomization，DR）分布和评价任务，再比较少量候选 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>N</mi></mrow></math>、<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> 或课程跨度。记录达到同一成功率所需墙钟时间和新交互量，同时检查掉落率、末段转速、困难瓶表现和多个随机种子下的波动。</p>
+<p>总交互量、每轮批量、总更新量与墙钟时间不能在所有实验中同时保持不变；应说明此次主要比较哪一种效率，并报告随之变化的量。不要一次改环境数、奖励、噪声与学习率，再把结果归因于单个因素。</p>
+<p>工程中常用并行仿真提高采样吞吐；PPO 的开源实现也暴露这些批量参数。但“把显存填满”不是通用选择规则，环境数需要通过吞吐和任务覆盖共同选择。</p>
+<h2>6. DR 一直变化时如何判断停止</h2>
+<p>持续提高噪声、摩擦或负载范围，相当于持续改变优化问题。此时性能还有收益，不等于在固定分布上永远不收敛，也不能凭累计训练很久判断该停止。</p>
+<p>更有意义的终点是：由目标部署条件确定需要覆盖的范围，在该范围固定后，以独立评价检查是否满足成功率和失败边界。DR 过宽会增加学习成本；过窄又可能漏掉真实扰动。仿真内达到指标仍需经过对应实机条件的验证。</p>
+<h2>自测题</h2>
+<ol>
+<li>原始 rad 噪声与归一化观测噪声为什么不能直接比较数字？</li>
+<li>多帧平均为何对独立白噪声和固定零偏的效果不同？</li>
+<li>加倍环境数，吞吐、批量和末段覆盖分别可能怎样变化？</li>
+<li>DR 持续变化时，为什么不能仅看总奖励判断收敛？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<ul>
+<li>本机历史会话：2026-10-21“关节观测噪声”“并行环境与训练速度”，含吞吐、课程和长回合讨论；工程数字均按历史案例使用。</li>
+<li><a href="https://github.com/Denys88/rl_games">rl_games 配置说明</a>：批量与并行环境参数。</li>
+<li><a href="https://arxiv.org/abs/2107.04034">RMA 原论文</a>：潜变量与在线适应的研究实例。</li>
+</ul>
+<p><a href="#doc-249592145061">Rollout 与 GAE</a> · <a href="#doc-f7cd928554c5">EMA 滤波</a> · <a href="#doc-a728352e5a15">目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：补充历史噪声与训练效率讨论，区分时间相关性、样本效率、长回合覆盖和固定分布评价。</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-7e91e3cbb2f1"><h1>06 强化学习与在线优化的选择</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>“RL 不可能比设计得好的在线全局优化更好”成立吗？双手拧盖与机械臂接触任务中，应该在哪些层使用学习或优化？</p>
+<h2>快速回顾</h2>
+<p>相同真实模型、相同信息、相同目标和可行集合下，真正的全局最优当然不可超越。实际比较的是有限模型、有限预测时域和实时预算下的控制器，与经历大量离线训练的策略；两者承担的计算成本和误差来源不同。</p>
+<h2>1. 先把“最优”的前提写清楚</h2>
+<p>有限预测时域的模型预测控制（Model Predictive Control，MPC）可写为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mo>min</mo><mrow><msub><mi>u</mi><mrow><mn>0</mn><mi>:</mi><mi>H</mi><mo>&#x02212;</mo><mn>1</mn></mrow></msub></mrow></msub><munderover><mo>&#x02211;</mo><mrow><mi>k</mi><mo>&#x0003D;</mo><mn>0</mn></mrow><mrow><mi>H</mi><mo>&#x02212;</mo><mn>1</mn></mrow></munderover><mi>&#x02113;</mi><mo stretchy="false">&#x00028;</mo><msub><mi>x</mi><mi>k</mi></msub><mo>&#x0002C;</mo><msub><mi>u</mi><mi>k</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>V</mi><mi>f</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mi>x</mi><mi>H</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo><mspace width="1em" /><msub><mi>x</mi><mrow><mi>k</mi><mo>&#x0002B;</mo><mn>1</mn></mrow></msub><mo>&#x0003D;</mo><mi>f</mi><mo stretchy="false">&#x00028;</mo><msub><mi>x</mi><mi>k</mi></msub><mo>&#x0002C;</mo><msub><mi>u</mi><mi>k</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo><mspace width="1em" /><mo stretchy="false">&#x00028;</mo><msub><mi>x</mi><mi>k</mi></msub><mo>&#x0002C;</mo><msub><mi>u</mi><mi>k</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x02208;</mo><mi mathvariant="script">C</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>实际执行第一步，获取新状态后重新求解。即使每次把这个有限时域问题全局求解，也不自动等于真实无限时域任务的最优策略：模型 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi></mrow></math>、终端价值 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>V</mi><mi>f</mi></msub></mrow></math>、预测长度和状态估计都可能近似。</p>
+<p>RL 则通常把大量交互与优化放在离线训练，部署时调用 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>u</mi><mo>&#x0003D;</mo><msub><mi>&#x003C0;</mi><mi>&#x003B8;</mi></msub><mo stretchy="false">&#x00028;</mo><mi>o</mi><mo stretchy="false">&#x00029;</mo></mrow></math>。它不天然全局最优；奖励代理、训练分布和函数逼近也会引入偏差。历史会话提出了这一比较问题，本节是本轮补充的条件分析，不声称此前已完成了全部论证。</p>
+<h2>2. 按工程约束比较</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>在线优化／MPC</th>
+<th>RL 策略</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>在线计算</td>
+<td>要求解问题，依赖维数、接触结构和求解时限</td>
+<td>通常为一次网络推理，低延迟但仍要测最坏耗时</td>
+</tr>
+<tr>
+<td>模型与数据</td>
+<td>通常显式建模，模型误差会进入预测</td>
+<td>可从数据学到复杂响应，但需要采样并处理分布变化</td>
+</tr>
+<tr>
+<td>约束</td>
+<td>可以显式建模；仍受模型、可行性和容差影响</td>
+<td>普通奖励惩罚不保证硬约束满足</td>
+</tr>
+<tr>
+<td>长时接触与换指</td>
+<td>接触模式组合和长时域可能求解困难</td>
+<td>可学反馈行为，但探索和奖励设计困难</td>
+</tr>
+<tr>
+<td>改变目标</td>
+<td>在已有模型与约束内常能直接重设目标</td>
+<td>要看目标是否作为输入、训练是否覆盖；可能需重训</td>
+</tr>
+<tr>
+<td>诊断</td>
+<td>可看约束残差、模型与求解日志</td>
+<td>可看行为与分布；内部表示的解释通常更困难</td>
+</tr>
+</tbody></table></div>
+<p>这是一组常见取舍，不是全行业方法排名。模型预测控制也可以学习模型／终端价值；RL 也可以在部署时调用优化器，二者并不互斥。</p>
+<h2>3. 联系双手拧盖项目，为什么选择学习接触行为</h2>
+<p>拧盖涉及多指接触切换、摩擦、双手配合和反复换指。若每个控制周期都联合优化长时接触序列，建模和求解负担可能很重。在仿真中训练 PPO，再部署反馈策略，是把这些搜索成本移到训练阶段的一种路线；是否值得，取决于任务复用次数、仿真可信度和可用训练资源。</p>
+<p>项目中仍应保留可验证的关节映射、驱动接口、限幅、时间戳和任务评价。策略给出动作，并不意味着电流环、通信和约束处理也应交给同一个网络学习。对比基线可从可行的规则控制／轨迹加反馈开始，衡量成功率、掉落、末段转速与部署扰动下的表现，而不是只比较训练奖励。</p>
+<h2>4. 联系七轴臂和插接，什么时候优先优化与模型控制</h2>
+<p>已知目标位姿、清楚的关节限位和较可靠几何模型，适合先用数值 IK、路径规划与反馈控制完成自由空间运动。局部插接若有可用力反馈和明确接触方向，可以先建立阻抗／导纳或混合力位控制基线，再看残余误差是否值得学习。</p>
+<p>若希望策略与优化互补，可让学习模块预测残差、接触阶段或候选动作，再由受限优化／控制层执行。若使用动作投影，必须说明投影依赖的状态估计和约束模型；优化器的成功标志本身不证明真实系统安全。</p>
+<p>本段属于结合项目的选型建议，未宣称已经在你的插接项目中做过 RL 与 MPC 的实机性能对比。</p>
+<h2>自测题</h2>
+<ol>
+<li>有限时域问题求到全局最优，为什么还可能不是实际任务最优？</li>
+<li>网络推理快，为什么不能推出 RL 的总开发成本低？</li>
+<li>为什么拧盖可以学习接触行为，同时保留传统驱动和约束层？</li>
+<li>一项公平比较至少应对齐哪些目标、信息与计算条件？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<ul>
+<li>本机历史会话：2026-09-24“RL 与在线全局优化比较”的问题与可见讨论。</li>
+<li><a href="https://spinningup.openai.com/en/latest/algorithms/ppo.html">Spinning Up：PPO</a>：策略训练与部署计算的区分。</li>
+<li><a href="https://arxiv.org/abs/2403.02338">Twisting Lids Off with Two Hands</a>：实际查阅本地 v2 论文的接触任务、训练路线与实机部分，是方法实例，不是 RL 普遍优于优化的证明。</li>
+</ul>
+<p><a href="#doc-e4e5e7dfe7e8">约束优化</a> · <a href="#doc-ceb501256685">阻抗与导纳</a> · <a href="#doc-a728352e5a15">目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：补充最优性的前提，结合拧盖、七轴臂和插接讨论方法取舍。</li>
 </ul>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-7fca3733489e"><h1>电机与运动控制</h1>
-<p>讨论控制模式、控制环路与驱动接口，并联系具体设备和应用条件理解它们。</p>
-<h2>已有章节</h2>
+<p>从电机电气内环，到关节控制接口和上层反馈，按同一条控制链组织内容。原“电机与控制”专题已合并到这里。</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -395,19 +727,36 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 </thead>
 <tbody><tr>
 <td><a href="#doc-8f26ce775ad6">01 MIT 模式与电流模式</a></td>
-<td>两种模式的输入、PD 控制的计算位置、力矩与电流的关联，以及 MIT 与关节阻抗控制的关系。</td>
+<td>输入、PD 计算位置、力矩轴侧与关节阻抗的关系</td>
 </tr>
 <tr>
 <td><a href="#doc-790e3606b3b2">02 MIT 驱动器的仿真建模</a></td>
-<td>仿真需要的机械参数、力矩接口、增益、限幅和执行周期，以及提高真实性的方法。</td>
+<td>机械参数、执行接口、增益、限幅与时间尺度</td>
+</tr>
+<tr>
+<td><a href="#doc-78a98916c104">03 PMSM 与 FOC</a></td>
+<td>Clarke／Park、q 轴电流、电磁转矩与 SVPWM</td>
+</tr>
+<tr>
+<td><a href="#doc-488a261f943c">04 PID、重力补偿与计算力矩</a></td>
+<td>前馈与反馈、七轴 SDK 语义、为何重力平衡不是位置保持</td>
+</tr>
+<tr>
+<td><a href="#doc-ceb501256685">05 阻抗、导纳与力位混合控制</a></td>
+<td>柔顺动态、控制接口和力位任务划分</td>
+</tr>
+<tr>
+<td><a href="#doc-f7cd928554c5">06 EMA 滤波与反馈延迟</a></td>
+<td>时间常数、噪声衰减、闭环滞后与动作平滑</td>
 </tr>
 </tbody></table></div>
-<p>FOC 原理、反馈与计算力矩控制、阻抗与导纳控制见<a href="#doc-2dbc32b2c61f">电机与控制专题</a>。</p>
 <h2>待讨论主题</h2>
 <ul>
-<li>具体驱动器的模式定义与参数约定：需要结合用户实际设备手册确认。</li>
+<li>特定驱动器的电流定义、轴侧、内部补偿与实际带宽。</li>
+<li>FOC 完整电压方程、解耦补偿与弱磁运行。</li>
+<li>六维力传感器偏置、负载补偿及其频域噪声。</li>
 </ul>
-<p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<p><a href="#doc-8ec9a00bfd09">总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-8f26ce775ad6"><h1>01 MIT 模式与电流模式</h1>
 <p>创建日期：2026-11-07<br>最近更新：2026-11-07</p>
 <h2>本章解决什么问题</h2>
@@ -791,150 +1140,280 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li>2026-11-07：建立章节，整理最低限度的仿真设置、时间尺度、概念伪代码、增益估计和逐步提高真实性的方法。</li>
 <li>2026-11-09：将命名运算符改为网页预览兼容的正体写法，保持数学含义。</li>
 </ul>
-<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-9617ca8b8170"><h1>知识库系统</h1>
-<p>记录个人笔记库的内容组织、存储与跨设备维护设计，区分已经实现的功能和后续方案。</p>
-<h2>已有章节</h2>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>章节</th>
-<th>主要问题</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="#doc-204f16197df5">01 跨设备知识库设计</a></td>
-<td>如何创建私有仓库，通过 GitHub 免费维护、同步和阅读笔记？仓库、Pages 与独立网站有什么区别？怎样避免修改冲突？</td>
-</tr>
-</tbody></table></div>
-<h2>待讨论主题</h2>
-<ul>
-<li>在另一台电脑验证私有仓库的访问和认证：本机已通过 GitHub CLI 完成浏览器授权。</li>
-<li>在另一台电脑克隆仓库并验证拉取、生成阅读版、提交和推送的完整流程。</li>
-<li>是否需要在 GitHub 网页修改 Markdown 后自动生成阅读版。</li>
-<li>上传资料的解析、检索与整理流程；是否需要自动问答，尚未确定。</li>
-</ul>
-<p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
-<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-204f16197df5"><h1>跨设备知识库设计</h1>
-<p>创建日期：2026-11-09<br>最近更新：2026-11-09<br>来源：本次讨论整理、本工作区的 Markdown 与阅读版生成工具，以及文末实际查阅的 GitHub 官方文档。</p>
-<h2>1. 当前方案与目标</h2>
-<p>笔记需要在不同电脑上持续维护，也希望能够通过手机浏览、修改 Markdown 和上传技术资料。用户选择使用 GitHub 管理现有笔记，以减少服务器成本，并明确要求废弃此前的独立网站和手机界面方案。相关应用、界面、测试、截图和部署配置已删除，后续以 Markdown 和 GitHub 为维护方式。</p>
-<p>仓库为 <a href="https://github.com/Lucute7/lkw-technical-notes">Lucute7/lkw-technical-notes</a>，已通过认证查询确认是私有仓库。本地 Git 仓库已初始化并关联该地址，GitHub CLI 已安装，用户已完成浏览器授权。是否已取得最新内容，应通过远端版本核对，而不能仅凭本地保存或收到链接判断。</p>
-<p>内容源是 Markdown；<code>阅读版.html</code> 是由本地工具生成的离线阅读产物。GitHub 保存已经推送的共享版本，各电脑取得同一套文件后继续维护。</p>
-<h2>2. 笔记、资料和聊天记录的区别</h2>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>数据</th>
-<th>用途</th>
-<th>GitHub 维护方式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>已整理笔记</td>
-<td>长期复习的主题章节、公式、自测与结论</td>
-<td>Markdown、分类目录和复习清单一起提交</td>
-</tr>
-<tr>
-<td>技术资料</td>
-<td>PDF、图片、手册和示例等原始材料</td>
-<td>小型文件放在相关分类的 <code>assets/</code> 或 <code>examples/</code>，从章节链接</td>
-</tr>
-<tr>
-<td>本地聊天记录</td>
-<td>推理过程、尚未解决的问题和原始交流</td>
-<td>不会自动同步其他电脑的聊天；需要将已明确结论和待讨论问题整理到笔记</td>
-</tr>
-</tbody></table></div>
-<p>仓库中的笔记、未解决问题和 <code>AGENTS.md</code> 为不同电脑上的助手提供共同上下文。另一台电脑取得最新文件后，可以基于笔记继续讨论，不必依赖完整的原始聊天历史。</p>
-<p>上传手册不等于已经阅读或理解其中的内容。当前没有自动 OCR、资料抽取或自动问答；笔记只记录实际讨论和实际查阅过的材料。</p>
-<h2>3. 费用与权限</h2>
-<p>GitHub Free 个人方案提供不限数量的私有仓库（Private Repository），基本文本维护通常无需额外付费，不要求租服务器。本项目已确认使用私有仓库，通过 GitHub 账号控制访问。</p>
-<p>GitHub Actions、Codespaces、Git LFS 等附加功能有各自额度和计费规则，不能把“基本仓库免费”扩展为所有服务和任意文件量都永久免费。当前基本维护流程不要求启用这些附加功能。</p>
-<h2>4. 创建仓库与首次接入</h2>
-<h3>新建空仓库的方法</h3>
-<p>以下作为未来创建其他笔记库的操作参考。本项目已完成创建，首次接入时通过认证查询确认是私有空仓库。</p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-78a98916c104"><h1>03 PMSM 与 FOC</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>永磁同步电机（PMSM）的三相电流如何参与产生转矩？磁场定向控制（Field-Oriented Control，FOC）为什么需要 Clarke 与 Park 变换？</p>
+<h2>快速回顾</h2>
+<p>FOC 根据转子电角度把三相电流映射到旋转的 d/q 坐标系，以近似独立调节磁链相关分量和转矩相关分量。q 轴电流和电机电磁力矩相关；它不是关节输出力矩传感器，也不说明驱动器的电流定义或轴侧换算。</p>
+<h2>1. 主要控制链</h2>
+<p>典型电流 FOC 闭环如下：</p>
+<pre><code class="language-text">采样相电流 ia、ib、ic 与电角度 theta_e
+    -&gt; Clarke：静止坐标系 i_alpha、i_beta
+    -&gt; Park：旋转坐标系 i_d、i_q
+    -&gt; d/q 电流 PI 与电压／电流限制
+    -&gt; 逆 Park 与 SVPWM 生成逆变器开关信号
+    -&gt; PMSM 与电流采样反馈
+</code></pre>
+<p>实际实现可能使用两电流采样、不同 PWM 调制、采样补偿、反电势前馈或电流解耦；上图只是基本概念链。</p>
+<h2>2. 坐标变换的意义</h2>
+<p>Clarke 变换把三相量映射到静止两轴平面；平衡三相且无零序分量时，两维足以表示平面磁场。Park 变换再绕转子磁链同步旋转，使随电角度变化的交流分量在稳态时近似为直流量，PI 控制器更易处理。</p>
+<p>工程公式需明确 Clarke 的幅值不变还是功率不变归一化，d/q 轴方向，电角与机械角的关系，以及电流峰值还是 RMS。不同约定会改变换算系数，不能只复制一种符号表。</p>
+<h2>3. 电流与电磁转矩</h2>
+<p>表贴式永磁同步电机、采用常见峰值相电流与相应 Park 约定时，电磁转矩简化为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mi>e</mi></msub><mo>&#x02248;</mo><mfrac><mrow><mn>3</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mi>p</mi><msub><mi>&#x003C8;</mi><mi>f</mi></msub><msub><mi>i</mi><mi>q</mi></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>p</mi></mrow></math> 是极对数，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C8;</mi><mi>f</mi></msub></mrow></math> 是永磁磁链，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>i</mi><mi>q</mi></msub></mrow></math> 是 q 轴电流。符号和常数因坐标与电流归一化而异。凸极内嵌式 PMSM 还含 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>i</mi><mi>d</mi></msub></mrow></math> 和 d/q 电感差产生的磁阻转矩项。</p>
+<p>因此常见 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C4;</mi><mi>e</mi></msub><mo>&#x02248;</mo><msub><mi>K</mi><mi>t</mi></msub><msub><mi>i</mi><mi>q</mi></msub></mrow></math> 是已吸收到所选约定中的工程写法。电机电磁转矩经过转子惯量、轴承、减速器、效率和摩擦后，才与关节输出转矩相关。</p>
+<h2>4. PI 与 SVPWM</h2>
+<p>d/q 轴电流控制器比较实测电流和目标电流，PI 产生电压命令。电机绕组电感和电阻决定电流响应；电压受直流母线和调制饱和限制，目标电流可能无法达到。SVPWM（Space Vector Pulse Width Modulation）依据所需电压矢量选择逆变器开关占空比，受母线电压与扇区线性范围约束。</p>
+<p>电流模式仍是反馈控制，只是闭环主要控制 q 轴／电流。上层若需要位置或速度跟踪，还需另加外环或使用驱动器提供的更高层模式。</p>
+<h2>自测题</h2>
 <ol>
-<li>登录 GitHub，打开<a href="https://github.com/new">新建仓库页面</a>，或点击右上角“＋”并选择 <strong>New repository</strong>。</li>
-<li><strong>Owner</strong> 选择个人账号，<strong>Repository name</strong> 填写仓库名，例如 <code>technical-notes</code>；示例名称不代表本项目实际仓库名。<strong>Description</strong> 可填“个人技术笔记”或留空。</li>
-<li>可见性选择 <strong>Private</strong>，用于限制内容访问。</li>
-<li>已有本地笔记时，不预先添加 <strong>README</strong>、<strong>.gitignore</strong> 和 <strong>License</strong>，以创建空仓库。本地已有的目录与忽略规则可在首次上传时一并提交。</li>
-<li>点击 <strong>Create repository</strong>。看到快速设置或命令行示例页面，说明空仓库已经创建。</li>
-<li>复制地址栏中的仓库链接，格式为 <code>https://github.com/账号名/仓库名</code>，供本地关联使用。</li>
+<li>Clarke 与 Park 分别把量变换到什么坐标系？</li>
+<li>FOC 的电流 PI 控制的是什么量？q 轴电流为何常被用作转矩命令？</li>
+<li>为什么电流达到目标不等于关节轴端力矩已精确测得？</li>
+<li>使用厂商力矩常数时，还要确认哪些电流、角度和传动约定？</li>
 </ol>
-<h3>首次接入需要确认什么</h3>
-<p>创建远端仓库只准备了保存位置，本地文件尚未上传。接入时先检查远端默认分支和已有内容，再初始化或克隆本地仓库、配置认证、提交并推送。远端已有文件时要保留并合理合并，不直接覆盖。</p>
-<p>浏览器已登录 GitHub，不代表终端中的 Git 已具备访问私有仓库的权限。仓库链接用于定位仓库；实际读取和推送仍需要本机完成 GitHub 认证。不要把密码或访问令牌写进笔记或远端 URL。</p>
-<p>本机已通过 GitHub CLI 完成浏览器设备授权：命令行申请一次性代码，用户在 GitHub 官方授权页面登录并确认，工具在本机保存登录状态。一次性授权码不属于知识笔记，不应提交到仓库。当前提交身份使用账号名 <code>Lucute7</code> 及 GitHub 提供的 noreply 邮箱，不公开个人邮箱。</p>
-<h2>5. 不同电脑的日常维护流程</h2>
-<ol>
-<li>完成首次上传后，在另一台电脑克隆（Clone）同一仓库；每台电脑首次执行一次。</li>
-<li>每次开始维护前拉取（Pull）最新内容，再打开该仓库工作区讨论或编辑。有未处理的本地改动时，先保留这些改动再同步。</li>
-<li>修改章节、分类目录与复习清单，按主题重组内容，并检查受影响的旧结论和内部链接。</li>
-<li>运行 <code>python3 tools/build_reader.py</code> 重新生成阅读版。构建需要 Python 3.10+、Node.js 和仓库内的离线依赖；详见<a href="tools/README.md">阅读版生成工具</a>。</li>
-<li>检查差异，提交（Commit）并推送（Push）至 GitHub。</li>
-<li>其他设备再次拉取，或刷新 GitHub 页面，读取最新已推送内容。</li>
-</ol>
-<p>本地保存、提交、推送是三个不同动作。提交只记录在当前电脑，推送成功后其他设备才能从 GitHub 取得更新。可以使用 GitHub Desktop 完成常见同步操作，减少命令行操作。</p>
-<h2>6. 浏览器与手机阅读、编辑</h2>
-<p>登录有仓库访问权限的 GitHub 账号，可以在网页中阅读排版后的 Markdown、编辑文件并提交、上传资料。GitHub Markdown 支持数学表达式。手机浏览器也能使用这些功能，但长篇编辑的便利程度取决于屏幕和浏览器体验。</p>
-<p><code>阅读版.html</code> 在仓库预览中通常显示源码，不会像普通网页那样直接运行。需要完整离线阅读版时，下载后用支持 MathML 的浏览器打开；手机日常阅读优先使用 GitHub 的 Markdown 预览。</p>
-<p>GitHub 网页直接修改 Markdown 后，已提交的 HTML 不会自动重新生成。需要在有构建环境的电脑上拉取、生成阅读版并推送；如有需要，可另行配置自动构建。目前没有配置自动构建。</p>
-<h3>GitHub 仓库与 GitHub Pages</h3>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>方式</th>
-<th>用途</th>
-<th>当前选择</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>GitHub 仓库</td>
-<td>账号控制访问、文件编辑、版本记录与同步</td>
-<td>本项目使用这种方式维护笔记</td>
-</tr>
-<tr>
-<td>GitHub Pages</td>
-<td>将 HTML、CSS、JavaScript 发布成静态网站</td>
-<td>当前不启用；免费个人方案主要面向公开仓库</td>
-</tr>
-</tbody></table></div>
-<p>私有仓库不等于带账号密码保护的私有 Pages 网站。当前不因阅读需求而公开笔记，也不建设独立网站。GitHub Pages 的说明仅用于区分产品能力。</p>
-<h2>7. 资料大小、修改冲突与备份</h2>
-<p>小型 PDF、图片和示例材料可以存入仓库并在章节中引用。GitHub 网页上传单个文件上限为 25 MiB，普通 Git 仓库阻止大于 100 MiB 的文件。大量大文件不适合直接放进 Git 历史，应另外选择资料存储方式。</p>
-<p>两台电脑都从同一个旧版本开始修改，可能在同步时产生冲突。Git 能记录文件变化，但不能自动理解并合并相互矛盾的技术结论。需要检查双方内容、保留有效知识并解决冲突，不使用强制推送来跳过内容核对。</p>
-<p>版本历史有助于追溯，但不替代独立备份。保留本地副本，并根据需要另存完整笔记目录。未推送内容还不在 GitHub 上；存在于未提交文件中的修改也不在 Git 历史中。</p>
-<h2>8. 快速回顾与自测</h2>
-<ul>
-<li>当前以 Markdown 和 GitHub 维护，独立网站与手机界面方案已废弃并删除相关文件。</li>
-<li>GitHub 保存已经推送的共享版本；每次先同步，修改后提交并推送。</li>
-<li>不同电脑共享的是整理后的笔记，不会自动共享完整聊天记录。</li>
-<li>GitHub 页面可直接阅读和修改 Markdown；离线阅读版需要构建并下载后打开。</li>
-<li>基本私有仓库维护可免费使用，大文件和附加服务另有规则。</li>
-</ul>
-<p>自测问题：</p>
-<ol>
-<li>本地保存、提交和推送分别改变了哪里？为什么提交之后还需要推送？</li>
-<li>浏览器已经登录，为什么终端访问私有仓库还可能需要认证？</li>
-<li>两台电脑分别修改同一份笔记后，怎样避免覆盖有效内容？</li>
-<li>网页修改 Markdown 后，为什么离线阅读版还可能是旧版本？</li>
-<li>上传一份手册，为什么不能等同于已经整理其中的技术结论？</li>
-</ol>
-<h2>9. 实际查阅的资料</h2>
-<ul>
-<li><a href="https://docs.github.com/en/get-started/learning-about-github/githubs-plans">GitHub 套餐说明</a>：免费私有仓库和附加服务额度。</li>
-<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages 介绍</a>：静态网站托管的定义。</li>
-<li><a href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository">向仓库添加文件</a>：网页上传方式和文件限制。</li>
-<li><a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github">GitHub 大文件限制</a>：普通 Git 仓库的文件大小限制。</li>
-<li><a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions">GitHub 数学表达式</a>：Markdown 公式支持。</li>
-<li><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">创建新仓库</a>：仓库名称、可见性和初始化选项。</li>
-</ul>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 4 章与已存在的 MIT／电流模式章节；未查阅特定电机或驱动器手册，公式条件按常见 PMSM 约定说明。</p>
+<p><a href="#doc-8f26ce775ad6">MIT 模式与电流模式</a> · <a href="#doc-7fca3733489e">分类目录</a></p>
 <h2>更新记录</h2>
 <ul>
-<li>2026-11-09：根据跨设备维护需求，讨论共享存储、资料和聊天上下文的区别，并补充 GitHub 维护与创建仓库的方法。</li>
-<li>2026-11-09：用户提供目标仓库地址，并明确废弃独立网站和手机界面方案。删除相关应用、截图、测试和部署文件，将正文改为 GitHub 维护流程；完成本地 Git 初始化和 GitHub 浏览器授权，并确认目标仓库为私有。</li>
+<li><p>2026-11-09：合并到电机与运动控制分类，同步章节编号和关联入口。</p>
+</li>
+<li><p>2026-11-09：建立 PMSM、FOC、Clarke／Park 与电流力矩边界章节。</p>
+</li>
 </ul>
-<p><a href="#doc-9617ca8b8170">返回分类目录</a> · <a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-488a261f943c"><h1>04 PID、重力补偿与计算力矩</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>位置误差反馈、重力前馈和完整动力学前馈分别补偿什么？为什么提高位置增益不总能改善接触或跟踪？</p>
+<h2>快速回顾</h2>
+<p>PID／PD 根据测得的误差修正输出；重力补偿依据构型提供前馈；计算力矩进一步使用惯性和速度耦合模型。三者都受传感、模型、延迟和执行器限幅影响，不能用一个名词概括“闭环精度”。</p>
+<h2>1. PD 与 PID</h2>
+<p>以关节位置误差 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>e</mi><mo>&#x0003D;</mo><msub><mi>q</mi><mi>d</mi></msub><mo>&#x02212;</mo><mi>q</mi></mrow></math> 表示，一种常用形式是：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mrow><mi>f</mi><mi>b</mi></mrow></msub><mo>&#x0003D;</mo><msub><mi>K</mi><mi>p</mi></msub><mi>e</mi><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x02212;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>K</mi><mi>i</mi></msub><mo>&#x0222B;</mo><mi>e</mi><mspace width="0.167em" /><mi>d</mi><mi>t</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow></math> 提供位置恢复作用，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>d</mi></msub></mrow></math> 提供速度误差阻尼，积分项处理持续偏差。若采用误差导数形式 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover><mi>e</mi><mo>&#x002D9;</mo></mover></mrow></math>，其符号、目标速度定义必须保持一致。离散实现中需考虑微分噪声、积分饱和、采样周期和抗饱和策略。</p>
+<p>增大 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow></math> 可能提高局部刚度，也会放大观测误差和接触冲击、促使输出饱和；<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>d</mi></msub></mrow></math> 使用噪声很大的速度反馈可能诱发力矩抖动。增益稳定范围需结合闭环周期和机构验证。</p>
+<h2>2. 重力前馈</h2>
+<p>常见关节 PD 加重力补偿：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>K</mi><mi>p</mi></msub><mi>e</mi><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x02212;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>模型方向和求解器约定一致时，前馈补偿机器人的静态重力项，反馈负责剩余误差。前馈不是额外的位置闭环，也不会自动消除摩擦、外部接触和传动误差。</p>
+<p>如果重力模型含未分离的偏置项，应如实标识，不要把拟合偏置说成已经独立确认的物理重力来源。详细边界见<a href="#doc-c906f403567d">重力与摩擦辨识</a>。</p>
+<h2>3. 计算力矩控制</h2>
+<p>以动力学 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><mi>C</mi><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>g</mi><mo>&#x0003D;</mo><mi>&#x003C4;</mi></mrow></math> 为例，定义期望加速度：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>a</mi><mi>d</mi></msub><mo>&#x0003D;</mo><msub><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mi>d</mi></msub><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x02212;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>K</mi><mi>p</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mi>q</mi><mi>d</mi></msub><mo>&#x02212;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>理想逆动力学命令：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><msub><mi>a</mi><mi>d</mi></msub><mo>&#x0002B;</mo><mi>C</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>代入精确模型且忽略摩擦、饱和和接触时，得到近似线性误差响应。实际模型误差、时延、外力和设备保护会造成偏差，所以此公式是控制结构，不是稳定性或实机性能保证。</p>
+<h2>4. 控制层级</h2>
+<p>更快的内层电流闭环通常调节电磁转矩相关电流，关节伺服／计算力矩在其上产生需求。命令通过减速器时要确认每一层是否已经包含传动比、方向、效率和限幅，不能将同一补偿叠加两次。</p>
+<p>如果需要控制接触时的柔顺响应，应先明确正在使用的电流、位置或力矩接口，及力传感器／估算器的带宽。阻抗与导纳详见<a href="#doc-ceb501256685">下一章</a>。</p>
+<h2>5. 项目中的纯重力补偿，为什么不等于位置保持</h2>
+<p>历史七轴臂讨论中，重力补偿会话不含位置弹簧或速度阻尼；本轮查看 SDK 的 <code>GravityCompensationSession</code> 仍显示其没有参考输入和 PD 项，<code>update()</code> 是心跳。其理想补偿结构是：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mrow><mi>m</mi><mi>o</mi><mi>d</mi><mi>e</mi><mi>l</mi></mrow></msub><mo>&#x0003D;</mo><mover accent="true"><mi>g</mi><mo>&#x0005E;</mo></mover><mo stretchy="false">&#x00028;</mo><msub><mi>q</mi><mrow><mi>m</mi><mi>e</mi><mi>a</mi><mi>s</mi></mrow></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>b</mi><mn>0</mn></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p>实际发送还要经过设备约定下的限幅等处理。虽然 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>q</mi><mrow><mi>m</mi><mi>e</mi><mi>a</mi><mi>s</mi></mrow></msub></mrow></math> 来自反馈，模型也随实测姿态更新，但控制律没有比较 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>q</mi><mi>d</mi></msub><mo>&#x02212;</mo><mi>q</mi></mrow></math>，所以不能把它说成能恢复到给定姿态的位置闭环。电流内环可以闭环，也不意味着外层已经闭环调节真实关节力矩。</p>
+<p>对真实动力学：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><mi>C</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>&#x003C4;</mi><mi>f</mi></msub><mo>&#x0003D;</mo><mi>&#x003C4;</mi><mo>&#x0002B;</mo><msub><mi>&#x003C4;</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mo>&#x0002C;</mo></mrow></math></div>
+<p>即使 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover accent="true"><mi>g</mi><mo>&#x0005E;</mo></mover><mo>&#x0003D;</mo><mi>g</mi></mrow></math> 且无偏置，外力、初速度和摩擦仍然决定运动；没有弹簧项把偏离拉回，没有阻尼项主动消耗运动。仿真或某次姿态下能停住，可能依赖静摩擦，不是“所有姿态位置稳定”的证明。</p>
+<h2>6. 为什么不立即换成完整计算力矩</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>目标／条件</th>
+<th>可以优先考虑</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>研究近似重力平衡、允许人手引导</td>
+<td>已验证范围内的重力补偿</td>
+<td>控制结构简单，便于观察模型残差；不能当位置保持器</td>
+</tr>
+<tr>
+<td>跟踪关节参考姿态／轨迹</td>
+<td>重力前馈加 PD，并处理饱和</td>
+<td>用反馈处理模型残差，同时明确参考和速度质量</td>
+</tr>
+<tr>
+<td>快速轨迹、耦合显著且模型和执行带宽可靠</td>
+<td>逆动力学／计算力矩</td>
+<td>补偿惯性与速度耦合，但对模型、加速度目标和时序要求更高</td>
+</tr>
+<tr>
+<td>接触任务、希望可控柔顺</td>
+<td>合适接口上的阻抗／导纳</td>
+<td>把接触响应作为设计目标，而不是单纯加大位置增益</td>
+</tr>
+</tbody></table></div>
+<p>标准机器人教材与库中，上述结构都很常见；“完整动力学项最多”并不意味着对当前硬件最合适。当前项目仍需区分协议力矩标度、可用反馈和模型精度，先提高这些环节的可信度，通常比立刻叠加更多补偿项更有信息量。这里是选型分析，未替你改变实机控制律。</p>
+<p>本轮查看的 <code>TorqueControlSession</code> 还明确把调用方输入定义为重力之外的额外力矩，SDK 在内部叠加重力前馈；不能把另一个厂商“直接力矩接口”的示例照搬后再次加重力。是否自动补偿，应逐接口核对，不能凭模式名称推断。</p>
+<h2>7. 验证控制效果应看什么</h2>
+<p>关节跟踪可比较位置／速度误差与饱和占比；重力补偿可检查多姿态漂移和外力下响应；接触控制还要看接触力、过冲和通信延迟。使用电流估算的“力矩反馈”时，应标明其测量来源，避免把同一个比例系数的回读自洽当成独立力矩验证。详见<a href="#doc-081ee610c15a">电流—力矩辨识</a>。</p>
+<p>对反馈噪声引入滤波时，要同时检查延迟；仅把曲线变平滑不足以证明闭环变好，见<a href="#doc-f7cd928554c5">EMA 滤波</a>。</p>
+<h2>自测题</h2>
+<ol>
+<li><p>前馈重力项与 PD 误差项各解决什么问题？</p>
+</li>
+<li><p>积分项能缓解什么误差，又为什么可能累积饱和？</p>
+</li>
+<li><p>计算力矩公式的哪些前提在真实设备上容易失效？</p>
+</li>
+<li><p>为什么更高 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow></math> 可能带来冲击和饱和？</p>
+</li>
+<li><p>电流环、关节控制器和高层轨迹各处于哪一层？</p>
+</li>
+<li><p>重力补偿随实测姿态更新，为什么仍不构成位置误差调节？</p>
+</li>
+<li><p>调用方怎样避免和 SDK 内部重复叠加重力？</p>
+</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>补充依据：本机 2026-10-29“力矩控制整体流程”、2026-11-02“当前重力补偿控制律”历史会话；本轮实际查阅 <code>lkw-jxb/src/arm7_sdk/control/gravity.py</code>，区分无参考的重力会话与内部自动叠加前馈的力矩会话。项目实现与通用选型建议分别表述。</p>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 6 章及 MIT 模式笔记；采用标准刚体动力学反馈形式，未针对具体设备调参。</p>
+<p><a href="#doc-ceb501256685">阻抗与导纳</a> · <a href="#doc-bf866bb4a3e8">动力学方程</a> · <a href="#doc-7fca3733489e">目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li><p>2026-11-09：联系七轴 SDK 区分重力平衡、位置保持和电流／力矩闭环，补充计算力矩的选择条件与验证指标。</p>
+</li>
+<li><p>2026-11-09：建立反馈、重力前馈和计算力矩的关系与适用边界。</p>
+</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-ceb501256685"><h1>05 阻抗、导纳与力位混合控制</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>机器人接触环境时，如何定义柔顺响应？阻抗与导纳控制需要什么硬件接口？在不同任务空间方向，怎样同时执行位置和力任务？</p>
+<h2>快速回顾</h2>
+<p>阻抗塑造“运动偏差—作用力”的动态关系，导纳根据测得的外力生成运动参考。它们不是仅靠改一个增益即可互换的算法，所需的执行器能力和力反馈通路不同。力位混合须由任务几何与接触约束定义方向。</p>
+<h2>1. 阻抗控制</h2>
+<p>设末端误差 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>e</mi><mo>&#x0003D;</mo><mi>x</mi><mo>&#x02212;</mo><msub><mi>x</mi><mi>d</mi></msub></mrow></math>，一种期望阻抗关系为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>F</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mo>&#x0003D;</mo><msub><mi>M</mi><mi>d</mi></msub><mover><mi>e</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><msub><mi>B</mi><mi>d</mi></msub><mover><mi>e</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mi>e</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>M</mi><mi>d</mi></msub><mo>&#x0002C;</mo><msub><mi>B</mi><mi>d</mi></msub><mo>&#x0002C;</mo><msub><mi>K</mi><mi>d</mi></msub></mrow></math> 分别表示期望惯性、阻尼、刚度矩阵。此处 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>F</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub></mrow></math> 是与误差约定相配的外力；若定义方向相反，公式整体符号相应改变。机器人依据位姿误差生成期望 Wrench，再经任务 Jacobian 映射为关节广义力矩，并由力矩接口执行。</p>
+<p>直接力矩阻抗需要可信反馈和足够快的力矩控制。位置伺服机器人也可通过外层算法产生等效柔顺行为，但需考虑位置内环延迟与带宽，不能无条件等同。</p>
+<h2>2. 导纳控制</h2>
+<p>导纳控制的典型思路是：测量外力后，求解虚拟质量—阻尼—弹簧方程，更新期望位置或速度；再由内层位置伺服跟踪该参考。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>阻抗</th>
+<th>导纳</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要输入</td>
+<td>运动状态及目标</td>
+<td>外力／力矩测量与目标</td>
+</tr>
+<tr>
+<td>主要输出</td>
+<td>期望力／力矩</td>
+<td>期望运动</td>
+</tr>
+<tr>
+<td>常见适用条件</td>
+<td>可控力矩或低阻抗执行器</td>
+<td>稳定位置伺服并有可信力测量</td>
+</tr>
+<tr>
+<td>核心问题</td>
+<td>力矩执行、动力学耦合及接触稳定</td>
+<td>传感偏置、离散积分、位置内环延迟</td>
+</tr>
+</tbody></table></div>
+<p>两类方法都须防止噪声被放大、输出超限和能量注入。给它们同名的刚度、阻尼数值，并不保证响应相同。</p>
+<h2>3. 混合力位控制</h2>
+<p>例如插入任务，孔轴方向需要限制推进力或控制法向力，横向需要调整位置，姿态方向还可能需要顺应。方向划分要依据工件几何、当前接触法向和任务语义；混合控制矩阵与坐标轴变换须保持一致。</p>
+<p>未知表面法向、摩擦及装配误差会改变实际受限方向。在不同方向同时硬约束位置和法向力可能过约束；“力控方向”和“位置控方向”不是任意独立的按钮。</p>
+<h2>4. 易错点</h2>
+<ul>
+<li>位置跟踪加力惩罚，不自动产生稳定的接触力闭环。</li>
+<li>由电机电流或动力学残差估算出的力，必须标明其模型假设、参考点、补偿项和延迟；估算不等同于直接测量。</li>
+<li>反馈控制器与仿真内置驱动器可能重复执行 PD，造成实际刚度偏高。</li>
+<li>同一时刻的刚度与稳定性还受惯量、采样、目标插值、接触刚度和力矩限幅影响。</li>
+</ul>
+<h2>自测题</h2>
+<ol>
+<li>阻抗把什么量映射成什么响应？导纳的输入输出是什么？</li>
+<li>为什么导纳通常依赖力测量和内层位置伺服？</li>
+<li>刚性接触时为何要根据接触几何重新判断任务空间方向？</li>
+<li>怎样排查关节仿真中重复 PD 的问题？</li>
+<li>估算力反馈还应说明哪几项信息？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本地《学习资料/gpt会话整理.md》第 6 章及本地精密插接设计文档；不同工程控制器的具体实现需查对应 SDK 和传感器资料。</p>
+<p><a href="#doc-488a261f943c">反馈与模型控制</a> · <a href="#doc-8f26ce775ad6">MIT 模式与电流模式</a> · <a href="#doc-7fca3733489e">目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li><p>2026-11-09：合并到电机与运动控制分类，同步章节编号和关联入口。</p>
+</li>
+<li><p>2026-11-09：建立阻抗、导纳与力位混合控制章节，区分接口、输出和验证条件。</p>
+</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-f7cd928554c5"><h1>06 EMA 滤波与反馈延迟</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>EMA 是控制算法吗？为什么曲线更平滑，控制效果却可能变差？怎样把平滑系数与实际采样时间联系起来？</p>
+<h2>快速回顾</h2>
+<p>指数移动平均（Exponential Moving Average，EMA）是一阶递归低通滤波器，可用于测量、速度估计或指令平滑，本身不决定控制目标。滤掉快速变化，也会引入相位滞后；闭环中必须评估这一代价。</p>
+<h2>1. 递推式与记忆长度</h2>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>y</mi><mi>k</mi></msub><mo>&#x0003D;</mo><mi>&#x003B1;</mi><msub><mi>x</mi><mi>k</mi></msub><mo>&#x0002B;</mo><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x02212;</mo><mi>&#x003B1;</mi><mo stretchy="false">&#x00029;</mo><msub><mi>y</mi><mrow><mi>k</mi><mo>&#x02212;</mo><mn>1</mn></mrow></msub><mo>&#x0002C;</mo><mspace width="2em" /><mn>0</mn><mo>&#x0003C;</mo><mi>&#x003B1;</mi><mo>&#x02264;</mo><mn>1</mn><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>x</mi><mi>k</mi></msub></mrow></math> 为当前输入，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mi>k</mi></msub></mrow></math> 为输出。<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B1;</mi><mo>&#x0003D;</mo><mn>1</mn></mrow></math> 时不平滑；<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B1;</mi></mrow></math> 越小，过去样本权重衰减越慢。展开可见旧样本权重按 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x02212;</mo><mi>&#x003B1;</mi><msup><mo stretchy="false">&#x00029;</mo><mi>j</mi></msup></mrow></math> 衰减，不是对固定窗口等权平均。</p>
+<p>对一阶连续低通 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C4;</mi><mover><mi>y</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>y</mi><mo>&#x0003D;</mo><mi>x</mi></mrow></math>，假设采样间隔内输入保持，精确离散化给出：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003B1;</mi><mo>&#x0003D;</mo><mn>1</mn><mo>&#x02212;</mo><mi>exp</mi><mo stretchy="false">&#x00028;</mo><mo>&#x02212;</mo><msub><mi>T</mi><mi>s</mi></msub><mo>&#x0002F;</mo><mi>&#x003C4;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mi>s</mi></msub></mrow></math> 为采样周期，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C4;</mi></mrow></math> 为时间常数。常见近似 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B1;</mi><mo>&#x0003D;</mo><msub><mi>T</mi><mi>s</mi></msub><mo>&#x0002F;</mo><mo stretchy="false">&#x00028;</mo><mi>&#x003C4;</mi><mo>&#x0002B;</mo><msub><mi>T</mi><mi>s</mi></msub><mo stretchy="false">&#x00029;</mo></mrow></math> 来自后向欧拉离散化，二者在小采样周期下接近，但不是完全相同的定义。采样间隔变化时，可按实际间隔计算 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003B1;</mi><mi>k</mi></msub></mrow></math>，而不是默认线程调用频率恒定。</p>
+<p>示例：希望 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mn>0.05</mn><mspace width="0.167em" /><mi>&#x00073;</mi></mrow></math>，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mi>s</mi></msub><mo>&#x0003D;</mo><mn>0.01</mn><mspace width="0.167em" /><mi>&#x00073;</mi></mrow></math> 时精确离散系数约为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>0.181</mn></mrow></math>；这只是算例，不能直接用作你的驱动器增益或滤波配置。</p>
+<h2>2. 为什么滤波会影响闭环</h2>
+<p>EMA 的传递函数为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>H</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mfrac><mrow><mi>&#x003B1;</mi></mrow><mrow><mn>1</mn><mo>&#x02212;</mo><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x02212;</mo><mi>&#x003B1;</mi><mo stretchy="false">&#x00029;</mo><msup><mi>z</mi><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup></mrow></mfrac><mo>&#x0002E;</mo></mrow></math></div>
+<p>高频噪声被衰减，同时动态信号也被延后。对于独立零均值白噪声，稳态输出方差为输入方差的 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B1;</mi><mo>&#x0002F;</mo><mo stretchy="false">&#x00028;</mo><mn>2</mn><mo>&#x02212;</mo><mi>&#x003B1;</mi><mo stretchy="false">&#x00029;</mo></mrow></math>；该结论不适用于把固定偏置消除，也不说明真实接触信号都该被滤掉。</p>
+<p>在关节阻尼反馈 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C4;</mi><mi>d</mi></msub><mo>&#x0003D;</mo><mo>&#x02212;</mo><msub><mi>K</mi><mi>d</mi></msub><mover accent="true"><mrow><mover><mi>q</mi><mo>&#x002D9;</mo></mover></mrow><mo>&#x0005E;</mo></mover></mrow></math> 中，滤波过重会让速度估计滞后于真实速度。控制器可能继续沿用旧方向施加力矩，降低有效阻尼或稳定裕度。应结合采样、通信和执行器延迟验证闭环，而不是只看曲线是否好看。</p>
+<h2>3. 联系项目，哪些地方适合，哪些要谨慎</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>使用位置</th>
+<th>目的</th>
+<th>主要代价／检查</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关节差分速度</td>
+<td>减少编码器量化与差分放大噪声</td>
+<td>使用真实时间戳，检查速度相位与阻尼反馈</td>
+</tr>
+<tr>
+<td>力传感器测量</td>
+<td>减少高频测量噪声</td>
+<td>碰撞峰值也可能被削弱；保留原始通道检查峰值</td>
+</tr>
+<tr>
+<td>RL 动作目标</td>
+<td>降低指令抖动</td>
+<td>改变实际动作动态，应在训练和部署中保持一致</td>
+</tr>
+<tr>
+<td>重力参数辨识数据</td>
+<td>降低部分随机波动</td>
+<td>不混合不同姿态、速度或方向段，避免滞后造成配对错误</td>
+</tr>
+</tbody></table></div>
+<p>历史七轴臂纯重力补偿不含速度反馈，不能因为速度曲线噪声大就认定必须给重力律加 EMA。只有该量进入控制或辨识时，才评估其噪声如何影响结果。对拧盖策略追加动作滤波也不是无成本修复：策略训练时没见过的延迟可能改变抓握和换指时机。</p>
+<p>工程中一阶低通、滑动平均、模型观测器和 Kalman 滤波都有应用。EMA 计算和调试简单；若有可信的动力学与噪声模型，状态估计器能进一步融合信息，但会增加建模和失配问题。没有一个滤波器普遍适用于所有传感通道。</p>
+<h2>自测题</h2>
+<ol>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B1;</mi></mrow></math> 不变但采样周期减半，实际滤波时间尺度是否不变？</li>
+<li>EMA 能否消除编码器固定零偏？</li>
+<li>为什么降低速度曲线噪声后，阻尼控制仍可能更差？</li>
+<li>部署时新增动作平滑，为什么要回到仿真检查策略？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<p>整理依据：本机 2026-09-22“EMA 是什么控制算法”的历史会话；本轮由一阶低通方程补充离散化、延迟与项目应用分析。方差公式假设输入为独立白噪声，未声称对真实设备噪声完成建模。</p>
+<p><a href="#doc-488a261f943c">反馈与模型控制</a> · <a href="#doc-8ea37ea78777">观测噪声</a> · <a href="#doc-7fca3733489e">目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：补入 EMA 原理，联系速度反馈、辨识与 RL 动作动态说明平滑与延迟取舍。</li>
+</ul>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-d0008fb7c36d"><h1>数学与运动学</h1>
 <p>统一坐标、刚体姿态、雅可比和数值逆解的记号，支持运动学、优化和控制章节。</p>
 <h2>已有章节</h2>
@@ -955,7 +1434,7 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 </tr>
 <tr>
 <td><a href="#doc-d914d0fe7e11">03 SVD、伪逆与逆运动学</a></td>
-<td>奇异性、阻尼、零空间以及迭代 IK 的条件。</td>
+<td>奇异性、阻尼、零空间、残差雅可比、数值差分，以及七轴 IK 方法选择。</td>
 </tr>
 </tbody></table></div>
 <p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
@@ -1166,20 +1645,82 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 </tr>
 </tbody></table></div>
 <p>小步 IK 可写成带关节步长约束的二次规划（QP）；完整非线性位姿、复杂碰撞或接触联合求解通常是非线性规划（NLP），见<a href="#doc-e4e5e7dfe7e8">约束优化</a>。</p>
+<h2>6. 几何雅可比与残差雅可比为什么不完全一样</h2>
+<p>历史七轴臂 demo 把 IK 写成带关节上下界的非线性最小二乘。设残差为“当前减目标”：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>w</mi><mi>p</mi></msub><mo stretchy="false">&#x00028;</mo><mi>p</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><msub><mi>p</mi><mi>d</mi></msub><mo stretchy="false">&#x00029;</mo></mtd></mtr><mtr><mtd><msub><mi>w</mi><mi>R</mi></msub><mrow><mi mathvariant="normal">L</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">g</mi></mrow><mo stretchy="false">&#x00028;</mo><msubsup><mi>R</mi><mi>d</mi><mi>T</mi></msubsup><mi>R</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo stretchy="false">&#x00029;</mo></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002C;</mo><mspace width="2em" /><msub><mo>min</mo><mrow><msub><mi>q</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>&#x02264;</mo><mi>q</mi><mo>&#x02264;</mo><msub><mi>q</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></msub><mfrac><mn>1</mn><mn>2</mn></mfrac><mo fence="false" stretchy="false">&#x02016;</mo><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><msubsup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn><mn>2</mn></msubsup><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>w</mi><mi>p</mi></msub><mo>&#x0002C;</mo><msub><mi>w</mi><mi>R</mi></msub></mrow></math> 用于平衡 m 与 rad；<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mrow><mi mathvariant="normal">L</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">g</mi></mrow></mrow></math> 在此取旋转向量形式。残差雅可比定义为 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>J</mi><mi>r</mi></msub><mo>&#x0003D;</mo><mo>&#x02202;</mo><mi>r</mi><mo>&#x0002F;</mo><mo>&#x02202;</mo><mi>q</mi></mrow></math>，局部模型是 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002B;</mo><mi>&#x00394;</mi><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02248;</mo><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>J</mi><mi>r</mi></msub><mi>&#x00394;</mi><mi>q</mi></mrow></math>，因此修正方向应解 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>J</mi><mi>r</mi></msub><mi>&#x00394;</mi><mi>q</mi><mo>&#x02248;</mo><mo>&#x02212;</mo><mi>r</mi></mrow></math>。这与前面用“目标减当前”写成 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>J</mi><mi>&#x00394;</mi><mi>q</mi><mo>&#x02248;</mo><mi>e</mi></mrow></math> 的符号约定不同。</p>
+<p>几何雅可比描述关节速度到末端线／角速度；残差雅可比还要包含权重、坐标表达和姿态误差映射的导数。小误差时两者有简单近似关系，大旋转下不能直接忽略 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mrow><mi mathvariant="normal">L</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">g</mi></mrow></mrow></math> 的微分。Pinocchio 官方 IK 示例使用 <code>Jlog6</code> 修正位姿误差的导数，说明即使已有机器人雅可比，仍需对接所选残差。</p>
+<p>对第 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>j</mi></mrow></math> 个关节，中心有限差分为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mo stretchy="false">&#x00028;</mo><msub><mi>J</mi><mi>r</mi></msub><msub><mo stretchy="false">&#x00029;</mo><mrow><mi>:</mi><mo>&#x0002C;</mo><mi>j</mi></mrow></msub><mo>&#x02248;</mo><mfrac><mrow><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002B;</mo><mi>h</mi><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><mi>h</mi><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="false">&#x00029;</mo></mrow><mrow><mn>2</mn><mi>h</mi></mrow></mfrac><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>e</mi><mi>j</mi></msub></mrow></math> 为单位基向量，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>h</mi></mrow></math> 为小关节扰动。对七轴问题，一次完整中心差分通常需约 14 次扰动残差求值；实际求解器可复用、并行或在边界改用单侧差分。这些扰动在模型计算中进行，不要求实机逐次试动。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>h</mi></mrow></math> 太小会受浮点消减误差影响，太大会破坏局部近似。改变步长复核导数，并与解析／库雅可比做方向检查，比看到求解器返回成功更能定位符号与坐标问题。</p>
+<h2>7. 为什么入门 demo 用 least_squares，实际又怎样选</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>路线</th>
+<th>选择理由</th>
+<th>仍需自己处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>least_squares</code> 加数值差分</td>
+<td>小规模快速验证，可直接给关节 bounds，信赖域管理步长</td>
+<td>残差量纲、碰撞、最终可执行性；函数求值成本</td>
+</tr>
+<tr>
+<td>DLS／LM 加正确残差导数</td>
+<td>便于利用运动学结构、降低反复 FK 成本</td>
+<td>限位、步长、阻尼、失败与实时预算</td>
+</tr>
+<tr>
+<td>速度 IK／QP</td>
+<td>每周期小步跟踪，便于显式加入线性化速度和限位条件</td>
+<td>线性化有效域、离散安全余量和求解时限</td>
+</tr>
+<tr>
+<td>更完整的非线性优化</td>
+<td>多任务、位姿与复杂约束联合考虑</td>
+<td>初值、局部最优、导数和更高计算成本</td>
+</tr>
+</tbody></table></div>
+<p>SciPy 的 TRF 支持变量 bounds；LM 不能直接接受这些 bounds。选了 <code>least_squares</code> 不代表碰撞约束也自动存在；遇到不可达或受阻目标，仍要检查最终位置／姿态误差和碰撞。</p>
+<p>科研与工程工具中，解析反解、DLS、受限最小二乘和 QP 都有成熟用例。SciPy 与 Pinocchio 的公开示例分别支持上述两条路线，但不能据此断言工业机械臂统一使用某一种。对当前七轴臂，先用现有最小二乘跑通模型与限位；若进入高频连续控制、或反复 FK 成为瓶颈，再根据计时与约束需求选择正确的解析导数、DLS 或 QP。</p>
+<h2>8. 从测试目标到真实任务：初值、连续性与模型误差</h2>
+<p>“先扰动关节角、用 FK 生成可达目标，再做 IK”是模型自洽测试，不是实机任务目标的来源。真实目标来自规划、视觉或操作者；初值通常取当前实测关节角，连续轨迹中可用上一有效解热启动，并持续核对真实状态。</p>
+<p>七轴同一末端目标可能有多解。用参考姿态、限位余量和连续性代价选解，防止相邻目标之间跳支路。多初值重启可增加找到其他局部解的机会，但不能保证全局成功；每个候选还要经过约束和路径验证。</p>
+<p>解析 IK 和数值 IK 都在求同一近似模型的反解。更换求解器不能自动修正关节零位、连杆几何、TCP 或相机外参误差：前者要标定，后者见<a href="#doc-fefa32f97ce0">视觉坐标对齐</a>。接触力误差则还需要合适的反馈与柔顺控制。</p>
 <h2>自测题</h2>
 <ol>
-<li>奇异值接近零意味着机器人在该方向上发生了什么？</li>
-<li>伪逆能否让不可达目标变得可达？最小范数指什么？</li>
-<li>DLS 如何改变小奇异值方向的增益？增大阻尼牺牲什么？</li>
-<li>精确零空间项与阻尼近似有什么区别？</li>
-<li>IK 成功为何不能保证起点到终点之间没有碰撞？</li>
+<li><p>奇异值接近零意味着机器人在该方向上发生了什么？</p>
+</li>
+<li><p>伪逆能否让不可达目标变得可达？最小范数指什么？</p>
+</li>
+<li><p>DLS 如何改变小奇异值方向的增益？增大阻尼牺牲什么？</p>
+</li>
+<li><p>精确零空间项与阻尼近似有什么区别？</p>
+</li>
+<li><p>IK 成功为何不能保证起点到终点之间没有碰撞？</p>
+</li>
+<li><p>几何雅可比为什么不能不经转换就当作姿态残差的导数？</p>
+</li>
+<li><p>为什么更换数值求解器不能自动修正实机几何误差？</p>
+</li>
 </ol>
 <h2>参考资料与关联章节</h2>
+<p>补充依据：本机 2026-10-21“URDF 加载与运动学实践”历史会话，含最小二乘 IK、数值差分、实机初值和模型误差讨论。</p>
+<ul>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html">SciPy least_squares</a>：TRF、LM、bounds 与差分选项。</li>
+<li><a href="https://github.com/stack-of-tasks/pinocchio/blob/devel/examples/inverse-kinematics.py">Pinocchio 官方 IK 示例</a>：本轮实际查阅 <code>Jlog6</code>、阻尼和流形积分代码。</li>
+</ul>
 <p>整理依据：本地《学习资料/gpt会话整理.md》第 2、7、8 章；本轮补足正则化解释与反解边界。</p>
 <p><a href="#doc-f3eefb27199e">雅可比与速度力映射</a> · <a href="#doc-d95c684e3465">运动规划</a> · <a href="#doc-d0008fb7c36d">分类目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
 <h2>更新记录</h2>
 <ul>
-<li>2026-11-09：建立 SVD、DLS、零空间与 IK 章节，明确局部近似和求解失败边界。</li>
+<li><p>2026-11-09：补充残差雅可比与差分推导、七轴 demo 的选型比较、真实任务初值与模型标定边界。</p>
+</li>
+<li><p>2026-11-09：建立 SVD、DLS、零空间与 IK 章节，明确局部近似和求解失败边界。</p>
+</li>
 </ul>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-21ceeb727ede"><h1>机器人动力学</h1>
 <p>从机构与质量描述建立运动方程，再使用数值算法计算逆动力学、正动力学和控制所需的模型项。</p>
@@ -1205,7 +1746,7 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li>接触下的受约束正动力学与互补条件。</li>
 <li>实际电机与传动模型如何映射到刚体动力学参数。</li>
 </ul>
-<p><a href="#doc-66a0a5899f87">力矩反馈与模型控制</a> · <a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<p><a href="#doc-488a261f943c">力矩反馈与模型控制</a> · <a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-bf866bb4a3e8"><h1>01 拉格朗日建模与动力学方程</h1>
 <p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
 <h2>本章解决什么问题</h2>
@@ -1362,6 +1903,10 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <td><a href="#doc-c906f403567d">02 重力与摩擦辨识</a></td>
 <td>多连杆重力模型与单关节速度摩擦模型怎样分开估计和验证。</td>
 </tr>
+<tr>
+<td><a href="#doc-081ee610c15a">03 电流—力矩映射与联合辨识</a></td>
+<td>整体尺度歧义、命令与测量区别、独立标定和旧方案边界。</td>
+</tr>
 </tbody></table></div>
 <h2>待讨论主题</h2>
 <ul>
@@ -1456,12 +2001,94 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <li>独立验证至少需要变化哪些条件？</li>
 </ol>
 <h2>参考资料与关联章节</h2>
+<p>联合辨识的尺度歧义和独立标定推导见<a href="#doc-081ee610c15a">电流—力矩映射</a>。</p>
 <p>整理依据：本地《学习资料/gpt会话整理.md》第 5、6 章；《周报-2026-10-30.md》《周报-2026-11-06.md》中的项目阶段记录；相关项目文档为本轮可访问资料。通用公式与项目参数已作区分。</p>
-<p><a href="#doc-689c17950e02">动力学回归</a> · <a href="#doc-66a0a5899f87">重力补偿与计算力矩控制</a> · <a href="#doc-a1e02a44cee3">分类目录</a></p>
+<p><a href="#doc-689c17950e02">动力学回归</a> · <a href="#doc-488a261f943c">重力补偿与计算力矩控制</a> · <a href="#doc-a1e02a44cee3">分类目录</a></p>
 <h2>更新记录</h2>
 <ul>
-<li>2026-11-09：建立重力与摩擦分离、常量偏置和标定边界章节。</li>
-<li>2026-11-09：将命名运算符改为网页预览兼容的正体写法，保持数学含义。</li>
+<li><p>2026-11-09：补充历史会话深化章节的关联入口。</p>
+</li>
+<li><p>2026-11-09：建立重力与摩擦分离、常量偏置和标定边界章节。</p>
+</li>
+<li><p>2026-11-09：将命名运算符改为网页预览兼容的正体写法，保持数学含义。</p>
+</li>
+</ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-081ee610c15a"><h1>03 电流—力矩映射与联合辨识</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
+<h2>本章解决什么问题</h2>
+<p>没有关节力矩传感器，能否同时辨识电流系数与重力参数？为什么拟合很好仍不能证明绝对 N·m 正确？怎样区分命令执行链与物理力矩标定？</p>
+<h2>快速回顾</h2>
+<p>“命令值—电流”“电流—轴端力矩”“轴端力矩—机械臂运动”是不同关系。若电流系数和动力学参数同时未知，通常存在整体尺度不确定性。CAD 模型可提供锚点，但不是独立测力基准。此问题来自项目旧方案；记录其原理，不恢复已经作废的实验方案。</p>
+<h2>1. 从电机侧到关节侧，为什么不止一个系数</h2>
+<p>理想情况下，电机电磁转矩与转矩电流相关：<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C4;</mi><mi>m</mi></msub><mo>&#x0003D;</mo><msub><mi>K</mi><mi>t</mi></msub><msub><mi>i</mi><mi>q</mi></msub></mrow></math>。减速器输出侧的简化关系可写成：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mi>j</mi></msub><mo>&#x02248;</mo><mi>&#x003B7;</mi><mi>n</mi><msub><mi>K</mi><mi>t</mi></msub><msub><mi>i</mi><mi>q</mi></msub><mo>&#x02212;</mo><msub><mi>&#x003C4;</mi><mrow><mi>l</mi><mi>o</mi><mi>s</mi><mi>s</mi></mrow></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math> 为减速比，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B7;</mi></mrow></math> 为此工况下的有效传动效率，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C4;</mi><mrow><mi>l</mi><mi>o</mi><mi>s</mi><mi>s</mi></mrow></msub></mrow></math> 为所选模型中未包含的传动损失。真实损失可依方向、速度、温度与载荷变化；反向传动时不能无条件套用同一效率式。驱动器上报的“电流”还可能是相电流峰值、RMS、q 轴值或缩放后的寄存器值，必须先确认定义。</p>
+<p>因此，一个经验 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>k</mi><mrow><mi>e</mi><mi>f</mi><mi>f</mi></mrow></msub></mrow></math> 常是指定工况下的等效系数，不应自动被解释为材料决定的电机 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>t</mi></msub></mrow></math>，也不应在已经包含减速比的层再次乘 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math>。</p>
+<h2>2. 联合辨识为什么会缺少绝对尺度</h2>
+<p>考虑多姿态静态数据，写成：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>D</mi><mi>k</mi></msub><mi>i</mi><mo>&#x0003D;</mo><msub><mi>Y</mi><mi>g</mi></msub><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mi>&#x003C0;</mi><mo>&#x0002B;</mo><mi>b</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>D</mi><mi>k</mi></msub></mrow></math> 为未知电流—力矩系数对角矩阵，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>i</mi></mrow></math> 为电流向量，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>Y</mi><mi>g</mi></msub></mrow></math> 为已知几何产生的重力回归矩阵，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C0;</mi></mrow></math> 为质量／一阶矩等未知参数，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>b</mi></mrow></math> 为力矩侧偏置。这里暂略静摩擦与外部接触，只用来说明可辨识性。</p>
+<p>若 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><msub><mi>D</mi><mi>k</mi></msub><mo>&#x0002C;</mo><mi>&#x003C0;</mi><mo>&#x0002C;</mo><mi>b</mi><mo stretchy="false">&#x00029;</mo></mrow></math> 能解释数据，则对任意正数 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>c</mi></mrow></math>，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mi>c</mi><msub><mi>D</mi><mi>k</mi></msub><mo>&#x0002C;</mo><mi>c</mi><mi>&#x003C0;</mi><mo>&#x0002C;</mo><mi>c</mi><mi>b</mi><mo stretchy="false">&#x00029;</mo></mrow></math> 也能解释同一数据：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>c</mi><msub><mi>D</mi><mi>k</mi></msub><mi>i</mi><mo>&#x0003D;</mo><msub><mi>Y</mi><mi>g</mi></msub><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo stretchy="false">&#x00028;</mo><mi>c</mi><mi>&#x003C0;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mi>c</mi><mi>b</mi><mo>&#x0002E;</mo></mrow></math></div>
+<p>仅靠这些平衡关系无法选出绝对尺度。直接求这种齐次残差还可能得到全零解；增加更多相同类型姿态，不能自动消除结构性尺度自由度。模型可能另有参数耦合，本式只证明至少存在这一个歧义。</p>
+<p>固定一个质量／一阶矩、已知可信的电流系数，或加入独立标定载荷，可提供额外信息。用 URDF/CAD 提供锚点能得到有用的模型尺度，但结果仍继承该锚点误差。只有把信息来源和不确定度写清，才能解释拟合结果。</p>
+<h2>3. 命令回读不是独立的力矩测量</h2>
+<p>假设某固件按局部线性映射把协议力矩命令转换为目标电流：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>i</mi><mrow><mi>c</mi><mi>m</mi><mi>d</mi></mrow></msub><mo>&#x0003D;</mo><mfrac><mrow><msub><mi>u</mi><mi>&#x003C4;</mi></msub></mrow><mrow><msub><mi>k</mi><mrow><mi>f</mi><mi>w</mi></mrow></msub></mrow></mfrac><mo>&#x0002E;</mo></mrow></math></div>
+<p>这只是说明用的模型，不代表已掌握当前固件实现。若“力矩反馈”又由同一 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>k</mi><mrow><mi>f</mi><mi>w</mi></mrow></msub></mrow></math> 乘实测电流得到，它可以反映电流执行情况，却没有独立证明实际关节力矩等于命令 N·m。</p>
+<p>项目历史讨论中，厂商 xcore 接口从 N·m 指令与反馈开始，而自研 CAN 链路还需要核对寄存器尺度和轴侧。不能因为两个 API 都叫 torque，就认为底层传感来源、内部补偿与标定边界一样。未公开的厂商内部算法不作推断。</p>
+<h2>4. 验证链应分成哪些层</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>验证层</th>
+<th>要回答的问题</th>
+<th>合适证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>协议与执行</td>
+<td>正负命令是否产生相应电流，增益和延迟如何</td>
+<td>指令、电流、时间戳与模式回读；位移应高于噪声底才可用于方向判断</td>
+</tr>
+<tr>
+<td>模型预测</td>
+<td>多姿态下需要的补偿电流能否被预测</td>
+<td>未参与拟合的姿态／方向／负载、重复采样</td>
+</tr>
+<tr>
+<td>绝对标定</td>
+<td>已知物理力矩对应多少电流</td>
+<td>已知力与力臂、标定过的力／力矩传感器；扣除其他负载和偏置</td>
+</tr>
+<tr>
+<td>控制效果</td>
+<td>在所需工作范围能否稳定、可重复地执行</td>
+<td>实际漂移、误差、饱和、温升与扰动恢复记录</td>
+</tr>
+</tbody></table></div>
+<p>已知力参考可用 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mi>r</mi><mo>&#x000D7;</mo><mi>F</mi></mrow></math>，但测的是哪一轴、力臂方向、机器人自重和夹具载荷都要进入账目。拟合图上的低残差不能代替这些检查。</p>
+<h2>5. 为什么项目没有必要一直升级联合模型</h2>
+<p>历史联合方案后来已被逐关节、分方向采样与重力／等效摩擦分析替代。本章保留的是“为何绝对尺度不足”“如何解释反馈”，不把旧参数文件或旧拟合结果重新标为有效。</p>
+<p>逐关节方案易观察、便于诊断，但其他关节固定并不使整机动力学在物理上完全解耦；单轴拟合的有效范围仍依赖其余关节姿态。末端轻关节信号弱时，增加未知参数可能进一步恶化条件数。</p>
+<p>工程上常按已有传感条件分层处理：有可信力矩反馈时辨识负载和动力学；只有电流时明确代理测量和标度；需声明绝对 N·m 精度时引入独立参考。这是模型与证据的匹配原则，不是声称所有厂商使用同一标定算法。</p>
+<h2>自测题</h2>
+<ol>
+<li>为什么同时拟合电流系数和质量可能只能确定相对尺度？</li>
+<li>CAD 锚点与独立力矩标定提供的证据有什么区别？</li>
+<li>为什么命令和“力矩回读”一致仍可能只是同一系数的自洽？</li>
+<li>逐关节运动为什么不等于整个动力学已完全解耦？</li>
+</ol>
+<h2>参考资料与关联章节</h2>
+<ul>
+<li>本机历史会话：2026-10-29“电流和力矩联合辨识”“力矩控制整体流程与 xcore 比较”，含后续作废旧方案的决定。</li>
+<li>本轮查看 <code>lkw-jxb/src/arm7_sdk/control/gravity.py</code>：区分 SDK 重力前馈和调用方额外力矩；不据此推断固件传感原理。</li>
+<li>本节尺度分析为对回归模型的直接推导；厂商接口差异依据历史代码核对记录，未声称获得其内部标定算法。</li>
+</ul>
+<p><a href="#doc-c906f403567d">重力与摩擦辨识</a> · <a href="#doc-689c17950e02">动力学回归</a> · <a href="#doc-78a98916c104">FOC 与电流</a> · <a href="#doc-488a261f943c">控制层级</a> · <a href="#doc-a1e02a44cee3">目录</a></p>
+<h2>更新记录</h2>
+<ul>
+<li>2026-11-09：补入尺度歧义推导、命令／反馈链与分层验证，明确旧方案状态和逐关节辨识边界。</li>
 </ul>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-ddd4d6a9c092"><h1>最优化</h1>
 <p>把动作设计明确为变量、目标函数和约束，再按问题结构选择求解器。</p>
@@ -1475,7 +2102,7 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 </thead>
 <tbody><tr>
 <td><a href="#doc-e4e5e7dfe7e8">01 约束优化与问题分类</a></td>
-<td>LS、QP、SOCP、NLP、SQP、自动微分与接触互补建模分别适合什么结构。</td>
+<td>LS、QP、SOCP、NLP、SQP、导数、接触互补与正则化；结合 IK 和动作平滑理解软偏好与硬约束。</td>
 </tr>
 </tbody></table></div>
 <h2>待讨论主题</h2>
@@ -1553,20 +2180,72 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <h2>5. 求解质量与诊断</h2>
 <p>解慢时依次记录变量维数、每次目标／约束耗时、碰撞对数量、导数耗时和迭代数。可改善初值、使用结构稀疏性、减小不必要自由度、对距离查询加空间筛选，并独立验证路径结点之间的安全性。</p>
 <p>连续碰撞不等于“所有离散结点无碰撞”。结点间仍可能穿过障碍，应加密验证、保守间距或连续碰撞检测。</p>
+<h2>6. 正则项表达什么，为什么不能代替硬约束</h2>
+<p>正则化（Regularization）把偏好加入目标：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mo>min</mo><mi>z</mi></msub><mtext>&#x000A0;</mtext><msub><mi>L</mi><mrow><mi>t</mi><mi>a</mi><mi>s</mi><mi>k</mi></mrow></msub><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mi>&#x003BB;</mi><mi>R</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002C;</mo><mspace width="2em" /><mi>&#x003BB;</mi><mo>&#x02265;</mo><mn>0</mn><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>L</mi><mrow><mi>t</mi><mi>a</mi><mi>s</mi><mi>k</mi></mrow></msub></mrow></math> 衡量主要任务误差，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>R</mi></mrow></math> 惩罚不希望的结构，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003BB;</mi></mrow></math> 决定取舍。机器学习中的参数范数正则可限制复杂度；机器人控制中，同样的形式可表达动作平滑、少动关节或接近参考姿态，不能把所有正则都只解释成“防过拟合”。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目情形</th>
+<th>可选正则项</th>
+<th>意义与代价</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>七轴 IK</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo fence="false" stretchy="false">&#x02016;</mo><mi>q</mi><mo>&#x02212;</mo><msub><mi>q</mi><mrow><mi>r</mi><mi>e</mi><mi>f</mi></mrow></msub><msup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn></msup></mrow></math></td>
+<td>偏好参考姿态，可能牺牲部分位姿误差；关节 bounds 仍独立存在</td>
+</tr>
+<tr>
+<td>局部反解</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo fence="false" stretchy="false">&#x02016;</mo><mi>&#x00394;</mi><mi>q</mi><msup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn></msup></mrow></math></td>
+<td>抑制奇异方向的大步长，即 DLS 的关键作用</td>
+</tr>
+<tr>
+<td>离散动作序列</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mo>&#x02211;</mo><mi>k</mi></msub><mo fence="false" stretchy="false">&#x02016;</mo><msub><mi>u</mi><mi>k</mi></msub><mo>&#x02212;</mo><msub><mi>u</mi><mrow><mi>k</mi><mo>&#x02212;</mo><mn>1</mn></mrow></msub><msup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn></msup></mrow></math></td>
+<td>抑制指令跳变，可能减慢接触切换</td>
+</tr>
+<tr>
+<td>辨识</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo fence="false" stretchy="false">&#x02016;</mo><mi>&#x003B8;</mi><mo>&#x02212;</mo><msub><mi>&#x003B8;</mi><mn>0</mn></msub><msup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn></msup></mrow></math></td>
+<td>向先验收缩，减小病态放大，同时引入先验偏差</td>
+</tr>
+</tbody></table></div>
+<p>DLS 的 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>&#x003BB;</mi><mn>2</mn></msup><mo fence="false" stretchy="false">&#x02016;</mo><mi>&#x00394;</mi><mi>q</mi><msup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn></msup></mrow></math> 是惩罚本次增量，不等于每次都把绝对关节角拉向零位。持续姿态偏好需要显式的 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>q</mi><mrow><mi>r</mi><mi>e</mi><mi>f</mi></mrow></msub></mrow></math> 或次任务设计。</p>
+<p>增大权重能改变最优解，却不保证关节速度或碰撞距离永不违规。例如动作差分代价即使很大，也可能为了降低任务误差接受一次较大的变化；若变化率有硬上限，应显式加入 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x0007C;</mo><msub><mi>u</mi><mi>k</mi></msub><mo>&#x02212;</mo><msub><mi>u</mi><mrow><mi>k</mi><mo>&#x02212;</mo><mn>1</mn></mrow></msub><mo stretchy="false">&#x0007C;</mo><mo>&#x02264;</mo><msub><mover><mi>u</mi><mo>&#x002D9;</mo></mover><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mi>&#x00394;</mi><mi>t</mi></mrow></math>，再检查执行端约束。</p>
+<h2>7. 为什么“加权平滑”和“改变控制动态”要分开看</h2>
+<p>在 PPO 奖励里惩罚动作差分，是训练策略在任务收益和平滑之间选择；部署时对动作做 EMA，是在策略外改变实际执行动态。二者可能同时使用，但不等价。后加滤波产生策略未见过的延迟，应回到仿真和目标分布验证。</p>
+<p>在 IK 中，多目标加权和便于快速实现，但权重变化可能让主任务和姿态偏好互相妥协。若主次层级严格，应考虑分层优化／显式约束，同时核对可行性与实时预算。具体项目中没有证据支持“一律换成更复杂求解器”；先看真正需要保持的是硬限制、任务层级还是软偏好。</p>
 <h2>自测题</h2>
 <ol>
-<li>变量、目标与硬约束分别回答什么问题？</li>
-<li>QP 与 NLP 的定义差异是什么？</li>
-<li>单边接触的互补式表达了哪两种接触状态？</li>
-<li>自动微分为何仍可能无法穿过仿真的碰撞离散边界？</li>
-<li>离散路径结点全无碰撞为什么不是连续轨迹安全证明？</li>
+<li><p>变量、目标与硬约束分别回答什么问题？</p>
+</li>
+<li><p>QP 与 NLP 的定义差异是什么？</p>
+</li>
+<li><p>单边接触的互补式表达了哪两种接触状态？</p>
+</li>
+<li><p>自动微分为何仍可能无法穿过仿真的碰撞离散边界？</p>
+</li>
+<li><p>离散路径结点全无碰撞为什么不是连续轨迹安全证明？</p>
+</li>
+<li><p>DLS 惩罚关节增量，与把关节拉回零位有什么区别？</p>
+</li>
+<li><p>动作平滑奖励为什么不等于执行端变化率硬限制？</p>
+</li>
 </ol>
 <h2>参考资料与关联章节</h2>
+<p>补充依据：本机 2026-09-28“什么是正则项”会话；结合历史七轴 IK 和拧盖动作讨论补充软偏好／硬约束的区别。</p>
+<p><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html">SciPy least_squares</a> 提供残差目标、bounds 与鲁棒损失的公开实现实例；鲁棒损失改变异常残差权重，也不等于变量硬约束。</p>
 <p>整理依据：本地《学习资料/gpt会话整理.md》第 7 章，及本地机械臂轨迹优化与插接设计文档；未验证特定第三方优化器 API。</p>
 <p><a href="#doc-d914d0fe7e11">SVD、伪逆与 IK</a> · <a href="#doc-d95c684e3465">运动规划</a> · <a href="#doc-ddd4d6a9c092">分类目录</a></p>
 <h2>更新记录</h2>
 <ul>
-<li>2026-11-09：建立优化建模和求解器选择章节，补充接触互补及验证边界。</li>
+<li><p>2026-11-09：从正则项原理延伸到 IK、动作平滑和辨识，区分增量正则、姿态偏好与执行端硬限制。</p>
+</li>
+<li><p>2026-11-09：建立优化建模和求解器选择章节，补充接触互补及验证边界。</p>
+</li>
 </ul>
 <a class="back" href="#top">返回目录 ↑</a></article><article id="doc-b5ca26ac53b8"><h1>运动规划</h1>
 <p>从一个或多个可行姿态开始，规划避碰路径并按运动学与执行器限制转成轨迹。</p>
@@ -1671,9 +2350,8 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 <ul>
 <li>2026-11-09：建立轨迹时标和笛卡尔直线章节，结合本地项目记录说明执行验证。</li>
 </ul>
-<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-2dbc32b2c61f"><h1>电机与控制</h1>
-<p>区分电机电气内环、关节控制接口和运动控制器，明确各层使用的信号和轴侧单位。</p>
-<h2>已有章节</h2>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-20a8b68c0e7c"><h1>机器人视觉</h1>
+<p>围绕真实感知如何进入机器人控制，先明确坐标、标定与数据质量，再联系项目部署。</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -1682,172 +2360,246 @@ math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math;font-si
 </tr>
 </thead>
 <tbody><tr>
-<td><a href="#doc-743bd2e45395">01 PMSM、FOC 与电流力矩关系</a></td>
-<td>三相电机电流如何转到转子坐标系，电流如何与电磁转矩相关。</td>
-</tr>
-<tr>
-<td><a href="#doc-66a0a5899f87">02 PID、重力补偿与计算力矩</a></td>
-<td>误差反馈、模型前馈和动力学补偿各有什么作用。</td>
-</tr>
-<tr>
-<td><a href="#doc-122ed3fca99c">03 阻抗、导纳与力位混合控制</a></td>
-<td>期望柔顺动态、控制接口要求和任务空间力位划分。</td>
+<td><a href="#doc-fefa32f97ce0">01 相机标定与仿真坐标对齐</a></td>
+<td>内参、外参、PnP、三维配准、手眼关系与拧盖论文流程</td>
 </tr>
 </tbody></table></div>
-<p>MIT 模式和电流模式详见<a href="#doc-7fca3733489e">02 电机与运动控制目录</a>。</p>
 <h2>待讨论主题</h2>
 <ul>
-<li>矢量控制的完整电压方程、解耦补偿与弱磁运行。</li>
-<li>硬件力传感器的坐标系、偏置、重力载荷补偿和频域噪声。</li>
+<li>瓶身与瓶盖的具体检测／跟踪方法，以及遮挡和缺测策略。</li>
+<li>基于实际设备的相机时间同步、精度和延迟测试。</li>
 </ul>
-<p><a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
-<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-743bd2e45395"><h1>01 PMSM 与 FOC</h1>
+<p><a href="#doc-8ec9a00bfd09">总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-fefa32f97ce0"><h1>01 相机标定与仿真坐标对齐</h1>
 <p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
 <h2>本章解决什么问题</h2>
-<p>永磁同步电机（PMSM）的三相电流如何参与产生转矩？磁场定向控制（Field-Oriented Control，FOC）为什么需要 Clarke 与 Park 变换？</p>
+<p>内参、外参、手眼标定各解决什么？拧盖论文把 marker 放进仿真，究竟省掉了哪一步？为什么标定误差小仍不等于物体定位可用？</p>
 <h2>快速回顾</h2>
-<p>FOC 根据转子电角度把三相电流映射到旋转的 d/q 坐标系，以近似独立调节磁链相关分量和转矩相关分量。q 轴电流和电机电磁力矩相关；它不是关节输出力矩传感器，也不说明驱动器的电流定义或轴侧换算。</p>
-<h2>1. 主要控制链</h2>
-<p>典型电流 FOC 闭环如下：</p>
-<pre><code class="language-text">采样相电流 ia、ib、ic 与电角度 theta_e
-    -&gt; Clarke：静止坐标系 i_alpha、i_beta
-    -&gt; Park：旋转坐标系 i_d、i_q
-    -&gt; d/q 电流 PI 与电压／电流限制
-    -&gt; 逆 Park 与 SVPWM 生成逆变器开关信号
-    -&gt; PMSM 与电流采样反馈
-</code></pre>
-<p>实际实现可能使用两电流采样、不同 PWM 调制、采样补偿、反电势前馈或电流解耦；上图只是基本概念链。</p>
-<h2>2. 坐标变换的意义</h2>
-<p>Clarke 变换把三相量映射到静止两轴平面；平衡三相且无零序分量时，两维足以表示平面磁场。Park 变换再绕转子磁链同步旋转，使随电角度变化的交流分量在稳态时近似为直流量，PI 控制器更易处理。</p>
-<p>工程公式需明确 Clarke 的幅值不变还是功率不变归一化，d/q 轴方向，电角与机械角的关系，以及电流峰值还是 RMS。不同约定会改变换算系数，不能只复制一种符号表。</p>
-<h2>3. 电流与电磁转矩</h2>
-<p>表贴式永磁同步电机、采用常见峰值相电流与相应 Park 约定时，电磁转矩简化为：</p>
-<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mi>e</mi></msub><mo>&#x02248;</mo><mfrac><mrow><mn>3</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mi>p</mi><msub><mi>&#x003C8;</mi><mi>f</mi></msub><msub><mi>i</mi><mi>q</mi></msub><mo>&#x0002E;</mo></mrow></math></div>
-<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>p</mi></mrow></math> 是极对数，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C8;</mi><mi>f</mi></msub></mrow></math> 是永磁磁链，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>i</mi><mi>q</mi></msub></mrow></math> 是 q 轴电流。符号和常数因坐标与电流归一化而异。凸极内嵌式 PMSM 还含 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>i</mi><mi>d</mi></msub></mrow></math> 和 d/q 电感差产生的磁阻转矩项。</p>
-<p>因此常见 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003C4;</mi><mi>e</mi></msub><mo>&#x02248;</mo><msub><mi>K</mi><mi>t</mi></msub><msub><mi>i</mi><mi>q</mi></msub></mrow></math> 是已吸收到所选约定中的工程写法。电机电磁转矩经过转子惯量、轴承、减速器、效率和摩擦后，才与关节输出转矩相关。</p>
-<h2>4. PI 与 SVPWM</h2>
-<p>d/q 轴电流控制器比较实测电流和目标电流，PI 产生电压命令。电机绕组电感和电阻决定电流响应；电压受直流母线和调制饱和限制，目标电流可能无法达到。SVPWM（Space Vector Pulse Width Modulation）依据所需电压矢量选择逆变器开关占空比，受母线电压与扇区线性范围约束。</p>
-<p>电流模式仍是反馈控制，只是闭环主要控制 q 轴／电流。上层若需要位置或速度跟踪，还需另加外环或使用驱动器提供的更高层模式。</p>
-<h2>自测题</h2>
-<ol>
-<li>Clarke 与 Park 分别把量变换到什么坐标系？</li>
-<li>FOC 的电流 PI 控制的是什么量？q 轴电流为何常被用作转矩命令？</li>
-<li>为什么电流达到目标不等于关节轴端力矩已精确测得？</li>
-<li>使用厂商力矩常数时，还要确认哪些电流、角度和传动约定？</li>
-</ol>
-<h2>参考资料与关联章节</h2>
-<p>整理依据：本地《学习资料/gpt会话整理.md》第 4 章与已存在的 MIT／电流模式章节；未查阅特定电机或驱动器手册，公式条件按常见 PMSM 约定说明。</p>
-<p><a href="#doc-8f26ce775ad6">MIT 模式与电流模式</a> · <a href="#doc-2dbc32b2c61f">分类目录</a></p>
-<h2>更新记录</h2>
-<ul>
-<li>2026-11-09：建立 PMSM、FOC、Clarke／Park 与电流力矩边界章节。</li>
-</ul>
-<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-66a0a5899f87"><h1>02 PID、重力补偿与计算力矩</h1>
-<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
-<h2>本章解决什么问题</h2>
-<p>位置误差反馈、重力前馈和完整动力学前馈分别补偿什么？为什么提高位置增益不总能改善接触或跟踪？</p>
-<h2>快速回顾</h2>
-<p>PID／PD 根据测得的误差修正输出；重力补偿依据构型提供前馈；计算力矩进一步使用惯性和速度耦合模型。三者都受传感、模型、延迟和执行器限幅影响，不能用一个名词概括“闭环精度”。</p>
-<h2>1. PD 与 PID</h2>
-<p>以关节位置误差 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>e</mi><mo>&#x0003D;</mo><msub><mi>q</mi><mi>d</mi></msub><mo>&#x02212;</mo><mi>q</mi></mrow></math> 表示，一种常用形式是：</p>
-<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003C4;</mi><mrow><mi>f</mi><mi>b</mi></mrow></msub><mo>&#x0003D;</mo><msub><mi>K</mi><mi>p</mi></msub><mi>e</mi><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x02212;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>K</mi><mi>i</mi></msub><mo>&#x0222B;</mo><mi>e</mi><mspace width="0.167em" /><mi>d</mi><mi>t</mi><mo>&#x0002E;</mo></mrow></math></div>
-<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow></math> 提供位置恢复作用，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>d</mi></msub></mrow></math> 提供速度误差阻尼，积分项处理持续偏差。若采用误差导数形式 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mover><mi>e</mi><mo>&#x002D9;</mo></mover></mrow></math>，其符号、目标速度定义必须保持一致。离散实现中需考虑微分噪声、积分饱和、采样周期和抗饱和策略。</p>
-<p>增大 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow></math> 可能提高局部刚度，也会放大观测误差和接触冲击、促使输出饱和；<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>d</mi></msub></mrow></math> 使用噪声很大的速度反馈可能诱发力矩抖动。增益稳定范围需结合闭环周期和机构验证。</p>
-<h2>2. 重力前馈</h2>
-<p>常见关节 PD 加重力补偿：</p>
-<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>K</mi><mi>p</mi></msub><mi>e</mi><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x02212;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
-<p>模型方向和求解器约定一致时，前馈补偿机器人的静态重力项，反馈负责剩余误差。前馈不是额外的位置闭环，也不会自动消除摩擦、外部接触和传动误差。</p>
-<p>如果重力模型含未分离的偏置项，应如实标识，不要把拟合偏置说成已经独立确认的物理重力来源。详细边界见<a href="#doc-c906f403567d">重力与摩擦辨识</a>。</p>
-<h2>3. 计算力矩控制</h2>
-<p>以动力学 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><mi>C</mi><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>g</mi><mo>&#x0003D;</mo><mi>&#x003C4;</mi></mrow></math> 为例，定义期望加速度：</p>
-<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>a</mi><mi>d</mi></msub><mo>&#x0003D;</mo><msub><mover><mi>q</mi><mo>&#x000A8;</mo></mover><mi>d</mi></msub><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mi>d</mi></msub><mo>&#x02212;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msub><mi>K</mi><mi>p</mi></msub><mo stretchy="false">&#x00028;</mo><msub><mi>q</mi><mi>d</mi></msub><mo>&#x02212;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
-<p>理想逆动力学命令：</p>
-<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>&#x003C4;</mi><mo>&#x0003D;</mo><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><msub><mi>a</mi><mi>d</mi></msub><mo>&#x0002B;</mo><mi>C</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x0002C;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo stretchy="false">&#x00029;</mo><mover><mi>q</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
-<p>代入精确模型且忽略摩擦、饱和和接触时，得到近似线性误差响应。实际模型误差、时延、外力和设备保护会造成偏差，所以此公式是控制结构，不是稳定性或实机性能保证。</p>
-<h2>4. 控制层级</h2>
-<p>更快的内层电流闭环通常调节电磁转矩相关电流，关节伺服／计算力矩在其上产生需求。命令通过减速器时要确认每一层是否已经包含传动比、方向、效率和限幅，不能将同一补偿叠加两次。</p>
-<p>如果需要控制接触时的柔顺响应，应先明确正在使用的电流、位置或力矩接口，及力传感器／估算器的带宽。阻抗与导纳详见<a href="#doc-122ed3fca99c">下一章</a>。</p>
-<h2>自测题</h2>
-<ol>
-<li>前馈重力项与 PD 误差项各解决什么问题？</li>
-<li>积分项能缓解什么误差，又为什么可能累积饱和？</li>
-<li>计算力矩公式的哪些前提在真实设备上容易失效？</li>
-<li>为什么更高 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow></math> 可能带来冲击和饱和？</li>
-<li>电流环、关节控制器和高层轨迹各处于哪一层？</li>
-</ol>
-<h2>参考资料与关联章节</h2>
-<p>整理依据：本地《学习资料/gpt会话整理.md》第 6 章及 MIT 模式笔记；采用标准刚体动力学反馈形式，未针对具体设备调参。</p>
-<p><a href="#doc-122ed3fca99c">阻抗与导纳</a> · <a href="#doc-bf866bb4a3e8">动力学方程</a> · <a href="#doc-2dbc32b2c61f">目录</a></p>
-<h2>更新记录</h2>
-<ul>
-<li>2026-11-09：建立反馈、重力前馈和计算力矩的关系与适用边界。</li>
-</ul>
-<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-122ed3fca99c"><h1>03 阻抗、导纳与力位混合控制</h1>
-<p>创建日期：2026-11-09<br>最近更新：2026-11-09</p>
-<h2>本章解决什么问题</h2>
-<p>机器人接触环境时，如何定义柔顺响应？阻抗与导纳控制需要什么硬件接口？在不同任务空间方向，怎样同时执行位置和力任务？</p>
-<h2>快速回顾</h2>
-<p>阻抗塑造“运动偏差—作用力”的动态关系，导纳根据测得的外力生成运动参考。它们不是仅靠改一个增益即可互换的算法，所需的执行器能力和力反馈通路不同。力位混合须由任务几何与接触约束定义方向。</p>
-<h2>1. 阻抗控制</h2>
-<p>设末端误差 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>e</mi><mo>&#x0003D;</mo><mi>x</mi><mo>&#x02212;</mo><msub><mi>x</mi><mi>d</mi></msub></mrow></math>，一种期望阻抗关系为：</p>
-<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>F</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub><mo>&#x0003D;</mo><msub><mi>M</mi><mi>d</mi></msub><mover><mi>e</mi><mo>&#x000A8;</mo></mover><mo>&#x0002B;</mo><msub><mi>B</mi><mi>d</mi></msub><mover><mi>e</mi><mo>&#x002D9;</mo></mover><mo>&#x0002B;</mo><msub><mi>K</mi><mi>d</mi></msub><mi>e</mi><mo>&#x0002E;</mo></mrow></math></div>
-<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>M</mi><mi>d</mi></msub><mo>&#x0002C;</mo><msub><mi>B</mi><mi>d</mi></msub><mo>&#x0002C;</mo><msub><mi>K</mi><mi>d</mi></msub></mrow></math> 分别表示期望惯性、阻尼、刚度矩阵。此处 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>F</mi><mrow><mi>e</mi><mi>x</mi><mi>t</mi></mrow></msub></mrow></math> 是与误差约定相配的外力；若定义方向相反，公式整体符号相应改变。机器人依据位姿误差生成期望 Wrench，再经任务 Jacobian 映射为关节广义力矩，并由力矩接口执行。</p>
-<p>直接力矩阻抗需要可信反馈和足够快的力矩控制。位置伺服机器人也可通过外层算法产生等效柔顺行为，但需考虑位置内环延迟与带宽，不能无条件等同。</p>
-<h2>2. 导纳控制</h2>
-<p>导纳控制的典型思路是：测量外力后，求解虚拟质量—阻尼—弹簧方程，更新期望位置或速度；再由内层位置伺服跟踪该参考。</p>
+<p>内参描述三维相机坐标到像素的投影，外参连接坐标系，手眼标定利用机器人运动求固定相对变换。仿真中的 marker 可提供已知世界坐标，但仿真与实物之间的几何关系仍要真实建立，不能凭空消除测量误差。</p>
+<h2>1. 三类标定不要混在一起</h2>
+<p>忽略畸变的针孔模型为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>z</mi><mi>c</mi></msub><mo>&#x0005B;</mo><mtable><mtr><mtd><mi>u</mi></mtd></mtr><mtr><mtd><mi>v</mi></mtd></mtr><mtr><mtd><mn>1</mn></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0003D;</mo><mi>K</mi><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>x</mi><mi>c</mi></msub></mtd></mtr><mtr><mtd><msub><mi>y</mi><mi>c</mi></msub></mtd></mtr><mtr><mtd><msub><mi>z</mi><mi>c</mi></msub></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>K</mi></mrow></math> 为内参矩阵，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>u</mi><mo>&#x0002C;</mo><mi>v</mi></mrow></math> 为像素，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>x</mi><mi>c</mi></msub><mo>&#x0002C;</mo><msub><mi>y</mi><mi>c</mi></msub><mo>&#x0002C;</mo><msub><mi>z</mi><mi>c</mi></msub></mrow></math> 为相机坐标；畸变需要额外模型。深度相机还要确认深度单位、RGB／Depth 对齐和内参对应的分辨率。</p>
+<p>沿用 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow></math> 把 B 系坐标变到 A 系的约定，外参关系为：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>p</mi><mi>W</mi></msub><mo>&#x0003D;</mo><msub><mi>R</mi><mrow><mi>W</mi><mi>C</mi></mrow></msub><msub><mi>p</mi><mi>C</mi></msub><mo>&#x0002B;</mo><msub><mi>t</mi><mrow><mi>W</mi><mi>C</mi></mrow></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p>内参正确并不意味着已知 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>T</mi><mrow><mi>W</mi><mi>C</mi></mrow></msub></mrow></math>；外参正确也不能修正错误的深度尺度。</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
-<th>属性</th>
-<th>阻抗</th>
-<th>导纳</th>
+<th>方法／目标</th>
+<th>输入</th>
+<th>解决什么</th>
+<th>适用条件</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>主要输入</td>
-<td>运动状态及目标</td>
-<td>外力／力矩测量与目标</td>
+<td>多视角棋盘格／标记板内参标定</td>
+<td>板上已知点与多张像素观测</td>
+<td>内参、畸变及各图相对板位姿</td>
+<td>覆盖视野、距离和倾角，避免只拍几乎相同姿态</td>
 </tr>
 <tr>
-<td>主要输出</td>
-<td>期望力／力矩</td>
-<td>期望运动</td>
+<td>PnP</td>
+<td>已知三维点、二维像素、内参</td>
+<td>目标相对相机的位姿</td>
+<td>通常不依赖深度图；要处理平面歧义和坏点</td>
 </tr>
 <tr>
-<td>常见适用条件</td>
-<td>可控力矩或低阻抗执行器</td>
-<td>稳定位置伺服并有可信力测量</td>
+<td>三维刚体配准</td>
+<td>相机系与世界系的三维对应点</td>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mrow><mi>W</mi><mi>C</mi></mrow></msub><mo>&#x0002C;</mo><msub><mi>t</mi><mrow><mi>W</mi><mi>C</mi></mrow></msub></mrow></math></td>
+<td>两套坐标量纲一致，点集有足够几何跨度</td>
 </tr>
 <tr>
-<td>核心问题</td>
-<td>力矩执行、动力学耦合及接触稳定</td>
-<td>传感偏置、离散积分、位置内环延迟</td>
+<td>手眼标定</td>
+<td>多组机器人与标记物观测运动</td>
+<td>相机与末端／基座的固定变换</td>
+<td>明确 eye-in-hand 或 eye-to-hand 安装及运动约定</td>
 </tr>
 </tbody></table></div>
-<p>两类方法都须防止噪声被放大、输出超限和能量注入。给它们同名的刚度、阻尼数值，并不保证响应相同。</p>
-<h2>3. 混合力位控制</h2>
-<p>例如插入任务，孔轴方向需要限制推进力或控制法向力，横向需要调整位置，姿态方向还可能需要顺应。方向划分要依据工件几何、当前接触法向和任务语义；混合控制矩阵与坐标轴变换须保持一致。</p>
-<p>未知表面法向、摩擦及装配误差会改变实际受限方向。在不同方向同时硬约束位置和法向力可能过约束；“力控方向”和“位置控方向”不是任意独立的按钮。</p>
-<h2>4. 易错点</h2>
-<ul>
-<li>位置跟踪加力惩罚，不自动产生稳定的接触力闭环。</li>
-<li>由电机电流或动力学残差估算出的力，必须标明其模型假设、参考点、补偿项和延迟；估算不等同于直接测量。</li>
-<li>反馈控制器与仿真内置驱动器可能重复执行 PD，造成实际刚度偏高。</li>
-<li>同一时刻的刚度与稳定性还受惯量、采样、目标插值、接触刚度和力矩限幅影响。</li>
-</ul>
+<p>PnP 的输出常是世界／物体系到相机的方向，使用前需核对是否要取逆；不要直接靠矩阵变量名猜方向。</p>
+<h2>2. 对应点如何解刚体变换</h2>
+<p>若已经得到三维对应点，可求：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mo>min</mo><mrow><mi>R</mi><mo>&#x0002C;</mo><mi>t</mi></mrow></msub><munder><mo>&#x02211;</mo><mi>i</mi></munder><msub><mi>w</mi><mi>i</mi></msub><mo fence="false" stretchy="false">&#x02016;</mo><msubsup><mi>p</mi><mi>i</mi><mi>W</mi></msubsup><mo>&#x02212;</mo><mo stretchy="false">&#x00028;</mo><mi>R</mi><msubsup><mi>p</mi><mi>i</mi><mi>C</mi></msubsup><mo>&#x0002B;</mo><mi>t</mi><mo stretchy="false">&#x00029;</mo><msubsup><mo fence="false" stretchy="false">&#x02016;</mo><mn>2</mn><mn>2</mn></msubsup><mo>&#x0002C;</mo><mspace width="2em" /><msup><mi>R</mi><mi>T</mi></msup><mi>R</mi><mo>&#x0003D;</mo><mi>I</mi><mo>&#x0002C;</mo><mspace width="1em" /><mo movablelimits="true">det</mo><mi>R</mi><mo>&#x0003D;</mo><mn>1</mn><mo>&#x0002E;</mo></mrow></math></div>
+<p>先减去两组点的加权质心，再用互协方差矩阵的 SVD 求旋转、处理行列式符号，最后恢复平移。至少需要非共线且分布合理的对应点；重复读取几乎同一位置不能替代几何激励。深度噪声、角点错误或 marker 尺寸不准会进入估计，必要时做异常值剔除和多次观测。</p>
+<p>若没有可靠三维相机点，却有二维角点和内参，则应考虑 PnP，而不是把像素直接当作米制三维点送进配准。</p>
+<h2>3. 手眼标定为什么是另一种问题</h2>
+<p>当相机固定在机械臂末端时，不同机械臂运动和标记物观测可给出相对运动关系：</p>
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>A</mi><mi>i</mi></msub><mi>X</mi><mo>&#x0003D;</mo><mi>X</mi><msub><mi>B</mi><mi>i</mi></msub><mo>&#x0002E;</mo></mrow></math></div>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>X</mi></mrow></math> 是待求的固定安装变换，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>&#x0002C;</mo><msub><mi>B</mi><mi>i</mi></msub></mrow></math> 是在选定约定下对应的两组相对运动。必须说明运动方向与坐标系；eye-to-hand 的链式关系与数据准备不能直接照搬 eye-in-hand。</p>
+<p>多方向旋转与足够位移提供可辨识信息；只做近似同轴或纯平移运动可能导致退化。OpenCV 的标定接口提供多种经典求解方法，但调用同一 API 不会自动消除输入方向、机器人零位或时间同步误差。</p>
+<h2>4. 拧盖论文究竟做了什么</h2>
+<p>本轮重新查阅 <em>Twisting Lids Off with Two Hands</em> 的本地 v2 PDF 第 8 节：作者在仿真中加入真实系统使用的 marker，使 marker 角点能在相机与世界坐标中形成对应关系，再求相机外参。论文把减少人工拍棋盘格及求多级外参的工作作为优点。</p>
+<p>它没有在这一段给出完整内参标定、RGB—Depth 对齐或具体外参求解器，也没有报告该流程的定量标定误差。因此不能把上述 SVD 配准说成作者明确使用的算法，或宣称论文证明它比棋盘格更精确。本章把三维配准作为可选实现原理，和论文明确陈述区分开。</p>
+<p>关键前提是：真实 marker 相对任务世界的位姿，与仿真中设定的关系一致。仿真提供的是你输入的几何，不会自动测出真实安装误差。</p>
+<h2>5. 联系 L20 双手拧盖，怎样选一条可落地路线</h2>
+<p>若相机固定、主要需要瓶身／瓶盖在任务坐标中的位置，可先复用经核验的相机内参与深度对齐，再通过已知 marker 建立相机—任务世界变换；只在需要时引入额外的机器人基座链。若相机装在末端，或任务要跨机械臂运动维持标定关系，再考虑手眼流程。</p>
+<p>比较 PnP 与 RGB-D 三维配准时：前者依赖角点、内参和目标几何，后者还受深度噪声和对齐误差影响；实际可按工作距离、遮挡和传感质量做独立测试。固定标记物、棋盘格／标记板、PnP 与手眼求解都是成熟工具链中的常见构件，选用取决于安装关系，不存在一套步骤适用于所有相机。</p>
+<p>验收不只看参与拟合的角点残差。还应在操作空间内用未参与拟合的位置检查误差，分别观察瓶身和瓶盖，记录遮挡、缺测与观测延迟。相机静态很准但延迟过大，策略仍可能对旧位置做动作；这与训练期的噪声／延迟模型必须一起考虑。</p>
 <h2>自测题</h2>
 <ol>
-<li>阻抗把什么量映射成什么响应？导纳的输入输出是什么？</li>
-<li>为什么导纳通常依赖力测量和内层位置伺服？</li>
-<li>刚性接触时为何要根据接触几何重新判断任务空间方向？</li>
-<li>怎样排查关节仿真中重复 PD 的问题？</li>
-<li>估算力反馈还应说明哪几项信息？</li>
+<li>为什么内参已知仍不能直接把像素当成机器人世界坐标？</li>
+<li>PnP 和三维刚体配准各需要什么输入？</li>
+<li>仿真中 marker 放得很精确，为什么真实外参仍可能有偏差？</li>
+<li>论文明确写了哪些步骤，又没有证明哪些结论？</li>
 </ol>
 <h2>参考资料与关联章节</h2>
-<p>整理依据：本地《学习资料/gpt会话整理.md》第 6 章及本地精密插接设计文档；不同工程控制器的具体实现需查对应 SDK 和传感器资料。</p>
-<p><a href="#doc-66a0a5899f87">反馈与模型控制</a> · <a href="#doc-8f26ce775ad6">MIT 模式与电流模式</a> · <a href="#doc-2dbc32b2c61f">目录</a></p>
+<ul>
+<li>本机历史会话：2026-09-28“Camera Calibration 常规方法与论文方法比较”。</li>
+<li><a href="https://arxiv.org/abs/2403.02338">Twisting Lids Off with Two Hands</a>：本轮实际阅读本地 <code>2403.02338v2.pdf</code> 第 8 节。</li>
+<li><a href="https://github.com/opencv/opencv/blob/4.x/modules/calib3d/include/opencv2/calib3d.hpp">OpenCV 4.x 标定模块接口与注释</a>：实际查阅 <code>calibrateCamera</code>、<code>solvePnP</code>、<code>calibrateHandEye</code> 的定义与适用条件。</li>
+</ul>
+<p><a href="#doc-fa0d65bec46b">坐标变换</a> · <a href="#doc-d914d0fe7e11">SVD 与 IK</a> · <a href="#doc-8ea37ea78777">观测噪声</a> · <a href="#doc-20a8b68c0e7c">目录</a></p>
 <h2>更新记录</h2>
 <ul>
-<li>2026-11-09：建立阻抗、导纳与力位混合控制章节，区分接口、输出和验证条件。</li>
+<li>2026-11-09：建立视觉标定章节，区分内参、PnP、配准与手眼，重新核对拧盖论文并联系部署输入。</li>
 </ul>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-cac6164bec5f"><h1>使用与维护说明</h1>
+<p>这里存放仓库的使用、同步与构建说明，不计入技术知识分类，也不列入复习清单。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>文档</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#doc-4f313b0455bf">跨设备维护与阅读说明</a></td>
+<td>GitHub 访问、提交与推送、多设备冲突、手机阅读和资料存放</td>
+</tr>
+<tr>
+<td><a href="tools/README.md">阅读版生成工具</a></td>
+<td>生成离线阅读版、数学公式兼容约定与运行依赖</td>
+</tr>
+<tr>
+<td><a href="AGENTS.md">工作区维护规则</a></td>
+<td>技术讨论整理、来源、章节组织和验证要求</td>
+</tr>
+</tbody></table></div>
+<p><a href="#doc-8ec9a00bfd09">技术总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
+<a class="back" href="#top">返回目录 ↑</a></article><article id="doc-4f313b0455bf"><h1>跨设备维护与阅读说明</h1>
+<p>创建日期：2026-11-09<br>最近更新：2026-11-09<br>来源：本次讨论整理、本工作区的 Markdown 与阅读版生成工具，以及文末实际查阅的 GitHub 官方文档。</p>
+<h2>1. 当前方案与目标</h2>
+<p>笔记需要在不同电脑上持续维护，也希望能够通过手机浏览、修改 Markdown 和上传技术资料。用户选择使用 GitHub 管理现有笔记，以减少服务器成本，并明确要求废弃此前的独立网站和手机界面方案。相关应用、界面、测试、截图和部署配置已删除，后续以 Markdown 和 GitHub 为维护方式。</p>
+<p>仓库为 <a href="https://github.com/Lucute7/lkw-technical-notes">Lucute7/lkw-technical-notes</a>，已通过认证查询确认是私有仓库。本地 Git 仓库已初始化并关联该地址，GitHub CLI 已安装，用户已完成浏览器授权。是否已取得最新内容，应通过远端版本核对，而不能仅凭本地保存或收到链接判断。</p>
+<p>内容源是 Markdown；<code>阅读版.html</code> 是由本地工具生成的离线阅读产物。GitHub 保存已经推送的共享版本，各电脑取得同一套文件后继续维护。</p>
+<h2>2. 笔记、资料和聊天记录的区别</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>数据</th>
+<th>用途</th>
+<th>GitHub 维护方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>已整理笔记</td>
+<td>长期复习的主题章节、公式、自测与结论</td>
+<td>Markdown、分类目录和复习清单一起提交</td>
+</tr>
+<tr>
+<td>技术资料</td>
+<td>PDF、图片、手册和示例等原始材料</td>
+<td>小型文件放在相关分类的 <code>assets/</code> 或 <code>examples/</code>，从章节链接</td>
+</tr>
+<tr>
+<td>本地聊天记录</td>
+<td>推理过程、尚未解决的问题和原始交流</td>
+<td>不会自动同步其他电脑的聊天；需要将已明确结论和待讨论问题整理到笔记</td>
+</tr>
+</tbody></table></div>
+<p>仓库中的笔记、未解决问题和 <code>AGENTS.md</code> 为不同电脑上的助手提供共同上下文。另一台电脑取得最新文件后，可以基于笔记继续讨论，不必依赖完整的原始聊天历史。</p>
+<p>上传手册不等于已经阅读或理解其中的内容。当前没有自动 OCR、资料抽取或自动问答；笔记只记录实际讨论和实际查阅过的材料。</p>
+<h2>3. 费用与权限</h2>
+<p>GitHub Free 个人方案提供不限数量的私有仓库（Private Repository），基本文本维护通常无需额外付费，不要求租服务器。本项目已确认使用私有仓库，通过 GitHub 账号控制访问。</p>
+<p>GitHub Actions、Codespaces、Git LFS 等附加功能有各自额度和计费规则，不能把“基本仓库免费”扩展为所有服务和任意文件量都永久免费。当前基本维护流程不要求启用这些附加功能。</p>
+<h2>4. 创建仓库与首次接入</h2>
+<h3>新建空仓库的方法</h3>
+<p>以下作为未来创建其他笔记库的操作参考。本项目已完成创建，首次接入时通过认证查询确认是私有空仓库。</p>
+<ol>
+<li>登录 GitHub，打开<a href="https://github.com/new">新建仓库页面</a>，或点击右上角“＋”并选择 <strong>New repository</strong>。</li>
+<li><strong>Owner</strong> 选择个人账号，<strong>Repository name</strong> 填写仓库名，例如 <code>technical-notes</code>；示例名称不代表本项目实际仓库名。<strong>Description</strong> 可填“个人技术笔记”或留空。</li>
+<li>可见性选择 <strong>Private</strong>，用于限制内容访问。</li>
+<li>已有本地笔记时，不预先添加 <strong>README</strong>、<strong>.gitignore</strong> 和 <strong>License</strong>，以创建空仓库。本地已有的目录与忽略规则可在首次上传时一并提交。</li>
+<li>点击 <strong>Create repository</strong>。看到快速设置或命令行示例页面，说明空仓库已经创建。</li>
+<li>复制地址栏中的仓库链接，格式为 <code>https://github.com/账号名/仓库名</code>，供本地关联使用。</li>
+</ol>
+<h3>首次接入需要确认什么</h3>
+<p>创建远端仓库只准备了保存位置，本地文件尚未上传。接入时先检查远端默认分支和已有内容，再初始化或克隆本地仓库、配置认证、提交并推送。远端已有文件时要保留并合理合并，不直接覆盖。</p>
+<p>浏览器已登录 GitHub，不代表终端中的 Git 已具备访问私有仓库的权限。仓库链接用于定位仓库；实际读取和推送仍需要本机完成 GitHub 认证。不要把密码或访问令牌写进笔记或远端 URL。</p>
+<p>本机已通过 GitHub CLI 完成浏览器设备授权：命令行申请一次性代码，用户在 GitHub 官方授权页面登录并确认，工具在本机保存登录状态。一次性授权码不属于知识笔记，不应提交到仓库。当前提交身份使用账号名 <code>Lucute7</code> 及 GitHub 提供的 noreply 邮箱，不公开个人邮箱。</p>
+<h2>5. 不同电脑的日常维护流程</h2>
+<ol>
+<li>完成首次上传后，在另一台电脑克隆（Clone）同一仓库；每台电脑首次执行一次。</li>
+<li>每次开始维护前拉取（Pull）最新内容，再打开该仓库工作区讨论或编辑。有未处理的本地改动时，先保留这些改动再同步。</li>
+<li>修改章节、分类目录与复习清单，按主题重组内容，并检查受影响的旧结论和内部链接。</li>
+<li>运行 <code>python3 tools/build_reader.py</code> 重新生成阅读版。构建需要 Python 3.10+、Node.js 和仓库内的离线依赖；详见<a href="tools/README.md">阅读版生成工具</a>。</li>
+<li>检查差异，提交（Commit）并推送（Push）至 GitHub。</li>
+<li>其他设备再次拉取，或刷新 GitHub 页面，读取最新已推送内容。</li>
+</ol>
+<p>本地保存、提交、推送是三个不同动作。提交只记录在当前电脑，推送成功后其他设备才能从 GitHub 取得更新。可以使用 GitHub Desktop 完成常见同步操作，减少命令行操作。</p>
+<h2>6. 浏览器与手机阅读、编辑</h2>
+<p>登录有仓库访问权限的 GitHub 账号，可以在网页中阅读排版后的 Markdown、编辑文件并提交、上传资料。GitHub Markdown 支持数学表达式。手机浏览器也能使用这些功能，但长篇编辑的便利程度取决于屏幕和浏览器体验。</p>
+<p><code>阅读版.html</code> 在仓库预览中通常显示源码，不会像普通网页那样直接运行。需要完整离线阅读版时，下载后用支持 MathML 的浏览器打开；手机日常阅读优先使用 GitHub 的 Markdown 预览。</p>
+<p>GitHub 网页直接修改 Markdown 后，已提交的 HTML 不会自动重新生成。需要在有构建环境的电脑上拉取、生成阅读版并推送；如有需要，可另行配置自动构建。目前没有配置自动构建。</p>
+<h3>GitHub 仓库与 GitHub Pages</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>用途</th>
+<th>当前选择</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GitHub 仓库</td>
+<td>账号控制访问、文件编辑、版本记录与同步</td>
+<td>本项目使用这种方式维护笔记</td>
+</tr>
+<tr>
+<td>GitHub Pages</td>
+<td>将 HTML、CSS、JavaScript 发布成静态网站</td>
+<td>当前不启用；免费个人方案主要面向公开仓库</td>
+</tr>
+</tbody></table></div>
+<p>私有仓库不等于带账号密码保护的私有 Pages 网站。当前不因阅读需求而公开笔记，也不建设独立网站。GitHub Pages 的说明仅用于区分产品能力。</p>
+<h2>7. 资料大小、修改冲突与备份</h2>
+<p>小型 PDF、图片和示例材料可以存入仓库并在章节中引用。GitHub 网页上传单个文件上限为 25 MiB，普通 Git 仓库阻止大于 100 MiB 的文件。大量大文件不适合直接放进 Git 历史，应另外选择资料存储方式。</p>
+<p>两台电脑都从同一个旧版本开始修改，可能在同步时产生冲突。Git 能记录文件变化，但不能自动理解并合并相互矛盾的技术结论。需要检查双方内容、保留有效知识并解决冲突，不使用强制推送来跳过内容核对。</p>
+<p>版本历史有助于追溯，但不替代独立备份。保留本地副本，并根据需要另存完整笔记目录。未推送内容还不在 GitHub 上；存在于未提交文件中的修改也不在 Git 历史中。</p>
+<h2>8. 维护要点与常见问题</h2>
+<ul>
+<li>当前以 Markdown 和 GitHub 维护，独立网站与手机界面方案已废弃并删除相关文件。</li>
+<li>GitHub 保存已经推送的共享版本；每次先同步，修改后提交并推送。</li>
+<li>不同电脑共享的是整理后的笔记，不会自动共享完整聊天记录。</li>
+<li>GitHub 页面可直接阅读和修改 Markdown；离线阅读版需要构建并下载后打开。</li>
+<li>基本私有仓库维护可免费使用，大文件和附加服务另有规则。</li>
+</ul>
+<p>常见问题：</p>
+<ol>
+<li>本地保存、提交和推送分别改变了哪里？为什么提交之后还需要推送？</li>
+<li>浏览器已经登录，为什么终端访问私有仓库还可能需要认证？</li>
+<li>两台电脑分别修改同一份笔记后，怎样避免覆盖有效内容？</li>
+<li>网页修改 Markdown 后，为什么离线阅读版还可能是旧版本？</li>
+<li>上传一份手册，为什么不能等同于已经整理其中的技术结论？</li>
+</ol>
+<h2>9. 实际查阅的资料</h2>
+<ul>
+<li><a href="https://docs.github.com/en/get-started/learning-about-github/githubs-plans">GitHub 套餐说明</a>：免费私有仓库和附加服务额度。</li>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages 介绍</a>：静态网站托管的定义。</li>
+<li><a href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository">向仓库添加文件</a>：网页上传方式和文件限制。</li>
+<li><a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github">GitHub 大文件限制</a>：普通 Git 仓库的文件大小限制。</li>
+<li><a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions">GitHub 数学表达式</a>：Markdown 公式支持。</li>
+<li><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">创建新仓库</a>：仓库名称、可见性和初始化选项。</li>
+</ul>
+<h2>更新记录</h2>
+<ul>
+<li><p>2026-11-09：移入说明文档，不再作为技术章节或复习主题。</p>
+</li>
+<li><p>2026-11-09：根据跨设备维护需求，讨论共享存储、资料和聊天上下文的区别，并补充 GitHub 维护与创建仓库的方法。</p>
+</li>
+<li><p>2026-11-09：用户提供目标仓库地址，并明确废弃独立网站和手机界面方案。删除相关应用、截图、测试和部署文件，将正文改为 GitHub 维护流程；完成本地 Git 初始化和 GitHub 浏览器授权，并确认目标仓库为私有。</p>
+</li>
+</ul>
+<p><a href="#doc-cac6164bec5f">返回说明目录</a> · <a href="#doc-8ec9a00bfd09">返回总目录</a> · <a href="#doc-875f05997c53">复习清单</a></p>
 <a class="back" href="#top">返回目录 ↑</a></article></main></body></html>

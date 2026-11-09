@@ -61,6 +61,12 @@ def documents() -> list[Path]:
             if index.exists():
                 paths.append(index)
             paths.extend(sorted(p for p in folder.rglob("*.md") if p != index))
+    # Repository usage belongs to documentation, after the technical chapters.
+    docs = ROOT / "说明文档"
+    index = docs / "README.md"
+    if index.exists():
+        paths.append(index)
+        paths.extend(sorted(p for p in docs.rglob("*.md") if p != index))
     return paths
 
 
